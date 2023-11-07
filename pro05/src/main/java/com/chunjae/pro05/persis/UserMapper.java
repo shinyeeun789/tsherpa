@@ -2,15 +2,24 @@ package com.chunjae.pro05.persis;
 
 import com.chunjae.pro05.entity.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
-@Component
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
-
-    // @Param("mapper 안의 #{}와 일치")
-    User findUserByLoginId(@Param("loginId") String loginId);
-    int setUserInfo(@Param("param") User param);
+    List<User> getUserList();
+    User getUser(String name);
+    int getWithdraw(Integer id);
+    int getActivate(String name);
+    int getDormant(String name);
+    User getByEmail(String email);
+    User getByName(String name);
+    User getUserById(Long id);
+    User findById(String email, String tel);
+    User findByPw(String email, String tel, String name);
+    int userJoin(User euser);
+    int updateUser(User euser);
+    int updateLevel(String name, String lev);
+    int removeUser(User euser);
 
 }

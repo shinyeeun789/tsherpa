@@ -2,19 +2,64 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chunjae.pro05.persis.UserMapper">
 
-    <select id="findUserByLoginId" resultType="com.chunjae.pro05.entity.User">
-        select userId, active, loginId, userName, password
-        from user
-        <where>
-            <if test=" loginId != null and loginId != '' ">
-                and loginId = #{loginId}
-            </if>
-        </where>
+    <select id="getUserList" resultType="com.chunjae.pro05.entity.User">
+        select * from user order by id desc
     </select>
 
-    <insert id="setUserInfo" parameterType="com.chunjae.pro05.entity.User" useGeneratedKeys="true">
-        insert into user (active, loginId, userName, password)
-        values (#{param.active}, #{param.loginId}, #{param.userName}, #{param.password})
+    <select id="getUser" resultType="com.chunjae.pro05.entity.User">
+        select * from user where name = #{name}
+    </select>
+
+    <!-- 탈퇴하기 act:JOIN-활동중, DORMANT-휴면중, WITHDRAW-탈퇴중 -->
+    <update id="getWithdraw">
+        update user set act='WITHDRAW' where id = #{id}
+    </update>
+
+    <!-- 계정 활성화 -->
+    <update id="getActivate">
+        update user set act='JOIN' where name = #{name}
+    </update>
+
+    <update id="getDormant">
+        update user set act='DORMANT' where name = #{name}
+    </update>
+
+    <select id="getByEmail" resultType="com.chunjae.pro05.entity.User">
+        select * from user where email = #{email}
+    </select>
+
+    <select id="getByName" resultType="com.chunjae.pro05.entity.User">
+        select * from user where name = #{name}
+    </select>
+
+    <select id="getUserById" resultType="com.chunjae.pro05.entity.User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="findById" resultType="com.chunjae.pro05.entity.User">
+        select * from user where email = #{email} and tel = #{tel}
+    </select>
+
+    <select id="findByPw" resultType="com.chunjae.pro05.entity.User">
+        select * from user where email = #{email} and tel = #{tel} and name = #{name}
+    </select>
+
+    <insert id="userJoin">
+        insert into user
+        values(default, #{name}, #{password}, #{username}, #{email}, #{address}, #{tel}, default, default, default)
     </insert>
+
+    <update id="updateUser">
+        update user set password = #{password}, username = #{username}, email = #{email}, address = #{address}, tel = #{tel}
+        where id = #{id} or name = #{name}
+    </update>
+
+    <update id="updateLevel">
+        update user set lev = #{lev} where name = #{name}
+    </update>
+
+    <delete id="removeUser">
+        delete from user where id = #{id} or name = #{name}
+    </delete>
 
 </mapper>

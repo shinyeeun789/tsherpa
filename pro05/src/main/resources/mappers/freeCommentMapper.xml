@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.pro05.persis.FreeCommentMapper">
+
+    <select id="commentList" resultType="com.chunjae.pro05.entity.FreeComment">
+        SELECT cno, fno, name, content,
+               case
+                   when DATEDIFF(NOW(), resdate) > 0
+                       then CONCAT(DATEDIFF(NOW(), resdate), '일 전')
+                   when TIMESTAMPDIFF(HOUR, resdate, NOW()) > 0
+                       then CONCAT(TIMESTAMPDIFF(HOUR, resdate, NOW()), '시간 전')
+                   ELSE CONCAT(TIMESTAMPDIFF(MINUTE, resdate, NOW()), '분 전')
+                   END AS resdate, recommend
+        FROM freeComment where fno = #{fno}
+        order by cno desc limit #{page.postStart}, #{page.postCount}
+    </select>
+
+    <select id="totalCnt" resultType="int">
+        select count(*) from freeComment where fno = #{fno}
+    </select>
+
+    <select id="getComment" resultType="com.chunjae.pro05.entity.FreeComment">
+        SELECT cno, fno, name, content,
+               case
+                   when DATEDIFF(NOW(), resdate) > 0
+                       then CONCAT(DATEDIFF(NOW(), resdate), '일 전')
+                   when TIMESTAMPDIFF(HOUR, resdate, NOW()) > 0
+                       then CONCAT(TIMESTAMPDIFF(HOUR, resdate, NOW()), '시간 전')
+                   ELSE CONCAT(TIMESTAMPDIFF(MINUTE, resdate, NOW()), '분 전')
+                   END AS resdate, recommend
+        FROM freeComment where cno = #{cno}
+    </select>
+
+    <insert id="insertFreeComment">
+        insert into freeComment
+        values(default, #{fno}, #{name}, #{content}, default, default)
+    </insert>
+
+    <update id="updateRecommend">
+        update freeComment set
+        <choose>
+            <when test="type == 'Plus'.toString()">
+                recommend = recommend + 1
+            </when>
+            <when test="type == 'Minus'.toString()">
+                recommend = recommend - 1
+            </when>
+        </choose>
+        where cno = #{cno}
+    </update>
+
+</mapper>

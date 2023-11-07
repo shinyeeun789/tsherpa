@@ -13,14 +13,11 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/bootstrap/**").addResourceLocations("classpath:/static/bootstrap/");
         registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
+        registry.addResourceHandler("/ckeditor/**").addResourceLocations("classpath:/static/ckeditor/");
         registry.addResourceHandler("/images/**").addResourceLocations("classpath:/static/images/");
         registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
         registry.addResourceHandler("/jquery/**").addResourceLocations("classpath:/static/jquery/");
         registry.addResourceHandler("/webfonts/**").addResourceLocations("classpath:/static/webfonts/");
     }
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        return bCryptPasswordEncoder;
-    }
+
 }

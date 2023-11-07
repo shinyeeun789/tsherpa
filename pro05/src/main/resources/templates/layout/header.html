@@ -7,16 +7,31 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <a href="/" class="logo">
+                        <a th:href="@{/}" class="logo">
                             <h1>Villa</h1>
                         </a>
                         <ul class="nav">
-                            <li><a href="index.html" class="active">Home</a></li>
-                            <li><a href="properties.html">Properties</a></li>
-                            <li><a href="property-details.html">Property Details</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="/login"><i class="fa fa-user"></i> Login </a></li>
-                            <li><a href="/join"><i class="fa-solid fa-right-to-bracket"></i> Join </a></li>
+                            <li><a th:href="@{/}"> 중고거래 </a></li>
+                            <li><a th:href="@{/free/list.do}"> 커뮤니티 </a></li>
+                            <li><a th:href="@{/}"> 고객지원 </a></li>
+
+                            <li sec:authorize="isAnonymous()">
+                                <a th:href="@{/login.do}"><i class="fa fa-user"></i> 로그인 </a>
+                            </li>
+                            <li sec:authorize="isAnonymous()">
+                                <a th:href="@{/join.do}"><i class="fa-solid fa-right-to-bracket"></i> 회원가입 </a>
+                            </li>
+
+                            <li sec:authorize="isAuthenticated()">
+                                <a th:href="@{/logout.do}"><i class="fa-solid fa-right-to-bracket"></i> 로그아웃 </a>
+                            </li>
+                            <li sec:authorize="hasAuthority('USER') || hasAuthority('TEACHER') || hasAuthority('EMP')">
+                                <a th:href="@{/mypage.do}"><i class="fa fa-user"></i> 마이페이지 </a>
+                            </li>
+
+                            <li sec:authorize="hasAuthority('ADMIN')">
+                                <a th:href="@{/admin/dashboard.do}"><i class="fa-solid fa-screwdriver-wrench"></i> 관리자페이지 </a>
+                            </li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

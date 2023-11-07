@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 커뮤니티 </title>
+    <th:block th:replace="layout/head :: headFragment"></th:block>
+</head>
+<body>
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="/">Home</a> / 커뮤니티</span>
+                <h3> 커뮤니티 </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section properties">
+    <div class="container mt-5 pt-5">
+        <div class="d-flex justify-content-end">
+            <form th:action="@{/free/list.do}" class="d-flex justify-content-end" style="width: 40%">
+                <select name="type" id="type" class="form-select w-25">
+                    <option value="T" id="T"> 제목 </option>
+                    <option value="C" id="C"> 내용 </option>
+                    <option value="W" id="W"> 작성자 </option>
+                </select>
+                <input type="text" name="keyword" id="keyword" class="form-control" autocomplete="off" th:value="${page.keyword}">
+                <input type="submit" class="btn btn-dark" value="검색">
+            </form>
+        </div>
+        <table class="table table-hover text-center mt-5 mb-5">
+            <thead>
+            <tr>
+                <th> # </th>
+                <th> 제목 </th>
+                <th> 작성자 </th>
+                <th> 작성일 </th>
+                <th> 조회수 </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="free : ${freeList}" th:onclick="|location.href='@{/free/detail(fno=${free.fno}, id=${principal})}'|" style="cursor: pointer">
+                    <td th:text="${free.fno}"></td>
+                    <td style="width: 450px;">
+                        <div style="width: 450px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left" th:text="${free.title}"></div>
+                    </td>
+                    <td th:text="${free.name}"></td>
+                    <td th:text="${free.resdate}"></td>
+                    <td th:text="${free.views}"></td>
+                </tr>
+                <tr th:if="${#lists.size(freeList) == 0}">
+                    <td colspan="5"> 작성된 게시글이 없습니다. </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="row" th:if="${page.lastPageNum != 0}">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li th:if="${page.curPageNum > 5}">
+                        <a th:href="@{/free/list.do(page=${page.blockStartNum - 1})}"> << </a>
+                    </li>
+                    <li th:each="i : ${#numbers.sequence(page.blockStartNum, page.blockLastNum)}">
+                        <a th:if="${page.curPageNum == i}" th:href="@{/free/list.do(page=${i})}" th:text="${i}" class="is_active"></a>
+                        <a th:if="${page.curPageNum != i}" th:href="@{/free/list.do(page=${i})}" th:text="${i}"></a>
+                    </li>
+                    <li th:if="${page.blockLastNum < page.totalPageCount}">
+                        <a th:href="@{/free/list.do(page=${page.blockLastNum + 1})}"> >> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <a th:href="@{/free/insert.do}" class="btn btn-dark mt-3"> 글쓰기 </a>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+
+</body>
+</html>
