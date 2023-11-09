@@ -1,16 +1,24 @@
 package com.chunjae.pro05.biz;
 
+import com.chunjae.pro05.entity.Category;
 import com.chunjae.pro05.entity.Free;
 import com.chunjae.pro05.persis.FreeMapper;
 import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class FreeServiceImpl implements FreeService {
 
     @Autowired
     private FreeMapper freeMapper;
+
+    @Override
+    public List<Category> cateList() {
+        return freeMapper.cateList();
+    }
 
     @Override
     public List<Free> freeList(Page page) {

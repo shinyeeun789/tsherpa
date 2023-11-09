@@ -1,15 +1,10 @@
-DROP DATABASE tsherpa;
+DROP DATABASE pro05;
 
-CREATE DATABASE tsherpa;
+CREATE DATABASE pro05;
 
-USE tsherpa;
+USE pro05;
 
 -- 회원 테이블 생성
-CREATE TABLE role(
-	roleId INT PRIMARY KEY AUTO_INCREMENT,
-	role VARCHAR(255) DEFAULT NULL
-);
-DROP TABLE USER;
 CREATE TABLE user(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(20) NOT NULL,
@@ -24,12 +19,6 @@ CREATE TABLE user(
 	CONSTRAINT key_name UNIQUE(name)
 );
 
-CREATE TABLE user_role(
-	userId INT NOT NULL,
-	roleId INT NOT NULL,
-	PRIMARY KEY (userId, roleId)
-);
-
 SELECT * FROM USER;
 
 INSERT INTO user
@@ -38,17 +27,31 @@ VALUES(DEFAULT, 'admin', '$2a$10$KXY.EhEskta7wG/HvMSeZ.CQ4FuGQZOmaHTL2eZPnidD6AU
 INSERT INTO user
 VALUES(DEFAULT, 'kimname', '$2a$10$KXY.EhEskta7wG/HvMSeZ.CQ4FuGQZOmaHTL2eZPnidD6AUvc.rUS', '김이름', 'kim@edu.com', NULL, NULL, DEFAULT, 'USER', DEFAULT);
 
-COMMIT;
+-- 커뮤니티 카테고리 테이블 생성
+CREATE TABLE category(
+   cate VARCHAR(5) PRIMARY KEY NOT NULL,
+   cateName VARCHAR(100) NOT NULL);
 
+-- 카테고리 테이블 데이터
+INSERT INTO category VALUES('A', '교과지도');
+INSERT INTO category VALUES('B', '학습지도');
+INSERT INTO category VALUES('C', '생활지도');
+INSERT INTO category VALUES('D', '학급운영');
+INSERT INTO category VALUES('E', '업무자료');
+
+DROP TABLE free_com;
+DROP TABLE free;
 -- 게시판 테이블 생성
 CREATE TABLE free(
 	fno INT PRIMARY KEY AUTO_INCREMENT,
+	cate VARCHAR(5) NOT NULL,
 	name VARCHAR(20) NOT NULL,
 	title VARCHAR(50) NOT NULL,
 	content VARCHAR(2000) NOT NULL,
 	resdate TIMESTAMP DEFAULT CURRENT_TIME,
 	views INT DEFAULT 0,
-	recommend INT DEFAULT 0
+	recommend INT DEFAULT 0,
+	FOREIGN KEY (cate) REFERENCES category(cate)
 );
 
 -- 댓글 테이블 생성
@@ -72,3 +75,6 @@ case
 	ELSE CONCAT(TIMESTAMPDIFF(MINUTE, resdate, NOW()), '분 전')
 END AS resdate, recommend
 FROM free_com;
+
+SELECT f.*, cateName
+FROM free f JOIN category c ON (f.cate=c.cate)

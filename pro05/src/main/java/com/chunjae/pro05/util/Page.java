@@ -21,6 +21,7 @@ public class Page {
     // 검색어 입력 시 들어오는 데이터
     private String type;
     private String keyword;
+    private String category;
 
     public Page(int curPageNum) {
         this.curPageNum = curPageNum;
@@ -30,6 +31,13 @@ public class Page {
         this.curPageNum = curPageNum;
         this.type = type;
         this.keyword = keyword;
+    }
+
+    public Page(int curPageNum, String type, String keyword, String category) {
+        this.curPageNum = curPageNum;
+        this.type = type;
+        this.keyword = keyword;
+        this.category = category;
     }
 
     public void makePage(int total) {

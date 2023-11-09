@@ -1,0 +1,27 @@
+2023-11-08 15:18:44.900 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.7 on FULL8-017 with PID 9684 (D:\shin\project05\pro05\build\classes\java\main started by db400tea in D:\shin\project05\pro05)
+2023-11-08 15:18:44.903 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-08 15:18:45.025 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-08 15:18:45.025 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-08 15:18:45.756 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-08 15:18:45.761 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-08 15:18:45.761 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-08 15:18:45.761 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-08 15:18:45.801 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-08 15:18:45.849 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 822 ms
+2023-11-08 15:18:46.138 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@172ef39b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3f54f85a, org.springframework.security.web.context.SecurityContextPersistenceFilter@437868b8, org.springframework.security.web.header.HeaderWriterFilter@35edaa70, org.springframework.security.web.authentication.logout.LogoutFilter@7e38fb09, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@41cd23ff, org.springframework.security.web.session.ConcurrentSessionFilter@40e038bf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6188918b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48630825, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6b1c4a1f, org.springframework.security.web.session.SessionManagementFilter@61a6fab7, org.springframework.security.web.access.ExceptionTranslationFilter@2f3e8fd4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@767a3a30]
+2023-11-08 15:18:46.341 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-08 15:18:46.351 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-08 15:18:46.361 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-08 15:18:46.367 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 1.653 seconds (JVM running for 2.023)
+2023-11-08 15:20:58.260 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-08 15:20:58.260 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-08 15:20:58.261 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-08 15:21:04.635 INFO  [http-nio-8086-exec-10] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-08 15:21:04.683 INFO  [http-nio-8086-exec-10] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-08 15:21:05.088 WARN  [http-nio-8086-exec-3] [o.s.web.servlet.PageNotFound] - No mapping for GET /favicon.ico
+2023-11-08 15:21:11.623 WARN  [http-nio-8086-exec-10] [o.s.web.servlet.PageNotFound] - No mapping for GET /free/detail
+2023-11-08 15:21:20.904 WARN  [http-nio-8086-exec-5] [o.s.web.servlet.PageNotFound] - No mapping for GET /free/detail
+2023-11-08 15:21:34.608 WARN  [http-nio-8086-exec-9] [o.s.web.servlet.PageNotFound] - No mapping for GET /board/ckImgSubmit.do
+2023-11-08 15:21:34.611 WARN  [http-nio-8086-exec-2] [o.s.web.servlet.PageNotFound] - No mapping for GET /board/ckImgSubmit.do
+2023-11-08 17:18:18.360 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-08 17:18:18.363 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.

@@ -6,6 +6,7 @@ import lombok.Data;
 public class Free {
 
     private Integer fno;
+    private String cate;
     private String name;
     private String title;
     private String content;

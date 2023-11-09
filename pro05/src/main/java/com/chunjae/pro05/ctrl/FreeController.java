@@ -3,6 +3,7 @@ package com.chunjae.pro05.ctrl;
 import com.chunjae.pro05.biz.FreeCommentService;
 import com.chunjae.pro05.biz.FreeService;
 import com.chunjae.pro05.biz.UserService;
+import com.chunjae.pro05.entity.Category;
 import com.chunjae.pro05.entity.User;
 import com.chunjae.pro05.entity.Free;
 import com.chunjae.pro05.entity.FreeComment;
@@ -43,11 +44,16 @@ public class FreeController {
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
         String type = request.getParameter("type");
         String keyword = request.getParameter("keyword");
-        Page page = new Page(curPage, type, keyword);
+        String category = request.getParameter("cate");
+        Page page = new Page(curPage, type, keyword, category);
         page.makePage(freeService.totalCnt());
 
         List<Free> freeList = freeService.freeList(page);
         model.addAttribute("freeList", freeList);
+
+        List<Category> cateList = freeService.cateList();
+        model.addAttribute("cateList", cateList);
+
         model.addAttribute("page", page);
         return "free/freeList";
     }
@@ -64,7 +70,7 @@ public class FreeController {
         int result = freeService.insertFree(free);
         if(result > 0) {
             rttr.addFlashAttribute("msg", "게시판에 글이 등록되었습니다.");
-            return "redirect:list";
+            return "redirect:list.do";
         } else {
             rttr.addFlashAttribute("msg", "글 등록에 실패했습니다. 잠시 후 다시 시도해주세요.");
             String referer = request.getHeader("Referer");
@@ -154,10 +160,11 @@ public class FreeController {
             byte[] bytes = upload.getBytes();
 
             //이미지 경로 생성
-            String path = request.getRealPath("/upload/free");
+            String path = request.getRealPath("/upload/free/");
             String ckUploadPath = path + uid + "_" + fileName;
             File folder = new File(path);
             System.out.println("path:"+path);	// 이미지 저장경로 console에 확인
+            System.out.println("ckUploadPath:"+ckUploadPath);
             //해당 디렉토리 확인
             if(!folder.exists()){
                 try{
@@ -173,7 +180,7 @@ public class FreeController {
 
             printWriter = response.getWriter();
             String contextPath = request.getContextPath();
-            String fileUrl = contextPath + "/board/ckImgSubmit.do?uid=" + uid + "&fileName=" + fileName; // 작성화면
+            String fileUrl = contextPath + "/free/ckImgSubmit.do?uid=" + uid + "&fileName=" + fileName; // 작성화면
 
             // 업로드시 메시지 출력
             printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");

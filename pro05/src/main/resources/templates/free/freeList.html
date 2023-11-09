@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 커뮤니티 </title>
     <th:block th:replace="layout/head :: headFragment"></th:block>
+
 </head>
 <body>
 <!-- ***** Preloader Start ***** -->
@@ -34,7 +35,16 @@
     </div>
 </div>
 <div class="section properties">
-    <div class="container mt-5 pt-5">
+    <div class="container">
+        <div class="list-group list-group-horizontal text-center w-50 mb-5 m-auto">
+            <a th:href="@{/free/list.do}" class="list-group-item list-group-item-action active" aria-current="true"> 전체 </a>
+            <th:block th:if="${page.keyword != null}">
+                <a th:each="cate : ${cateList}" th:href="@{/free/list.do(cate=${cate.cate}, type=${page.type}, keyword=${page.keyword})}" class="list-group-item list-group-item-action" th:text="${cate.cateName}"></a>
+            </th:block>
+            <th:block th:if="${page.keyword == null}">
+                <a th:each="cate : ${cateList}" th:href="@{/free/list.do(cate=${cate.cate})}" class="list-group-item list-group-item-action" th:text="${cate.cateName}"></a>
+            </th:block>
+        </div>
         <div class="d-flex justify-content-end">
             <form th:action="@{/free/list.do}" class="d-flex justify-content-end" style="width: 40%">
                 <select name="type" id="type" class="form-select w-25">
@@ -50,6 +60,7 @@
             <thead>
             <tr>
                 <th> # </th>
+                <th> 카테고리 </th>
                 <th> 제목 </th>
                 <th> 작성자 </th>
                 <th> 작성일 </th>
@@ -59,6 +70,7 @@
             <tbody>
                 <tr th:each="free : ${freeList}" th:onclick="|location.href='@{/free/detail(fno=${free.fno}, id=${principal})}'|" style="cursor: pointer">
                     <td th:text="${free.fno}"></td>
+                    <td th:text="${free.cate}"></td>
                     <td style="width: 450px;">
                         <div style="width: 450px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left" th:text="${free.title}"></div>
                     </td>
@@ -67,7 +79,7 @@
                     <td th:text="${free.views}"></td>
                 </tr>
                 <tr th:if="${#lists.size(freeList) == 0}">
-                    <td colspan="5"> 작성된 게시글이 없습니다. </td>
+                    <td colspan="6"> 작성된 게시글이 없습니다. </td>
                 </tr>
             </tbody>
         </table>
