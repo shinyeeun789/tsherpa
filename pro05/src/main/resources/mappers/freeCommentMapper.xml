@@ -11,12 +11,12 @@
                        then CONCAT(TIMESTAMPDIFF(HOUR, resdate, NOW()), '시간 전')
                    ELSE CONCAT(TIMESTAMPDIFF(MINUTE, resdate, NOW()), '분 전')
                    END AS resdate, recommend
-        FROM freeComment where fno = #{fno}
+        FROM free_com where fno = #{fno}
         order by cno desc limit #{page.postStart}, #{page.postCount}
     </select>
 
     <select id="totalCnt" resultType="int">
-        select count(*) from freeComment where fno = #{fno}
+        select count(*) from free_com where fno = #{fno}
     </select>
 
     <select id="getComment" resultType="com.chunjae.pro05.entity.FreeComment">
@@ -28,23 +28,23 @@
                        then CONCAT(TIMESTAMPDIFF(HOUR, resdate, NOW()), '시간 전')
                    ELSE CONCAT(TIMESTAMPDIFF(MINUTE, resdate, NOW()), '분 전')
                    END AS resdate, recommend
-        FROM freeComment where cno = #{cno}
+        FROM free_com where cno = #{cno}
     </select>
 
     <insert id="insertFreeComment">
-        insert into freeComment
+        insert into free_com
         values(default, #{fno}, #{name}, #{content}, default, default)
     </insert>
 
     <update id="updateRecommend">
-        update freeComment set
+        update free_com set
         <choose>
             <when test="type == 'Plus'.toString()">
-                recommend = recommend + 1
+                recommend = recommend + 1 asldkfjwoeifj
             </when>
-            <when test="type == 'Minus'.toString()">
+            <otherwise>
                 recommend = recommend - 1
-            </when>
+            </otherwise>
         </choose>
         where cno = #{cno}
     </update>

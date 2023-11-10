@@ -36,11 +36,20 @@
 </div>
 
 <div class="container pt-5 pb-5">
-    <div class="w-50 m-auto">
+    <div class="w-75 m-auto">
         <form th:action="@{/free/insert.do}" method="post" class="mt-5 mb-5">
-            <label for="title" class="form-label"> 제목 </label>
-            <input type="text" id="title" name="title" class="form-control" maxlength="50">
-
+            <div class="row">
+                <div class="col-3">
+                    <label for="cate" class="form-label"> 카테고리 </label>
+                    <select type="text" id="cate" name="cate" class="form-select">
+                        <option th:each="cate : ${cateList}" th:value="${cate.cate}"> [[${cate.cateName}]] </option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="title" class="form-label"> 제목 </label>
+                    <input type="text" id="title" name="title" class="form-control" maxlength="50">
+                </div>
+            </div>
             <label for="content" class="form-label mt-2"> 내용 </label>
             <textarea id="content" name="content" class="form-control" rows="20" maxlength="2000"></textarea>
             <script>

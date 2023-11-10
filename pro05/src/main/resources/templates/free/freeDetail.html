@@ -33,11 +33,113 @@
         </div>
     </div>
 </div>
-<div class="section properties">
+<div class="single-property section">
     <div class="container mt-5 pt-5 mb-5 pb-5">
-
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="main-content">
+                    <span class="category mt-0 mb-3" th:text="${detail.cate}"></span>
+                    <h2 th:text="${detail.title}"></h2>
+                    <hr>
+                    <div class="col-lg-8" style="min-height: 30vh;" th:utext="${detail.content}"></div>
+                </div>
+                <div class="comment-content">
+                    <p class="mb-2"> 댓글([[${commentList.size()}]]개) </p>
+                    <div class="d-flex justify-content-between">
+                        <textarea cols="30" rows="3" id="content" name="content" class="form-control" style="resize: none"></textarea>
+                        <input type="button" id="addComment" class="btn btn-dark" value="전송">
+                    </div>
+                    <div class="mt-4" th:each="comment : ${commentList}">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <h6 style="margin-right: 10px"> [[${comment.name}]]님 </h6> · <p style="margin-left: 10px"> [[${comment.resdate}]] </p>
+                            </div>
+                            <button class="border-0 bg-body" th:id="'plusRecommend_'+${comment.cno}" th:value="${comment.cno}"> <i class="fa-regular fa-thumbs-up fa-xl"></i> [[${comment.recommend}]] </button>
+                        </div>
+                        <p> [[${comment.content}]] </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="info-table">
+                    <ul>
+                        <li class="d-flex justify-content-between align-items-center">
+                            <i class="fa-regular fa-user-circle fa-2xl" style="color: #f35525"></i>
+                            <h4 class="text-end">[[${detail.name}]]<br><span> 작성자 </span></h4>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center">
+                            <i class="fa-regular fa-calendar fa-2xl" style="color: #f35525"></i>
+                            <h4 class="text-end">[[${detail.resdate}]]<br><span> 작성일자 </span></h4>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center">
+                            <i class="fa-regular fa-eye fa-2xl" style="color: #f35525"></i>
+                            <h4 class="text-end">[[${detail.views}]]회<br><span> 조회수 </span></h4>
+                        </li>
+                        <li class="d-flex justify-content-between align-items-center">
+                            <i class="fa-regular fa-heart fa-2xl" style="color: #f35525"></i>
+                            <h4 class="text-end">[[${detail.recommend}]]개<br><span> 좋아요 </span></h4>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script th:inline="javascript">
+    $(document).ready(() => {
+        $("#addComment").on("click", function() {
+            $.ajax({
+                url: "/freeComment/insert.do",
+                type:"post",
+                data:JSON.stringify({ fno : [[${detail.fno}]], content : $("#content").val() }),
+                dataType:"json",
+                contentType: "application/json",
+                success: function(result) {
+                    console.log(result);
+                    console.log("성공");
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        });
+
+        $(document).on("click", "button[id^='plusRecommend']", function() {
+            $.ajax({
+                url: "/freeComment/plusRecommend.do",
+                type:"post",
+                data:JSON.stringify({ cno : $(this).val() }),
+                dataType:"json",
+                contentType: "application/json",
+                success: function(result) {
+                    $("#plusRecommend_" + result.cno).html('<i class="fa-solid fa-thumbs-up fa-xl"></i> ' + result.recommend);
+                    $("#plusRecommend_" + result.cno).attr("id", "minusRecommend_" + result.cno);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        })
+
+        $(document).on("click", "button[id^='minusRecommend']", function() {
+            $.ajax({
+                url: "/freeComment/minusRecommend.do",
+                type:"post",
+                data:JSON.stringify({ cno : $(this).val() }),
+                dataType:"json",
+                contentType: "application/json",
+                success: function(result) {
+                    $("#minusRecommend_" + result.cno).html('<i class="fa-regular fa-thumbs-up fa-xl"></i> ' + result.recommend);
+                    $("#minusRecommend_" + result.cno).attr("id", "plusRecommend_" + result.cno);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        })
+    });
+</script>
 
 <th:block th:replace="layout/footer :: footerFragment"></th:block>
 </body>

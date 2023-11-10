@@ -60,6 +60,10 @@ public class FreeController {
 
     @GetMapping("insert.do")
     public String freeInsertForm(Model model) throws Exception {
+
+        List<Category> cateList = freeService.cateList();
+        model.addAttribute("cateList", cateList);
+
         return "free/freeInsert";
     }
 
@@ -79,7 +83,7 @@ public class FreeController {
     }
 
     @GetMapping("detail.do")
-    public String freeDetail(@RequestParam int fno, @RequestParam Long id, HttpServletRequest request, HttpSession session, Model model) throws Exception {
+    public String freeDetail(@RequestParam int fno, HttpServletRequest request, HttpSession session, Model model) throws Exception {
         Cookie[] cookieFromRequest = request.getCookies();
         String cookieValue = null;
         for(int i=0; i< cookieFromRequest.length; i++) {
@@ -99,10 +103,8 @@ public class FreeController {
             freeService.updateViews(fno);
         }
 
-        User user = userService.getUserById(id);
         Free free = freeService.getFree(fno);
         model.addAttribute("detail", free);
-        model.addAttribute("isAuthor", user.getName().equals(free.getName()));
 
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
         Page page = new Page(curPage);

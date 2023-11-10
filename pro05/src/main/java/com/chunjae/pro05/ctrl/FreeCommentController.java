@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
@@ -44,24 +45,51 @@ public class FreeCommentController {
     @PostMapping("plusRecommend.do")
     @ResponseBody
     public FreeComment plusRecommend(@RequestBody FreeComment comment, HttpServletRequest request, HttpSession session) throws Exception {
-        int result = freeCommentService.updateRecommend(comment.getCno(), "Plus");
-        if(result > 0) {
-
-            FreeComment resComment = freeCommentService.getComment(comment.getCno());
-            return resComment;
+        Cookie[] cookieFromRequest = request.getCookies();
+        String cookieValue = null;
+        for(int i=0; i< cookieFromRequest.length; i++) {
+            cookieValue = cookieFromRequest[0].getValue();
         }
-        return null;
+        // 쿠키 세션 입력
+        if(session.getAttribute(comment.getCno() + ":commentCookie") == null) {
+            session.setAttribute(comment.getCno() + ":commentCookie", comment.getCno() + ":" + cookieValue);
+        } else {
+            session.setAttribute(comment.getCno() + ":commentCookie ex", session.getAttribute(comment.getCno() + ":commentCookie"));
+            if(!session.getAttribute(comment.getCno() + ":commentCookie").equals(comment.getCno() + ":" + cookieValue)) {
+                session.setAttribute(comment.getCno() + ":commentCookie", comment.getCno() + ":" + cookieValue);
+            }
+        }
+        // 쿠키와 세션이 없는 경우 조회수 카운트
+        if(!session.getAttribute(comment.getCno() + ":commentCookie").equals(session.getAttribute(comment.getCno() + ":commentCookie ex"))) {
+            freeCommentService.updateRecommend(comment.getCno(), "Plus");
+        }
+        FreeComment resComment = freeCommentService.getComment(comment.getCno());
+        return resComment;
     }
 
     @PostMapping("minusRecommend.do")
+    @ResponseBody
     public FreeComment minusRecommend(@RequestBody FreeComment comment, HttpServletRequest request, HttpSession session) throws Exception {
-        int result = freeCommentService.updateRecommend(comment.getCno(), "Minus");
-        if(result > 0) {
-
-            FreeComment resComment = freeCommentService.getComment(comment.getCno());
-            return resComment;
+        Cookie[] cookieFromRequest = request.getCookies();
+        String cookieValue = null;
+        for(int i=0; i< cookieFromRequest.length; i++) {
+            cookieValue = cookieFromRequest[0].getValue();
         }
-        return null;
+        // 쿠키 세션 입력
+        if(session.getAttribute(comment.getCno() + ":commentCookie") == null) {
+            session.setAttribute(comment.getCno() + ":commentCookie", comment.getCno() + ":" + cookieValue);
+        } else {
+            session.setAttribute(comment.getCno() + ":commentCookie ex", session.getAttribute(comment.getCno() + ":commentCookie"));
+            if(!session.getAttribute(comment.getCno() + ":commentCookie").equals(comment.getCno() + ":" + cookieValue)) {
+                session.setAttribute(comment.getCno() + ":commentCookie", comment.getCno() + ":" + cookieValue);
+            }
+        }
+        // 쿠키와 세션이 없는 경우 조회수 카운트
+        if(!session.getAttribute(comment.getCno() + ":commentCookie").equals(session.getAttribute(comment.getCno() + ":commentCookie ex"))) {
+            freeCommentService.updateRecommend(comment.getCno(), "Minus");
+        }
+        FreeComment resComment = freeCommentService.getComment(comment.getCno());
+        return resComment;
     }
 
 }

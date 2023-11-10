@@ -7,7 +7,7 @@
     </select>
 
     <select id="freeList" resultType="com.chunjae.pro05.entity.Free">
-        SELECT f.*, cateName
+        SELECT fno, cateName AS cate, name, title, content, DATE_FORMAT(resdate, '%Y-%m-%d') AS resdate, views, recommend
         FROM free f JOIN category c ON (f.cate=c.cate)
         <where>
             <if test="type != null">
@@ -33,12 +33,13 @@
     </select>
 
     <select id="getFree" resultType="com.chunjae.pro05.entity.Free">
-        select * from free where fno = #{fno}
+        select fno, cateName as cate, name, title, content, DATE_FORMAT(resdate, '%Y-%m-%d') AS resdate, views, recommend
+        from free f join category c on (f.cate = c.cate) where fno = #{fno}
     </select>
 
     <insert id="insertFree">
         insert into free
-        values(default, #{name}, #{title}, #{content}, default, default, default)
+        values(default, #{cate}, #{name}, #{title}, #{content}, default, default, default)
     </insert>
 
     <update id="updateFree">
