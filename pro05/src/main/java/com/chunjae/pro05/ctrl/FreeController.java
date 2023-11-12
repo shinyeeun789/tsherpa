@@ -144,6 +144,43 @@ public class FreeController {
         return "redirect:list.do";
     }
 
+    @PostMapping("plusRecommend.do")
+    @ResponseBody
+    public Free plusRecommend(@RequestBody Free free, HttpServletRequest request, HttpSession session) throws Exception {
+        Cookie[] cookieFromRequest = request.getCookies();
+        String cookieValue = null;
+        for(int i=0; i< cookieFromRequest.length; i++) {
+            cookieValue = cookieFromRequest[0].getValue();
+        }
+        // 쿠키 세션 입력
+        if(session.getAttribute(free.getFno() + ":freeRecommendCookie") == null) {
+            session.setAttribute(free.getFno() + ":freeRecommendCookie", free.getFno() + ":" + cookieValue);
+        } else {
+            session.setAttribute(free.getFno() + ":freeRecommendCookie ex", session.getAttribute(free.getFno() + ":freeRecommendCookie"));
+            if(!session.getAttribute(free.getFno() + ":freeRecommendCookie").equals(free.getFno() + ":" + cookieValue)) {
+                session.setAttribute(free.getFno() + ":freeRecommendCookie", free.getFno() + ":" + cookieValue);
+            }
+        }
+        // 쿠키와 세션이 없는 경우 조회수 카운트
+        if(!session.getAttribute(free.getFno() + ":freeRecommendCookie").equals(session.getAttribute(free.getFno() + ":freeRecommendCookie ex"))) {
+            freeService.updateRecommend(free.getFno(), "Plus");
+        }
+        Free resFree = freeService.getFree(free.getFno());
+        return resFree;
+    }
+
+    @PostMapping("minusRecommend.do")
+    @ResponseBody
+    public Free minusRecommend(@RequestBody Free free, HttpServletRequest request, HttpSession session) throws Exception {
+        session.removeAttribute(free.getFno() + ":freeRecommendCookie");
+        session.removeAttribute(free.getFno() + ":freeRecommendCookie ex");
+
+        freeService.updateRecommend(free.getFno(), "Minus");
+
+        Free resFree = freeService.getFree(free.getFno());
+        return resFree;
+    }
+
     //ckeditor를 이용한 이미지 업로드
     @PostMapping("imageUpload.do")
     public void imageUpload(HttpServletRequest request, HttpServletResponse response, MultipartHttpServletRequest multiFile, @RequestParam MultipartFile upload) throws Exception{

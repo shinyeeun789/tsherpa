@@ -38,14 +38,12 @@
 
     <update id="updateRecommend">
         update free_com set
-        <choose>
-            <when test="type == 'Plus'.toString()">
-                recommend = recommend + 1 asldkfjwoeifj
-            </when>
-            <otherwise>
-                recommend = recommend - 1
-            </otherwise>
-        </choose>
+        <if test='type.equals("Plus")'>
+            recommend = recommend + 1
+        </if>
+        <if test='type.equals("Minus")'>
+            recommend = recommend - 1
+        </if>
         where cno = #{cno}
     </update>
 

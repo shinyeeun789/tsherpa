@@ -70,24 +70,11 @@ public class FreeCommentController {
     @PostMapping("minusRecommend.do")
     @ResponseBody
     public FreeComment minusRecommend(@RequestBody FreeComment comment, HttpServletRequest request, HttpSession session) throws Exception {
-        Cookie[] cookieFromRequest = request.getCookies();
-        String cookieValue = null;
-        for(int i=0; i< cookieFromRequest.length; i++) {
-            cookieValue = cookieFromRequest[0].getValue();
-        }
-        // 쿠키 세션 입력
-        if(session.getAttribute(comment.getCno() + ":commentCookie") == null) {
-            session.setAttribute(comment.getCno() + ":commentCookie", comment.getCno() + ":" + cookieValue);
-        } else {
-            session.setAttribute(comment.getCno() + ":commentCookie ex", session.getAttribute(comment.getCno() + ":commentCookie"));
-            if(!session.getAttribute(comment.getCno() + ":commentCookie").equals(comment.getCno() + ":" + cookieValue)) {
-                session.setAttribute(comment.getCno() + ":commentCookie", comment.getCno() + ":" + cookieValue);
-            }
-        }
-        // 쿠키와 세션이 없는 경우 조회수 카운트
-        if(!session.getAttribute(comment.getCno() + ":commentCookie").equals(session.getAttribute(comment.getCno() + ":commentCookie ex"))) {
-            freeCommentService.updateRecommend(comment.getCno(), "Minus");
-        }
+        session.removeAttribute(comment.getCno() + ":commentCookie");
+        session.removeAttribute(comment.getCno() + ":commentCookie ex");
+
+        freeCommentService.updateRecommend(comment.getCno(), "Minus");
+        
         FreeComment resComment = freeCommentService.getComment(comment.getCno());
         return resComment;
     }

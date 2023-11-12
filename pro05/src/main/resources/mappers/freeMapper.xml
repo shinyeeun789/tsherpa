@@ -56,7 +56,14 @@
     </update>
 
     <update id="updateRecommend">
-        update free set recommend = #{recommend} where fno = #{fno}
+        update free set
+        <if test='type.equals("Plus")'>
+            recommend = recommend + 1
+        </if>
+        <if test='type.equals("Minus")'>
+            recommend = recommend - 1
+        </if>
+        where fno = #{fno}
     </update>
 
     <select id="totalCnt">

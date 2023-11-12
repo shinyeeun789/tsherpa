@@ -39,24 +39,35 @@
             <div class="col-lg-8">
                 <div class="main-content">
                     <span class="category mt-0 mb-3" th:text="${detail.cate}"></span>
-                    <h2 th:text="${detail.title}"></h2>
+                    <div class="d-flex justify-content-between">
+                        <h2 th:text="${detail.title}"></h2>
+                        <th:block th:with="attr=${detail.fno} + ':freeRecommendCookie'">
+                            <button th:if="${#session.getAttribute(attr) == null}" class="border-0 bg-body" id="plusFreeRecommend" th:value="${detail.fno}"> <i class="fa-regular fa-heart fa-xl" style="color: #ed2c2c;"></i> 좋아요 </button>
+                            <button th:if="${#session.getAttribute(attr) != null}" class="border-0 bg-body" id="minusFreeRecommend" th:value="${detail.fno}"> <i class="fa-solid fa-heart fa-xl" style="color: #ed2c2c;"></i> 좋아요  </button>
+                        </th:block>
+                    </div>
                     <hr>
                     <div class="col-lg-8" style="min-height: 30vh;" th:utext="${detail.content}"></div>
                 </div>
                 <div class="comment-content">
-                    <p class="mb-2"> 댓글([[${commentList.size()}]]개) </p>
+                    <p class="mb-2" id="comment_cnt"> 댓글([[${commentList.size()}]]개) </p>
                     <div class="d-flex justify-content-between">
                         <textarea cols="30" rows="3" id="content" name="content" class="form-control" style="resize: none"></textarea>
                         <input type="button" id="addComment" class="btn btn-dark" value="전송">
                     </div>
-                    <div class="mt-4" th:each="comment : ${commentList}">
-                        <div class="d-flex justify-content-between align-items-baseline">
+                    <div id="comment_wrap">
+                        <div class="mt-4 comment_list" th:each="comment : ${commentList}">
                             <div class="d-flex justify-content-between align-items-baseline">
-                                <h6 style="margin-right: 10px"> [[${comment.name}]]님 </h6> · <p style="margin-left: 10px"> [[${comment.resdate}]] </p>
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <h6 style="margin-right: 10px"> [[${comment.name}]]님 </h6> · <p style="margin-left: 10px"> [[${comment.resdate}]] </p>
+                                </div>
+                                <th:block th:with="attr=${comment.cno} + ':commentCookie'">
+                                    <button th:if="${#session.getAttribute(attr) == null}" class="border-0 bg-body" th:id="'plusRecommend_'+${comment.cno}" th:value="${comment.cno}"> <i class="fa-regular fa-thumbs-up fa-xl"></i> [[${comment.recommend}]] </button>
+                                    <button th:if="${#session.getAttribute(attr) != null}" class="border-0 bg-body" th:id="'minusRecommend_'+${comment.cno}" th:value="${comment.cno}"> <i class="fa-solid fa-thumbs-up fa-xl"></i> [[${comment.recommend}]] </button>
+                                </th:block>
                             </div>
-                            <button class="border-0 bg-body" th:id="'plusRecommend_'+${comment.cno}" th:value="${comment.cno}"> <i class="fa-regular fa-thumbs-up fa-xl"></i> [[${comment.recommend}]] </button>
+                            <p> [[${comment.content}]] </p>
                         </div>
-                        <p> [[${comment.content}]] </p>
                     </div>
                 </div>
             </div>
@@ -77,7 +88,7 @@
                         </li>
                         <li class="d-flex justify-content-between align-items-center">
                             <i class="fa-regular fa-heart fa-2xl" style="color: #f35525"></i>
-                            <h4 class="text-end">[[${detail.recommend}]]개<br><span> 좋아요 </span></h4>
+                            <h4 class="text-end" id="freeRecommend">[[${detail.recommend}]]개<br><span> 좋아요 </span></h4>
                         </li>
                     </ul>
                 </div>
@@ -96,8 +107,24 @@
                 dataType:"json",
                 contentType: "application/json",
                 success: function(result) {
+                    $("#comment_wrap .comment_list").remove();
+                    for(let idx in result) {
+                        let tag = '<div class="mt-4 comment_list"><div class="d-flex justify-content-between align-items-baseline"><div class="d-flex justify-content-between align-items-baseline">' +
+                            '<h6 style="margin-right: 10px">' +  result[idx].name + '님 </h6> · <p style="margin-left: 10px"> ' + result[idx].resdate + '</p>' +
+                            '</div>';
+                        if(sessionStorage.getItem(result[idx].cno + ":commentCookie") == null) {
+                            tag += '<button class="border-0 bg-body" id="plusRecommend_' + result[idx].cno + '" value="' + result[idx].cno + '"> <i class="fa-regular fa-thumbs-up fa-xl"></i> ' + result[idx].recommend + ' </button>';
+                        } else {
+                            tag += '<button class="border-0 bg-body" id="plusRecommend_' + result[idx].cno + '" value="' + result[idx].cno + '"> <i class="fa-solid fa-thumbs-up fa-xl"></i> ' + result[idx].recommend + ' </button>';
+                        }
+                        tag += '</div><p>' + result[idx].content + '</p></div>';
+
+                        $("#comment_wrap").append(tag);
+                    }
+                    $("#comment_cnt").text('댓글(' + result.length + '개)');
+                    $("#content").val("");
+
                     console.log(result);
-                    console.log("성공");
                 },
                 error: function(err) {
                     console.log(err);
@@ -113,6 +140,7 @@
                 dataType:"json",
                 contentType: "application/json",
                 success: function(result) {
+                    console.log(result.recommend);
                     $("#plusRecommend_" + result.cno).html('<i class="fa-solid fa-thumbs-up fa-xl"></i> ' + result.recommend);
                     $("#plusRecommend_" + result.cno).attr("id", "minusRecommend_" + result.cno);
                 },
@@ -130,8 +158,45 @@
                 dataType:"json",
                 contentType: "application/json",
                 success: function(result) {
+                    console.log(result.recommend);
                     $("#minusRecommend_" + result.cno).html('<i class="fa-regular fa-thumbs-up fa-xl"></i> ' + result.recommend);
                     $("#minusRecommend_" + result.cno).attr("id", "plusRecommend_" + result.cno);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        })
+
+        $(document).on("click", "button[id='plusFreeRecommend']", function() {
+            $.ajax({
+                url: "/free/plusRecommend.do",
+                type:"post",
+                data:JSON.stringify({ fno : $(this).val() }),
+                dataType:"json",
+                contentType: "application/json",
+                success: function(result) {
+                    $("#plusFreeRecommend").html('<i class="fa-solid fa-heart fa-xl" style="color: #ed2c2c;"></i> 좋아요');
+                    $("#plusFreeRecommend").attr("id", "minusFreeRecommend");
+                    $("#freeRecommend").html(result.recommend + '개<br><span> 좋아요 </span>');
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        })
+
+        $(document).on("click", "button[id='minusFreeRecommend']", function() {
+            $.ajax({
+                url: "/free/minusRecommend.do",
+                type:"post",
+                data:JSON.stringify({ fno : $(this).val() }),
+                dataType:"json",
+                contentType: "application/json",
+                success: function(result) {
+                    $("#minusFreeRecommend").html('<i class="fa-regular fa-heart fa-xl" style="color: #ed2c2c;"></i> 좋아요');
+                    $("#minusFreeRecommend").attr("id", "plusFreeRecommend");
+                    $("#freeRecommend").html(result.recommend + '개<br><span> 좋아요 </span>');
                 },
                 error: function(err) {
                     console.log(err);

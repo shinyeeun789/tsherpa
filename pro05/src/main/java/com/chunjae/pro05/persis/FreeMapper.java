@@ -6,6 +6,7 @@ import com.chunjae.pro05.util.Page;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface FreeMapper {
@@ -16,7 +17,7 @@ public interface FreeMapper {
     int updateFree(Free free);
     int deleteFree(int fno);
     int updateViews(int fno);
-    int updateRecommend(int fno);
+    int updateRecommend(Map<String, Object> data);
     int totalCnt();
 
 }

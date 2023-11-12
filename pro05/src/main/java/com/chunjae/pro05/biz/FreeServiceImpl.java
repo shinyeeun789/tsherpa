@@ -7,7 +7,9 @@ import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class FreeServiceImpl implements FreeService {
@@ -51,8 +53,11 @@ public class FreeServiceImpl implements FreeService {
     }
 
     @Override
-    public int updateRecommend(int fno) {
-        return freeMapper.updateRecommend(fno);
+    public int updateRecommend(int fno, String type) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("fno", fno);
+        data.put("type", type);
+        return freeMapper.updateRecommend(data);
     }
 
     @Override

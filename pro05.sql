@@ -1,5 +1,3 @@
-DROP DATABASE pro05;
-
 CREATE DATABASE pro05;
 
 USE pro05;
@@ -39,8 +37,7 @@ INSERT INTO category VALUES('C', '생활지도');
 INSERT INTO category VALUES('D', '학급운영');
 INSERT INTO category VALUES('E', '업무자료');
 
-DROP TABLE free_com;
-DROP TABLE free;
+
 -- 게시판 테이블 생성
 CREATE TABLE free(
 	fno INT PRIMARY KEY AUTO_INCREMENT,
@@ -64,17 +61,3 @@ CREATE TABLE free_com (
 	recommend INT DEFAULT 0,
 	FOREIGN KEY (fno) REFERENCES free(fno) ON DELETE CASCADE
 );
-
-
-SELECT cno, fno, name, content, 
-case
-	when DATEDIFF(NOW(), resdate) > 0
-	then CONCAT(DATEDIFF(NOW(), resdate), '일 전')
-	when TIMESTAMPDIFF(HOUR, resdate, NOW()) > 0
-	then CONCAT(TIMESTAMPDIFF(HOUR, resdate, NOW()), '시간 전')
-	ELSE CONCAT(TIMESTAMPDIFF(MINUTE, resdate, NOW()), '분 전')
-END AS resdate, recommend
-FROM free_com;
-
-SELECT f.*, cateName
-FROM free f JOIN category c ON (f.cate=c.cate)
