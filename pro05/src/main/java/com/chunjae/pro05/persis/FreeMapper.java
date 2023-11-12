@@ -2,6 +2,7 @@ package com.chunjae.pro05.persis;
 
 import com.chunjae.pro05.entity.Category;
 import com.chunjae.pro05.entity.Free;
+import com.chunjae.pro05.entity.FreeVO;
 import com.chunjae.pro05.util.Page;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,6 +13,7 @@ import java.util.Map;
 public interface FreeMapper {
     List<Category> cateList();
     List<Free> freeList(Page page);
+    FreeVO getFreeVO(int fno);
     Free getFree(int fno);
     int insertFree(Free free);
     int updateFree(Free free);

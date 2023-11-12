@@ -3,10 +3,7 @@ package com.chunjae.pro05.ctrl;
 import com.chunjae.pro05.biz.FreeCommentService;
 import com.chunjae.pro05.biz.FreeService;
 import com.chunjae.pro05.biz.UserService;
-import com.chunjae.pro05.entity.Category;
-import com.chunjae.pro05.entity.User;
-import com.chunjae.pro05.entity.Free;
-import com.chunjae.pro05.entity.FreeComment;
+import com.chunjae.pro05.entity.*;
 import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -103,7 +100,7 @@ public class FreeController {
             freeService.updateViews(fno);
         }
 
-        Free free = freeService.getFree(fno);
+        FreeVO free = freeService.getFreeVO(fno);
         model.addAttribute("detail", free);
 
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
@@ -119,6 +116,10 @@ public class FreeController {
     public String freeEditForm(@RequestParam int fno, Model model) throws Exception {
         Free free = freeService.getFree(fno);
         model.addAttribute("detail", free);
+
+        List<Category> cateList = freeService.cateList();
+        model.addAttribute("cateList", cateList);
+
         return "free/freeEdit";
     }
 
@@ -146,7 +147,7 @@ public class FreeController {
 
     @PostMapping("plusRecommend.do")
     @ResponseBody
-    public Free plusRecommend(@RequestBody Free free, HttpServletRequest request, HttpSession session) throws Exception {
+    public FreeVO plusRecommend(@RequestBody Free free, HttpServletRequest request, HttpSession session) throws Exception {
         Cookie[] cookieFromRequest = request.getCookies();
         String cookieValue = null;
         for(int i=0; i< cookieFromRequest.length; i++) {
@@ -165,19 +166,19 @@ public class FreeController {
         if(!session.getAttribute(free.getFno() + ":freeRecommendCookie").equals(session.getAttribute(free.getFno() + ":freeRecommendCookie ex"))) {
             freeService.updateRecommend(free.getFno(), "Plus");
         }
-        Free resFree = freeService.getFree(free.getFno());
+        FreeVO resFree = freeService.getFreeVO(free.getFno());
         return resFree;
     }
 
     @PostMapping("minusRecommend.do")
     @ResponseBody
-    public Free minusRecommend(@RequestBody Free free, HttpServletRequest request, HttpSession session) throws Exception {
+    public FreeVO minusRecommend(@RequestBody Free free, HttpServletRequest request, HttpSession session) throws Exception {
         session.removeAttribute(free.getFno() + ":freeRecommendCookie");
         session.removeAttribute(free.getFno() + ":freeRecommendCookie ex");
 
         freeService.updateRecommend(free.getFno(), "Minus");
 
-        Free resFree = freeService.getFree(free.getFno());
+        FreeVO resFree = freeService.getFreeVO(free.getFno());
         return resFree;
     }
 

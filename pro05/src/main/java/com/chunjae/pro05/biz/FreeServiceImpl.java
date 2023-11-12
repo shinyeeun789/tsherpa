@@ -2,6 +2,7 @@ package com.chunjae.pro05.biz;
 
 import com.chunjae.pro05.entity.Category;
 import com.chunjae.pro05.entity.Free;
+import com.chunjae.pro05.entity.FreeVO;
 import com.chunjae.pro05.persis.FreeMapper;
 import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class FreeServiceImpl implements FreeService {
     @Override
     public List<Free> freeList(Page page) {
         return freeMapper.freeList(page);
+    }
+
+    @Override
+    public FreeVO getFreeVO(int fno) {
+        return freeMapper.getFreeVO(fno);
     }
 
     @Override

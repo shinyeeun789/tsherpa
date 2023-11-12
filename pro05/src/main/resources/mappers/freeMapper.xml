@@ -32,9 +32,13 @@
         order by fno desc limit #{postStart}, #{postCount}
     </select>
 
+    <select id="getFreeVO" resultType="com.chunjae.pro05.entity.FreeVO">
+        select fno, cateName as cate, id, f.name as name, title, content, DATE_FORMAT(resdate, '%Y-%m-%d') AS resdate, views, recommend
+        from free f join category c on (f.cate = c.cate) join user u on (f.name = u.name) where fno = #{fno}
+    </select>
+
     <select id="getFree" resultType="com.chunjae.pro05.entity.Free">
-        select fno, cateName as cate, name, title, content, DATE_FORMAT(resdate, '%Y-%m-%d') AS resdate, views, recommend
-        from free f join category c on (f.cate = c.cate) where fno = #{fno}
+        select * from free where fno = #{fno}
     </select>
 
     <insert id="insertFree">

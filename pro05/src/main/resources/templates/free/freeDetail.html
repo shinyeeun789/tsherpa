@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <span class="breadcrumb"><a href="/">Home</a> / 커뮤니티</span>
+                <span class="breadcrumb"><a href="/">Home</a> / <a th:href="@{/free/list.do}">커뮤니티</a> / 상세보기</span>
                 <h3> 커뮤니티 </h3>
             </div>
         </div>
@@ -43,11 +43,17 @@
                         <h2 th:text="${detail.title}"></h2>
                         <th:block th:with="attr=${detail.fno} + ':freeRecommendCookie'">
                             <button th:if="${#session.getAttribute(attr) == null}" class="border-0 bg-body" id="plusFreeRecommend" th:value="${detail.fno}"> <i class="fa-regular fa-heart fa-xl" style="color: #ed2c2c;"></i> 좋아요 </button>
-                            <button th:if="${#session.getAttribute(attr) != null}" class="border-0 bg-body" id="minusFreeRecommend" th:value="${detail.fno}"> <i class="fa-solid fa-heart fa-xl" style="color: #ed2c2c;"></i> 좋아요  </button>
+                            <button th:if="${#session.getAttribute(attr) != null}" class="border-0 bg-body" id="minusFreeRecommend" th:value="${detail.fno}"> <i class="fa-solid fa-heart fa-xl" style="color: #ed2c2c;"></i> 좋아요 </button>
                         </th:block>
                     </div>
                     <hr>
                     <div class="col-lg-8" style="min-height: 30vh;" th:utext="${detail.content}"></div>
+                    <div class="d-flex justify-content-end mb-2" th:if="${#strings.equals(#authentication.principal, detail.id)}">
+                        <div class="btn-group">
+                            <a th:href="@{/free/edit.do(fno=${detail.fno})}" class="btn btn-outline-dark"> 수정 </a>
+                            <a th:href="@{/free/delete.do}" class="btn btn-danger"> 삭제 </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="comment-content">
                     <p class="mb-2" id="comment_cnt"> 댓글([[${commentList.size()}]]개) </p>
