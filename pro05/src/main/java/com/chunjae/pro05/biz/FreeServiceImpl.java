@@ -67,7 +67,7 @@ public class FreeServiceImpl implements FreeService {
     }
 
     @Override
-    public int totalCnt() {
-        return freeMapper.totalCnt();
+    public int totalCnt(Page page) {
+        return freeMapper.totalCnt(page);
     }
 }

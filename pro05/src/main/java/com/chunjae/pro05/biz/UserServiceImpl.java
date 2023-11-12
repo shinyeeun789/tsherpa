@@ -1,6 +1,7 @@
 package com.chunjae.pro05.biz;
 
 import com.chunjae.pro05.entity.User;
+import com.chunjae.pro05.entity.UserRating;
 import com.chunjae.pro05.persis.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -91,5 +92,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public int removeUser(User User) {
         return userMapper.removeUser(User);
+    }
+
+    @Override
+    public UserRating getUserRating(String name) {
+        return userMapper.getUserRating(name);
     }
 }

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 중고거래 </title>
+    <th:block th:replace="layout/head :: headFragment"></th:block>
+    <style>
+        .dropdown-toggle::after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="/">Home</a> / 중고거래 </span>
+                <h3> 중고거래 </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section properties">
+    <div class="container">
+        <div class="text-center mt-2 mb-5">
+            <h4 style="color: #f35525"><i class="fa-solid fa-location-crosshairs"></i> <span id="location"></span></h4>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bars"></i> &nbsp; 카테고리
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/trade/list.do(location=${page.location})}" class="dropdown-item"> 전체 </a></li>
+                        <li th:each="cate : ${tradeCategories}">
+                            <a th:href="@{/trade/list.do(cno=${cate.cno}, location=${page.location})}" class="dropdown-item">[[${cate.tradeCate}]]</a>
+                        </li>
+                    </ul>
+                </div>
+                <h5 th:each="cate : ${tradeCategories}" th:if="${#strings.equals(cate.cno, page.category)}" th:text="${cate.tradeCate}"
+                    class="d-inline-block" style="margin-left: 20px"></h5>
+            </div>
+            <form th:action="@{/trade/list.do}" class="d-flex justify-content-end" style="width: 40%">
+                <select name="type" id="type" class="form-select w-25">
+                    <option value="L" id="L"> 동네 </option>
+                    <option value="T" id="T"> 제목 </option>
+                    <option value="C" id="C"> 내용 </option>
+                    <option value="W" id="W"> 작성자 </option>
+                </select>
+                <input type="text" name="keyword" id="keyword" class="form-control" autocomplete="off" th:value="${page.keyword}" placeholder="검색어를 입력해주세요">
+                <input type="submit" class="btn btn-dark" value="검색">
+            </form>
+        </div>
+        <div class="row properties-box mt-5">
+            <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv" th:each="trade : ${tradeList}">
+                <div class="item">
+                    <a th:href="@{/trade/detail.do(tno=${trade.tno})}"><img th:src="'/upload/items/' + ${trade.itemImg}" alt="이미지를 찾지 못했습니다."></a>
+                    <span class="category" th:text="${trade.tradeCate}"></span>
+                    <h6 th:text="${trade.price} + '원'"></h6>
+                    <h4><a th:href="@{/trade/detail.do(tno=${trade.tno})}">[[${trade.title}]]</a></h4>
+                    <ul>
+                        <li>판매자: <span th:text="${trade.name}"></span></li>
+                        <li>작성일: <span th:text="${trade.resdate}"></span></li>
+                        <li>거래방법: <span th:text="${trade.tradeType}"></span></li>
+                        <li th:if="${#strings.equals(trade.tradeType, '직거래')}">거래장소: <span th:text="${trade.location}"></span></li>
+                        <li th:if="${!#strings.equals(trade.tradeType, '직거래')}">배송비: <span th:text="${trade.deliveryFee}"></span></li>
+                        <li>상품상태: <span th:text="${trade.demage}"></span></li>
+                    </ul>
+                    <div class="main-button">
+                        <a th:href="@{/trade/detail.do(tno=${trade.tno})}"> 자세히 보기 </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${#lists.size(tradeList) == 0}" class="text-center mt-2 mb-5">
+            <h6> 현재 등록된 중고거래 물품이 없습니다. </h6>
+        </div>
+
+        <!-- Pagination -->
+        <div class="row" th:if="${page.lastPageNum != 0}">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li th:if="${page.curPageNum > 5}">
+                        <a th:href="@{/trade/list.do(page=${page.blockStartNum - 1},type=${page.type},keyword=${page.keyword})}"> << </a>
+                    </li>
+                    <li th:each="i : ${#numbers.sequence(page.blockStartNum, page.blockLastNum)}">
+                        <a th:if="${page.curPageNum == i}" th:href="@{/trade/list.do(page=${i},type=${page.type},keyword=${page.keyword})}" th:text="${i}" class="is_active"></a>
+                        <a th:if="${page.curPageNum != i}" th:href="@{/trade/list.do(page=${i},type=${page.type},keyword=${page.keyword})}" th:text="${i}"></a>
+                    </li>
+                    <li th:if="${page.blockLastNum < page.totalPageCount}">
+                        <a th:href="@{/trade/list.do(page=${page.blockLastNum + 1},type=${page.type},keyword=${page.keyword})}"> >> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <a th:href="@{/trade/insert.do}" class="btn btn-dark mt-5 mb-5"> 판매글 작성 </a>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+
+<script th:inline="javascript">
+    $(document).ready(() => {
+        let location = [[${page.location}]];
+
+        if(location != null) {
+            $("#location").text(location);
+        } else {
+            $("#location").text("위치 액세스를 허용하여 현재 위치를 불러올 수 있어요");
+        }
+    });
+</script>
+</body>
+</html>

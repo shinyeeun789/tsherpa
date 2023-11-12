@@ -1,6 +1,7 @@
 package com.chunjae.pro05.persis;
 
 import com.chunjae.pro05.entity.User;
+import com.chunjae.pro05.entity.UserRating;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -21,5 +22,6 @@ public interface UserMapper {
     int updateUser(User euser);
     int updateLevel(String name, String lev);
     int removeUser(User euser);
+    UserRating getUserRating(String name);
 
 }

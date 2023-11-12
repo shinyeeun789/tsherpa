@@ -61,3 +61,57 @@ CREATE TABLE free_com (
 	recommend INT DEFAULT 0,
 	FOREIGN KEY (fno) REFERENCES free(fno) ON DELETE CASCADE
 );
+
+-- 거래 카테고리 테이블 생성
+CREATE TABLE tradeCategory (
+	cno INT AUTO_INCREMENT PRIMARY KEY,
+	tradeCate VARCHAR(50) NOT NULL
+);
+
+-- 거래 카테고리 더미데이터 입력
+INSERT INTO tradeCategory VALUES(DEFAULT, '학습교구');
+INSERT INTO tradeCategory VALUES(DEFAULT, '문구');
+INSERT INTO tradeCategory VALUES(DEFAULT, '보드게임');
+INSERT INTO tradeCategory VALUES(DEFAULT, '학급운영');
+INSERT INTO tradeCategory VALUES(DEFAULT, '기자재');
+
+-- 거래 게시글 테이블 생성
+CREATE TABLE trade (
+	tno INT PRIMARY KEY AUTO_INCREMENT,
+	cno INT NOT NULL,
+	title VARCHAR(100) NOT NULL,
+	name VARCHAR(20) NOT NULL,
+	resdate DATE DEFAULT CURRENT_DATE,
+	location VARCHAR(100) NOT NULL,
+	tradeType VARCHAR(50) NOT NULL,
+	price INT NOT NULL,
+	deliveryFee INT NOT NULL,
+	demage VARCHAR(50) NOT NULL,
+	content VARCHAR(2000) NOT NULL,
+	recommend INT DEFAULT 0,
+	itemImg VARCHAR(500) NOT NULL,
+	FOREIGN KEY (cno) REFERENCES tradeCategory(cno),
+	FOREIGN KEY (name) REFERENCES user(name)
+);
+
+-- 사용자 거래 정보 테이블
+CREATE TABLE userRating (
+	uid INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(20) NOT NULL,
+	rating INT DEFAULT 0,
+	trustTrade BOOLEAN DEFAULT FALSE,
+	content VARCHAR(2000),
+	FOREIGN KEY (NAME) REFERENCES user(NAME)
+);
+
+-- 찜 목록 테이블
+CREATE TABLE tradeRecommends(
+	rno INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(20) NOT NULL,
+	tno INT NOT NULL,
+	FOREIGN KEY (NAME) REFERENCES user(NAME),
+	FOREIGN KEY (tno) REFERENCES trade(tno)
+);
+
+SELECT * FROM trade
+WHERE location = '경기도 부천시'

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.pro05.persis.TradeMapper">
+    <select id="tradeList" resultType="com.chunjae.pro05.entity.TradeVO">
+        SELECT tno, tradeCate, name, title, resdate, location, tradeType, price, deliveryFee, demage, itemImg
+        FROM trade t JOIN tradeCategory c ON (t.cno=c.cno)
+        <where>
+            <if test="type != null">
+                <trim prefixOverrides="OR">
+                    <choose>
+                        <when test="type == 'L'.toString()">
+                            location LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'T'.toString()">
+                            title LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            content LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            name LIKE concat('%', #{keyword}, '%')
+                        </when>
+                    </choose>
+                </trim>
+            </if>
+            <if test="category != null">
+                AND t.cno = #{category}
+            </if>
+            <if test="location != null and category == null">
+                AND location LIKE concat('%', #{location}, '%') OR tradeType = '택배거래'
+            </if>
+            <if test="location != null and category != null">
+                AND location LIKE concat('%', #{location}, '%') OR (tradeType = '택배거래' AND t.cno = #{category})
+            </if>
+        </where>
+        order by tno desc limit #{postStart}, #{postCount}
+    </select>
+
+    <select id="totalCnt">
+        select count(*) FROM trade t JOIN tradeCategory c ON (t.cno=c.cno)
+        <where>
+            <if test="type != null">
+                <trim prefixOverrides="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            title LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            content LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            name LIKE concat('%', #{keyword}, '%')
+                        </when>
+                    </choose>
+                </trim>
+            </if>
+            <if test="category != null">
+                AND t.cno = #{category}
+            </if>
+            <if test="location != null">
+                AND location LIKE concat('%', #{location}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getTradeVO" resultType="com.chunjae.pro05.entity.TradeVO">
+        SELECT tno, tradeCate, id, t.name as name, title, content, resdate, location, tradeType, price, deliveryFee, demage, recommend, itemImg
+        FROM trade t JOIN tradeCategory c ON (t.cno=c.cno) JOIN user u ON (t.name=u.name)
+        WHERE tno = #{tno}
+    </select>
+
+    <select id="getTrade" resultType="com.chunjae.pro05.entity.Trade">
+        SELECT * FROM trade WHERE tno = #{tno}
+    </select>
+
+    <insert id="tradeInsert">
+        insert into trade
+        values(default, #{cno}, #{title}, #{name}, default, #{location}, #{tradeType}, #{price}, #{deliveryFee}, #{demage}, #{content}, default, #{itemImg})
+    </insert>
+
+    <update id="tradeEdit">
+        update trade set title = #{title}, location = #{location}, tradeType = #{tradeType}, price = #{price}, deliveryFee = #{deliveryFee}, demage = #{demage}, content = #{content}, itemImg = #{itemImg}
+        where tno = #{tno}
+    </update>
+
+    <delete id="tradeDelete">
+        delete from trade where tno = #{tno}
+    </delete>
+
+    <update id="updateRecommend">
+        update trade set
+        <if test='type.equals("Plus")'>
+            recommend = recommend + 1
+        </if>
+        <if test='type.equals("Minus")'>
+            recommend = recommend - 1
+        </if>
+        where tno = #{tno}
+    </update>
+
+</mapper>

@@ -62,4 +62,10 @@
         delete from user where id = #{id} or name = #{name}
     </delete>
 
+    <select id="getUserRating">
+        SELECT * FROM (SELECT name, FORMAT(AVG(rating), 1) as avgRating, COUNT(trustTrade) as cntTrustTrade FROM userRating u GROUP BY name) a,
+                      (SELECT COUNT(tno) AS cntProducts FROM trade GROUP BY name) b
+        WHERE name = #{name}
+    </select>
+
 </mapper>

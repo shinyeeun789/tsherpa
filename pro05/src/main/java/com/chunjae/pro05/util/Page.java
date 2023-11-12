@@ -22,6 +22,8 @@ public class Page {
     private String type;
     private String keyword;
     private String category;
+    // 중고거래에 필요한 데이터
+    private String location;
 
     public Page(int curPageNum) {
         this.curPageNum = curPageNum;

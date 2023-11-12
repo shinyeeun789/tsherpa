@@ -20,6 +20,6 @@ public interface FreeMapper {
     int deleteFree(int fno);
     int updateViews(int fno);
     int updateRecommend(Map<String, Object> data);
-    int totalCnt();
+    int totalCnt(Page page);
 
 }

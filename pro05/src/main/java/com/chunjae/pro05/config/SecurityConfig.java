@@ -31,6 +31,9 @@ public class SecurityConfig {
     public FreeCommentService freeCommentService() { return new FreeCommentServiceImpl(); }
 
     @Bean
+    public TradeCategoryService tradeCategoryService() { return new TradeCategoryImpl(); }
+
+    @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -44,7 +47,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login.do", "/join.do").permitAll()
-                .mvcMatchers("/","/resources/**", "/bootstrap/**", "/css/**", "/ckeditor/**", "/js/**", "/images/**", "/jquery/**", "/webfonts/**").permitAll()
+                .mvcMatchers("/","/resources/**", "/bootstrap/**", "/css/**", "/ckeditor/**", "/js/**", "/images/**", "/upload/**", "/jquery/**", "/webfonts/**").permitAll()
                 .anyRequest().authenticated();
         // login 설정
         http

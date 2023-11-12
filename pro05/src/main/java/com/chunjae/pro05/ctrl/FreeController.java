@@ -43,7 +43,7 @@ public class FreeController {
         String keyword = request.getParameter("keyword");
         String category = request.getParameter("cate");
         Page page = new Page(curPage, type, keyword, category);
-        page.makePage(freeService.totalCnt());
+        page.makePage(freeService.totalCnt(page));
 
         List<Free> freeList = freeService.freeList(page);
         model.addAttribute("freeList", freeList);
@@ -105,7 +105,7 @@ public class FreeController {
 
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
         Page page = new Page(curPage);
-        page.makePage(freeService.totalCnt());
+        page.makePage(freeCommentService.totalCnt(fno));
         List<FreeComment> commentList = freeCommentService.commentList(fno, page);
         model.addAttribute("commentList", commentList);
 
@@ -200,10 +200,11 @@ public class FreeController {
             byte[] bytes = upload.getBytes();
 
             //이미지 경로 생성
-            String path = request.getRealPath("/upload/free/");
-            String ckUploadPath = path + uid + "_" + fileName;
-            File folder = new File(path);
-            System.out.println("path:"+path);	// 이미지 저장경로 console에 확인
+            String rootPath = System.getProperty("user.dir");           // 업로드 경로 설정
+            String fileDir = rootPath + "/src/main/resources/static/upload/free/";
+            String ckUploadPath = fileDir + uid + "_" + fileName;
+            File folder = new File(fileDir);
+            System.out.println("path:"+fileDir);	// 이미지 저장경로 console에 확인
             System.out.println("ckUploadPath:"+ckUploadPath);
             //해당 디렉토리 확인
             if(!folder.exists()){
@@ -241,8 +242,9 @@ public class FreeController {
     @RequestMapping(value="ckImgSubmit.do")
     public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileName, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         //서버에 저장된 이미지 경로
-        String path = request.getRealPath("/upload/free/");
-        String sDirPath = path + uid + "_" + fileName;
+        String rootPath = System.getProperty("user.dir");           // 업로드 경로 설정
+        String fileDir = rootPath + "/src/main/resources/static/upload/free/";
+        String sDirPath = fileDir + uid + "_" + fileName;
         System.out.println(sDirPath);
 
         File imgFile = new File(sDirPath);

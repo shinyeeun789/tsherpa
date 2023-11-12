@@ -51,7 +51,7 @@
                     <div class="d-flex justify-content-end mb-2" th:if="${#strings.equals(#authentication.principal, detail.id)}">
                         <div class="btn-group">
                             <a th:href="@{/free/edit.do(fno=${detail.fno})}" class="btn btn-outline-dark"> 수정 </a>
-                            <a th:href="@{/free/delete.do}" class="btn btn-danger"> 삭제 </a>
+                            <a th:href="@{/free/delete.do(fno=${detail.fno})}" class="btn btn-danger"> 삭제 </a>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,6 @@
                 dataType:"json",
                 contentType: "application/json",
                 success: function(result) {
-                    console.log(result.recommend);
                     $("#plusRecommend_" + result.cno).html('<i class="fa-solid fa-thumbs-up fa-xl"></i> ' + result.recommend);
                     $("#plusRecommend_" + result.cno).attr("id", "minusRecommend_" + result.cno);
                 },
@@ -164,7 +163,6 @@
                 dataType:"json",
                 contentType: "application/json",
                 success: function(result) {
-                    console.log(result.recommend);
                     $("#minusRecommend_" + result.cno).html('<i class="fa-regular fa-thumbs-up fa-xl"></i> ' + result.recommend);
                     $("#minusRecommend_" + result.cno).attr("id", "plusRecommend_" + result.cno);
                 },

@@ -18,6 +18,6 @@ public interface FreeService {
     public int deleteFree(int fno);
     public int updateViews(int fno);
     public int updateRecommend(int fno, String type);
-    public int totalCnt();
+    public int totalCnt(Page page);
 
 }
