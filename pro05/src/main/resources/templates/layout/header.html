@@ -21,7 +21,7 @@
                                 <a th:href="@{/login.do}"><i class="fa fa-user"></i> 로그인 </a>
                             </li>
                             <li sec:authorize="isAnonymous()">
-                                <a th:href="@{/join.do}"><i class="fa-solid fa-right-to-bracket"></i> 회원가입 </a>
+                                <a th:href="@{/term.do}"><i class="fa-solid fa-right-to-bracket"></i> 회원가입 </a>
                             </li>
 
                             <li sec:authorize="isAuthenticated()">

@@ -18,6 +18,7 @@ public class TradeVO {
     private String demage;
     private String content;
     private int recommend;
+    private String state;
     private String itemImg;
 
 }

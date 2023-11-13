@@ -164,9 +164,9 @@ public class TradeController {
     }
 
     @PostMapping("edit.do")
-    public String tradeEdit(Trade trade, Model model) throws Exception {
+    public String tradeEdit(Trade trade, @RequestParam("upfile") MultipartFile file, RedirectAttributes rttr) throws Exception {
 
-
+        // 수정하기 구현 필요
 
         return "redirect:detail.do?tno=" + trade.getTno();
     }

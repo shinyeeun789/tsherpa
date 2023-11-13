@@ -75,6 +75,8 @@ INSERT INTO tradeCategory VALUES(DEFAULT, '보드게임');
 INSERT INTO tradeCategory VALUES(DEFAULT, '학급운영');
 INSERT INTO tradeCategory VALUES(DEFAULT, '기자재');
 
+DROP TABLE tradeRecommend;
+DROP TABLE trade;
 -- 거래 게시글 테이블 생성
 CREATE TABLE trade (
 	tno INT PRIMARY KEY AUTO_INCREMENT,
@@ -90,6 +92,7 @@ CREATE TABLE trade (
 	content VARCHAR(2000) NOT NULL,
 	recommend INT DEFAULT 0,
 	itemImg VARCHAR(500) NOT NULL,
+	state VARCHAR(50) DEFAULT '판매중',
 	FOREIGN KEY (cno) REFERENCES tradeCategory(cno),
 	FOREIGN KEY (name) REFERENCES user(name)
 );
@@ -113,5 +116,9 @@ CREATE TABLE tradeRecommends(
 	FOREIGN KEY (tno) REFERENCES trade(tno)
 );
 
-SELECT * FROM trade
-WHERE location = '경기도 부천시'
+INSERT INTO userRating VALUES(DEFAULT, 'admin', 5, TRUE, 'contentssssss');
+INSERT INTO userRating VALUES(DEFAULT, 'admin', 4, TRUE, 'contentssssss');
+INSERT INTO userRating VALUES(DEFAULT, 'admin', 5, TRUE, 'contentssssss');
+INSERT INTO userRating VALUES(DEFAULT, 'admin', 3, TRUE, 'contentssssss');
+
+SELECT * FROM userRating;

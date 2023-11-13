@@ -98,4 +98,9 @@ public class UserServiceImpl implements UserService {
     public UserRating getUserRating(String name) {
         return userMapper.getUserRating(name);
     }
+
+    @Override
+    public List<UserRating> getUserRatingList(String name) {
+        return userMapper.getUserRatingList(name);
+    }
 }

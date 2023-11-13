@@ -18,5 +18,6 @@ public class Trade {
     private String content;
     private int recommend;
     private String itemImg;
+    private String state;
 
 }

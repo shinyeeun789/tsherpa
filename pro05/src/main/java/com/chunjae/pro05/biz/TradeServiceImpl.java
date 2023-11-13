@@ -76,4 +76,9 @@ public class TradeServiceImpl implements TradeService {
 
         return result;
     }
+
+    @Override
+    public List<TradeVO> getTradeByName(String name) throws Exception {
+        return tradeMapper.getTradeByName(name);
+    }
 }

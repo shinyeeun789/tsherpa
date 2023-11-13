@@ -46,6 +46,7 @@
                 <div class="col">
                     <label for="title" class="form-label"> 제목 </label>
                     <input type="text" id="title" name="title" class="form-control" maxlength="50" th:value="${trade.title}" required>
+                    <input type="hidden" id="tno" name="tno" th:value="${trade.tno}">
                 </div>
             </div>
             <div class="row mt-4">

@@ -1,6 +1,5 @@
 package com.chunjae.pro05.config;
 
-import com.chunjae.pro05.biz.TradeCategoryService;
 import com.chunjae.pro05.biz.UserService;
 import com.chunjae.pro05.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import java.util.List;
 //인증 관리자
 @Component
 public class AuthProvider implements AuthenticationProvider {
+
     @Autowired
     private UserService userService;
 
@@ -52,6 +52,7 @@ public class AuthProvider implements AuthenticationProvider {
 
     @Override
     public boolean supports(Class<?> authentication) {
+        // 인증 시스템을 사용하겠다는 의미
         return true;
     }
 }

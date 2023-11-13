@@ -3,8 +3,6 @@ package com.chunjae.pro05.ctrl;
 import com.chunjae.pro05.biz.UserService;
 import com.chunjae.pro05.entity.User;
 import com.chunjae.pro05.exception.NoSuchDataException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,8 +18,6 @@ import java.util.List;
 @CrossOrigin("http://localhost:8085")
 public class UserController {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     private UserService userService;
 
@@ -36,6 +32,11 @@ public class UserController {
         User user = userService.getUser(name);
         model.addAttribute("user", user);
         return "user/userInfo";
+    }
+
+    @GetMapping("/term.do")
+    public String term(Model model) throws Exception {
+        return "user/term";
     }
 
     @GetMapping("/login.do")
@@ -68,7 +69,6 @@ public class UserController {
     @PostMapping("/idCheck.do")
     @ResponseBody
     public boolean idCheckAjax(@RequestBody User test) throws Exception {
-        logger.info("**************** name :"+test.getName());
         boolean result = false;
         User user = userService.getByName(test.getName());
         if(user!=null){
@@ -77,18 +77,6 @@ public class UserController {
             result = true;
         }
         return result;
-    }
-
-    //중복 이메일 검증(Ajax)
-    @PostMapping("/emailCheck.do")
-    @ResponseBody
-    public boolean emailCheckAjax(@RequestParam("email") String email) throws Exception {
-        User user = userService.getByEmail(email);
-        if(user!=null){
-            return false;
-        } else {
-            return true;
-        }
     }
 
     @GetMapping("/mypage.do")

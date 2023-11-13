@@ -46,7 +46,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/login.do", "/join.do").permitAll()
+                .antMatchers("/login.do", "/term.do", "/idCheck.do", "/join.do").permitAll()
                 .mvcMatchers("/","/resources/**", "/bootstrap/**", "/css/**", "/ckeditor/**", "/js/**", "/images/**", "/upload/**", "/jquery/**", "/webfonts/**").permitAll()
                 .anyRequest().authenticated();
         // login 설정

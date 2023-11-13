@@ -19,5 +19,6 @@ public interface TradeMapper {
     int tradeEdit(int tno);
     int tradeDelete(int tno);
     int updateRecommend(Map<String, Object> data);
+    List<TradeVO> getTradeByName(String name);
 
 }

@@ -23,5 +23,6 @@ public interface UserService {
     public int updateLevel(String name, String lev);
     public int removeUser(User euser);
     public UserRating getUserRating(String name);
+    public List<UserRating> getUserRatingList(String name);
 
 }

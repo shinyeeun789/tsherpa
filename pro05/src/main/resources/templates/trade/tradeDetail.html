@@ -103,7 +103,7 @@
                     <ul>
                         <li class="d-flex justify-content-between align-items-center">
                             <i class="fa-solid fa-user-circle fa-xl" style="color: #f35525"></i>
-                            <h4 class="text-end">[[${userRating.name}]]<br><span> 판매자 </span></h4>
+                            <h4 class="text-end"><a th:href="@{/seller/detail.do(name=${userRating.name})}">[[${userRating.name}]]님</a><br><span> 판매자 </span></h4>
                         </li>
                         <li class="d-flex justify-content-between align-items-center">
                             <i class="fa-solid fa-box fa-xl" style="color: #f35525"></i>

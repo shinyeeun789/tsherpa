@@ -23,5 +23,6 @@ public interface UserMapper {
     int updateLevel(String name, String lev);
     int removeUser(User euser);
     UserRating getUserRating(String name);
+    List<UserRating> getUserRatingList(String name);
 
 }

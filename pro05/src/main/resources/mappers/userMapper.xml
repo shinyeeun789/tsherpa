@@ -62,10 +62,17 @@
         delete from user where id = #{id} or name = #{name}
     </delete>
 
-    <select id="getUserRating">
+    <select id="getUserRating" resultType="com.chunjae.pro05.entity.UserRating">
         SELECT * FROM (SELECT name, FORMAT(AVG(rating), 1) as avgRating, COUNT(trustTrade) as cntTrustTrade FROM userRating u GROUP BY name) a,
-                      (SELECT COUNT(tno) AS cntProducts FROM trade GROUP BY name) b
+                       (SELECT COUNT(tno) AS cntProducts FROM trade GROUP BY name) b
         WHERE name = #{name}
+        UNION ALL
+        SELECT #{name} AS NAME, 0 AS avgRating, 0 AS cntTrustTrade, 0 AS cntProducts FROM DUAL
+        LIMIT 1
+    </select>
+
+    <select id="getUserRatingList" resultType="com.chunjae.pro05.entity.UserRating">
+        SELECT * FROM userRating WHERE name = #{name} ORDER BY RAND() LIMIT 6
     </select>
 
 </mapper>
