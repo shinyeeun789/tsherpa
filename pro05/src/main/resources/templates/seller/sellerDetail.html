@@ -54,7 +54,7 @@
             </div>
         </div>
         <div>
-            <h6 class="mt-4 mb-3"> [[${userRating.name}]]님에 대한 [[${#arrays.length(ratingList)}]]개의 리뷰 </h6>
+            <h6 class="mt-4 mb-3"> <i class="fa-solid fa-comment-dots"></i> &nbsp;  [[${userRating.name}]]님에 대한 [[${#arrays.length(ratingList)}]]개의 리뷰 </h6>
             <div class="row m-0">
                 <div th:each="rating, state : ${ratingList}" class="border col-6 p-3">
                     <div class="d-flex justify-content-between">
@@ -65,10 +65,10 @@
                 </div>
             </div>
             <div th:if="${#lists.size(ratingList) == 0}" class="text-center mt-2 mb-5 pb-5">
-                <h6 style="color: #f35525"> 현재 등록된 중고거래 물품이 없습니다. </h6>
+                <h6 style="color: #f35525"> 현재 등록된 리뷰가 없습니다. </h6>
             </div>
         </div>
-        <h6 class="mt-5"> [[${#arrays.length(userTrades)}]]개의 상품 </h6>
+        <h6 class="mt-5"> <i class="fa-solid fa-truck"></i> &nbsp;  [[${#arrays.length(userTrades)}]]개의 상품 </h6>
         <div class="row properties-box mt-5">
             <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv" th:each="trade : ${userTrades}">
                 <div class="item pt-0">
@@ -95,7 +95,7 @@
         </div>
 
         <div th:if="${#lists.size(userTrades) == 0}" class="text-center mt-2 mb-5">
-            <h6> 현재 등록된 중고거래 물품이 없습니다. </h6>
+            <h6 style="color: #f35525"> 현재 등록된 중고거래 물품이 없습니다. </h6>
         </div>
     </div>
 </div>

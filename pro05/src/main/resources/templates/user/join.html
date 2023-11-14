@@ -36,12 +36,12 @@
 
 <div class="container mt-5 pt-5">
     <div class="w-50 m-auto">
-        <form action="${path}/user/join" method="post" onsubmit="return joinCheck(this)">
-            <label for="id" class="label"> 아이디 </label>
+        <form th:action="@{/join.do}" method="post" onsubmit="return joinCheck(this)">
+            <label for="name" class="label"> 아이디 </label>
             <div class="row">
                 <div class="col-lg-9 col-md-7 col-sm-12 col-xs-12">
-                    <input type="text" class="form-control" id="id" name="id" placeholder="영문 소문자, 숫자를 혼용하여 아이디를 입력해주세요"
-                           pattern="^[a-z0-9]{8,16}" maxlength="16" autocomplete="off" autofocus required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="영문 소문자, 숫자를 혼용하여 아이디를 입력해주세요"
+                           pattern="^[a-z1-9]{8,16}" maxlength="16" autocomplete="off" autofocus required>
                     <input type="hidden" name="id_chk" id="id_chk" value="no">
                 </div>
                 <div class="col">
@@ -50,8 +50,8 @@
             </div>
             <p id="msg" style="color: red"></p>
 
-            <label for="pw" class="label mt-3"> 비밀번호 </label>
-            <input type="password" class="form-control" id="pw" name="pw" placeholder="숫자, 영문, 특수문자 1개 이상 / 8자리 이상 16자리 이하"
+            <label for="password" class="label mt-3"> 비밀번호 </label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="숫자, 영문, 특수문자 1개 이상 / 8자리 이상 16자리 이하"
                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$" maxlength="16" required>
 
             <label for="pw_chk" class="label mt-3"> 비밀번호 확인 </label>
@@ -59,8 +59,8 @@
                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$" maxlength="16" required>
             <p id="pw_msg" style="color:red;"></p>
 
-            <label for="name" class="label mt-3"> 이름 </label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력해주세요" autocomplete="off" required>
+            <label for="username" class="label mt-3"> 이름 </label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="이름을 입력해주세요" autocomplete="off" required>
 
             <label for="email" class="label mt-3"> 이메일 </label>
             <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력해주세요" autocomplete="off" required>
@@ -71,7 +71,7 @@
 
             <label for="addr2" class="label mt-3"> 주소 </label>
             <input type="text" class="form-control" id="addr1" name="addr1" placeholder="기본 주소를 입력해주세요" autocomplete="off" readonly>
-            <input type="text" class="form-control mt-1" id="addr2" name="addr2" placeholder="상세 주소를 입력해주세요" autocomplete="off" required>
+            <input type="text" class="form-control mt-1" id="addr2" name="addr2" placeholder="상세 주소를 입력해주세요" autocomplete="off">
             <div class="row">
                 <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
                     <input type="text" class="form-control mt-1" id="postcode" name="postcode" placeholder="우편번호를 입력해주세요" autocomplete="off" readonly>
@@ -82,8 +82,7 @@
             </div>
 
             <label for="tel" class="label mt-3"> 생년월일 </label>
-            <input type="date" class="form-control" max="${maxDate}" id="birth" name="birth" placeholder="생년월일을 입력해주세요" autocomplete="off" required>
-            <input type="hidden" id="userType" name="userType" value="${userType}">
+            <input type="date" class="form-control" id="birth" name="birth" placeholder="생년월일을 입력해주세요" autocomplete="off" required>
 
             <div class="text-right mt-4">
                 <button type="submit" class="btn btn-primary btn-lg" style="width: 100%"> 회원가입 </button>
@@ -116,9 +115,7 @@
             return;
         }
 
-        const token = $("meta[name='_csrf']").attr("content");
-        const header = $("meta[name='_csrf_header']").attr("content");
-        let params = { id:$("#id").val() };
+        let params = { name: $("#name").val() };
         $.ajax({
             url: "/idCheck.do",
             type: "post",
@@ -128,15 +125,14 @@
             contentType: "application/json",
             cache: false,
             success:function(data) {
-                let idPass = data.result;
-                if(!idPass) {
+                if(!data) {
                     $("#id_chk").val("no");
                     $("#msg").text("기존에 사용되고 있는 아이디입니다.");
                     $("#id").focus();
-                } else if(idPass) {
+                } else if(data) {
                     $("#id_chk").val("yes");
                     $("#msg").text("사용 가능한 아이디입니다.");
-                } else if(idPass == "") {
+                } else if(data == "") {
                     $("#msg").text("아이디가 확인되지 않았습니다. 다시 시도해주세요.")
                 }
             },
@@ -149,9 +145,9 @@
 </script>
 <script>
     function joinCheck(f) {
-        if(f.pw.value != f.pw_chk.value) {
+        if(f.password.value != f.pw_chk.value) {
             $("#pw_msg").html("비밀번호와 비밀번호 확인이 서로 다릅니다");
-            f.pw.focus();
+            f.password.focus();
             return false;
         }
         if(f.id_chk.value != "yes") {
@@ -163,7 +159,6 @@
     function findAddr(){
         new daum.Postcode({
             oncomplete:function(data){
-                console.log(data);
                 var roadAddr = data.roadAddress;
                 var jibunAddr = data.jibunAddress;
                 document.getElementById("postcode").value = data.zonecode;

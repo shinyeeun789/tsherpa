@@ -4,36 +4,32 @@
     <select id="tradeList" resultType="com.chunjae.pro05.entity.TradeVO">
         SELECT tno, tradeCate, name, title, resdate, location, tradeType, price, deliveryFee, demage, itemImg
         FROM trade t JOIN tradeCategory c ON (t.cno=c.cno)
-        <where>
-            <if test="type != null">
-                <trim prefixOverrides="OR">
-                    <choose>
-                        <when test="type == 'L'.toString()">
-                            location LIKE concat('%', #{keyword}, '%')
-                        </when>
-                        <when test="type == 'T'.toString()">
-                            title LIKE concat('%', #{keyword}, '%')
-                        </when>
-                        <when test="type == 'C'.toString()">
-                            content LIKE concat('%', #{keyword}, '%')
-                        </when>
-                        <when test="type == 'W'.toString()">
-                            name LIKE concat('%', #{keyword}, '%')
-                        </when>
-                    </choose>
-                </trim>
-            </if>
-            <if test="category != null">
-                AND t.cno = #{category}
-            </if>
-            <if test="location != null and category == null">
-                AND location LIKE concat('%', #{location}, '%') OR tradeType = '택배거래'
-            </if>
-            <if test="location != null and category != null">
-                AND location LIKE concat('%', #{location}, '%') OR (tradeType = '택배거래' AND t.cno = #{category})
-            </if>
-            AND state = '판매중'
-        </where>
+        WHERE state = '판매중'
+        <if test="type != null">
+            <choose>
+                <when test="type == 'L'.toString()">
+                    AND location LIKE concat('%', #{keyword}, '%')
+                </when>
+                <when test="type == 'T'.toString()">
+                    AND title LIKE concat('%', #{keyword}, '%')
+                </when>
+                <when test="type == 'C'.toString()">
+                    AND content LIKE concat('%', #{keyword}, '%')
+                </when>
+                <when test="type == 'W'.toString()">
+                    AND name LIKE concat('%', #{keyword}, '%')
+                </when>
+            </choose>
+        </if>
+        <if test="category != null">
+            AND t.cno = #{category}
+        </if>
+        <if test="location != null and category == null">
+            AND location LIKE concat('%', #{location}, '%') OR tradeType = '택배거래'
+        </if>
+        <if test="location != null and category != null">
+            AND location LIKE concat('%', #{location}, '%') OR (tradeType = '택배거래' AND t.cno = #{category})
+        </if>
         order by tno desc limit #{postStart}, #{postCount}
     </select>
 
@@ -105,5 +101,9 @@
         WHERE name = #{name}
         ORDER BY RAND() limit 15
     </select>
+
+    <update id="updateState">
+        update trade set state = '판매완료' where tno = #{tno}
+    </update>
 
 </mapper>

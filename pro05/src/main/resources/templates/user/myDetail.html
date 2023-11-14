@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 판매자 정보 </title>
+    <th:block th:replace="layout/head :: headFragment"></th:block>
+</head>
+<body>
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="/">Home</a> / 마이페이지 </span>
+                <h3> 마이페이지 </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section properties">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <th:block th:replace="layout/mypageMenu :: mypageFragment"></th:block>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-between border p-5">
+                    <div>
+                        <h3> <i class="fa-solid fa-circle-user"></i> &nbsp; [[${userRating.name}]]님 </h3>
+                    </div>
+                    <div style="width: 450px">
+                        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" th:style="${'width:' + (userRating.avgRating / 5) * 100} + '%'"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <h5 class="d-inline"> 신뢰 지수 </h5>
+                            <h5 class="d-inline" th:text="|${userRating.avgRating} 점 / 5 점|"></h5>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="d-inline"> 안전거래 </h5>
+                            <h5 class="d-inline" th:text="|${userRating.cntTrustTrade} 건|"></h5>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mt-5"> <i class="fa-solid fa-truck"></i> &nbsp; [[${#arrays.length(userTrades)}]]개의 상품 </h6>
+                <div class="row properties-box mt-5">
+                    <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv" th:each="trade : ${userTrades}">
+                        <div class="item pt-0">
+                            <a th:href="@{/trade/detail.do(tno=${trade.tno})}">
+                                <img th:src="'/upload/items/' + ${trade.itemImg}" alt="이미지를 찾지 못했습니다." th:style="${#strings.equals(trade.state, '판매완료') ? 'filter: brightness(0.5)' : ''}">
+                            </a>
+                            <span class="category" th:text="${trade.tradeCate}"></span>
+                            <h6 th:if="${#strings.equals(trade.state, '판매중')}" th:text="${trade.price} + '원'"></h6>
+                            <h6 th:if="${!#strings.equals(trade.state, '판매중')}"> 판매완료 </h6>
+                            <h4><a th:href="@{/trade/detail.do(tno=${trade.tno})}">[[${trade.title}]]</a></h4>
+                            <ul>
+                                <li>판매자: <span th:text="${trade.name}"></span></li>
+                                <li>작성일: <span th:text="${trade.resdate}"></span></li>
+                                <li>거래방법: <span th:text="${trade.tradeType}"></span></li>
+                                <li th:if="${#strings.equals(trade.tradeType, '직거래')}">거래장소: <span th:text="${trade.location}"></span></li>
+                                <li th:if="${!#strings.equals(trade.tradeType, '직거래')}">배송비: <span th:text="${trade.deliveryFee} + '원'"></span></li>
+                                <li>상품상태: <span th:text="${trade.demage}"></span></li>
+                            </ul>
+                            <div class="main-button">
+                                <a th:href="@{/trade/detail.do(tno=${trade.tno})}"> 자세히 보기 </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${#lists.size(userTrades) == 0}" class="text-center mt-2 mb-5">
+                    <h6 style="color: #f35525"> 현재 등록된 중고거래 물품이 없습니다. </h6>
+                </div>
+
+                <h6 class="mt-4 mb-3"> <i class="fa-solid fa-comment-dots"></i> &nbsp; [[${#arrays.length(ratingList)}]]개의 리뷰 </h6>
+                <div class="row m-0">
+                    <div th:each="rating, state : ${ratingList}" class="border col-6 p-3">
+                        <div class="d-flex justify-content-between">
+                            <h5 th:text="|익명 ${state.count}|"></h5>
+                            <div><span th:each="i : ${#numbers.sequence(1, rating.rating)}">⭐</span></div>
+                        </div>
+                        <p th:text="${rating.content}"></p>
+                    </div>
+                </div>
+                <div th:if="${#lists.size(ratingList) == 0}" class="text-center mt-2 mb-5 pb-5">
+                    <h6 style="color: #f35525"> 현재 등록된 리뷰가 없습니다. </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+
+</body>
+</html>

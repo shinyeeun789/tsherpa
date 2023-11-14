@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.pro05.persis.DeliveryMapper">
+    <insert id="addDelivery" parameterType="com.chunjae.pro05.entity.Delivery">
+        <selectKey keyProperty="pno" resultType="int" order="BEFORE">
+            SELECT pno FROM payment ORDER BY pno DESC LIMIT 1
+        </selectKey>
+        insert into delivery
+        values(default, #{pno}, #{address}, null, null, default, null)
+    </insert>
+</mapper>

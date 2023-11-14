@@ -39,7 +39,6 @@ public class TradeController {
 
     @RequestMapping(value = "list.do", method = RequestMethod.GET)
     public String tradeList(HttpServletRequest request, Model model) throws Exception {
-        // 위치 정보 처리도 해야 함~
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
         String type = request.getParameter("type");
         String keyword = request.getParameter("keyword");

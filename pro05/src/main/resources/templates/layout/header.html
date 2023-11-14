@@ -28,7 +28,7 @@
                                 <a th:href="@{/logout.do}"><i class="fa-solid fa-right-to-bracket"></i> 로그아웃 </a>
                             </li>
                             <li sec:authorize="hasAuthority('USER') || hasAuthority('TEACHER') || hasAuthority('EMP')">
-                                <a th:href="@{/mypage.do}"><i class="fa fa-user"></i> 마이페이지 </a>
+                                <a th:href="@{/user/detail.do}"><i class="fa fa-user"></i> 마이페이지 </a>
                             </li>
 
                             <li sec:authorize="hasAuthority('ADMIN')">

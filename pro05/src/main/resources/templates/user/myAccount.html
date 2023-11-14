@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 마이페이지 </title>
+    <th:block th:replace="layout/head :: headFragment"></th:block>
+</head>
+<body>
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="/">Home</a> / <a
+                        th:href="@{/user/detail.do}"> 마이페이지 </a> / 계좌 관리 </span>
+                <h3> 계좌 관리 </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-2">
+            <th:block th:replace="layout/mypageMenu :: mypageFragment"></th:block>
+        </div>
+        <div class="col">
+            <div th:if="${user.bank != null}">
+                <div class="d-flex justify-content-between">
+                    <h5 class="text-primary"> 대표 계좌 </h5>
+                    <button class="btn btn-outline-primary btn-sm" id="editAccountInfo"> 수정 </button>
+                </div>
+                <div class="border p-4 mt-2">
+                    <div class="d-flex justify-content-between">
+                        <span style="color: #888"> 예금주 </span>
+                        <h6 th:text="${user.username}" class="d-inline"></h6>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span style="color: #888"> 은행명 </span>
+                        <h6 th:text="${user.bank}" class="d-inline"></h6>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span style="color: #888"> 계좌번호 </span>
+                        <h6 th:text="${user.accountNum}" class="d-inline"></h6>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${user.bank == null}">
+                <h5 class="text-primary"> 대표 계좌 </h5>
+                <p> 대표 계좌를 등록하지 않았습니다. </p>
+                <button class="btn btn-outline-dark btn-sm mt-3 w-100" id="addAccountInfo"> + 계좌 신규 등록</button>
+            </div>
+            <form th:action="@{/user/addAccountInfo.do}" method="post" id="accountInfoForm" class="mt-3" style="display: none">
+                <h5> 계좌 정보 등록하기 </h5>
+                <label for="username" class="mt-3"> 예금주 </label>
+                <input type="text" class="form-control" id="username" name="username" th:value="${user.username}" disabled>
+                <label for="bank" class="mt-2"> 은행명 </label>
+                <select name="bank" id="bank" class="form-select">
+                    <option disabled="" value="" selected>은행명</option>
+                    <option value="국민은행">국민은행</option>
+                    <option value="농협">농협</option>
+                    <option value="카카오뱅크">카카오뱅크</option>
+                    <option value="신한은행">신한은행</option>
+                    <option value="우리은행">우리은행</option>
+                    <option value="기업은행">기업은행</option>
+                    <option value="하나은행">하나은행</option>
+                    <option value="토스뱅크">토스뱅크</option>
+                    <option value="산업은행">산업은행</option>
+                    <option value="우체국">우체국</option>
+                    <option value="SC 제일은행">SC 제일은행</option>
+                    <option value="부산은행">부산은행</option>
+                    <option value="광주은행">광주은행</option>
+                    <option value="전북은행">전북은행</option>
+                    <option value="대구은행">대구은행</option>
+                    <option value="경남은행">경남은행</option>
+                    <option value="제주은행">제주은행</option>
+                    <option value="수협">수협</option>
+                    <option value="케이뱅크">케이뱅크</option>
+                    <option value="새마을금고">새마을금고</option>
+                    <option value="신협">신협</option>
+                    <option value="농축협">농축협</option>
+                    <option value="씨티은행">씨티은행</option>
+                    <option value="저축은행">저축은행</option>
+                    <option value="HSBC 은행">HSBC 은행</option>
+                    <option value="도이치은행">도이치은행</option>
+                    <option value="유안타증권">유안타증권</option>
+                    <option value="KB증권">KB증권</option>
+                    <option value="미래에셋증권">미래에셋증권</option>
+                    <option value="NH 투자증권">NH 투자증권</option>
+                    <option value="토스증권">토스증권</option>
+                    <option value="카카오페이증권">카카오페이증권</option>
+                    <option value="삼성증권">삼성증권</option>
+                    <option value="한국투자증권">한국투자증권</option>
+                    <option value="교보증권">교보증권</option>
+                    <option value="하이투자증권">하이투자증권</option>
+                    <option value="현대차증권">현대차증권</option>
+                    <option value="키움증권">키움증권</option>
+                    <option value="이베스트투자증권">이베스트투자증권</option>
+                    <option value="SK 증권">SK 증권</option>
+                    <option value="대신증권">대신증권</option>
+                    <option value="한화투자증권">한화투자증권</option>
+                    <option value="하나증권">하나증권</option>
+                    <option value="신한투자증권">신한투자증권</option>
+                    <option value="DB금융투자">DB금융투자</option>
+                    <option value="유진투자증권">유진투자증권</option>
+                    <option value="메리츠증권">메리츠증권</option>
+                    <option value="부국증권">부국증권</option>
+                    <option value="신영증권">신영증권</option>
+                    <option value="케이프투자증권">케이프투자증권</option>
+                </select>
+                <label for="accountNum" class="mt-2"> 계좌번호 </label>
+                <input type="text" class="form-control" id="accountNum" name="accountNum" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="16"
+                       th:value="${user.accountNum}"/>
+                <div class="d-flex justify-content-end mt-2">
+                    <input type="submit" class="btn btn-dark" value="확인">
+                </div>
+            </form>
+            <div>
+                <h5 class="text-primary mt-4"> 정산내역 </h5>
+                해야됨!!!!!!!!!!!!!!!!!!!!
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    $(document).ready(() => {
+        $("#addAccountInfo").click(() => {
+            $("#accountInfoForm").slideToggle();
+        });
+
+        $("#editAccountInfo").click(() => {
+            $("#accountInfoForm").slideToggle();
+            $("#bank").val([[${user.bank}]]).attr("selected", "selected");
+        });
+    });
+</script>
+
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+</body>
+</html>

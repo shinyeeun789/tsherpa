@@ -46,11 +46,11 @@
 
     <insert id="userJoin">
         insert into user
-        values(default, #{name}, #{password}, #{username}, #{email}, #{address}, #{tel}, default, default, default)
+        values(default, #{name}, #{password}, #{username}, #{email}, #{addr1}, #{addr2}, #{postcode}, #{tel}, #{birth}, null, null, default, default, default)
     </insert>
 
     <update id="updateUser">
-        update user set password = #{password}, username = #{username}, email = #{email}, address = #{address}, tel = #{tel}
+        update user set password = #{password}, username = #{username}, email = #{email}, addr1 = #{addr1}, addr2 = #{addr2}, postcode = #{postcode}, tel = #{tel}
         where id = #{id} or name = #{name}
     </update>
 
@@ -74,5 +74,9 @@
     <select id="getUserRatingList" resultType="com.chunjae.pro05.entity.UserRating">
         SELECT * FROM userRating WHERE name = #{name} ORDER BY RAND() LIMIT 6
     </select>
+
+    <update id="updateAccount">
+        update user set bank = #{bank}, accountNum = #{accountNum} where id = #{id}
+    </update>
 
 </mapper>

@@ -1,25 +1,35 @@
 package com.chunjae.pro05.ctrl;
 
+import com.chunjae.pro05.biz.TradeService;
 import com.chunjae.pro05.biz.UserService;
+import com.chunjae.pro05.entity.TradeRecommends;
+import com.chunjae.pro05.entity.TradeVO;
 import com.chunjae.pro05.entity.User;
+import com.chunjae.pro05.entity.UserRating;
 import com.chunjae.pro05.exception.NoSuchDataException;
+import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
 @CrossOrigin("http://localhost:8085")
 public class UserController {
-
     @Autowired
     private UserService userService;
+    @Autowired
+    private TradeService tradeService;
 
     @GetMapping("/userList.do")
     @ResponseBody
@@ -56,13 +66,13 @@ public class UserController {
         return "redirect:/";
     }
 
-    @PostMapping("/joinPro.do")
+    @PostMapping("/join.do")
     public String joinPro(User user, Model model) throws Exception {
         int cnt = userService.userJoin(user);
         if(cnt == 0) {
             throw new NoSuchDataException("No Insert Process Data");
         }
-        return "redirect:/login";
+        return "redirect:/login.do";
     }
 
     //중복 id 검증(Ajax)
@@ -71,7 +81,7 @@ public class UserController {
     public boolean idCheckAjax(@RequestBody User test) throws Exception {
         boolean result = false;
         User user = userService.getByName(test.getName());
-        if(user!=null){
+        if(user != null){
             result = false;
         } else {
             result = true;
@@ -87,8 +97,8 @@ public class UserController {
     }
 
     @GetMapping("/userEdit.do")
-    public String userEditForm(@RequestParam long id, Model model) throws Exception {
-        User user = userService.getUserById(id);
+    public String userEditForm(Principal principal, Model model) throws Exception {
+        User user = userService.getUserById(Long.valueOf(principal.getName()));
         model.addAttribute("user", user);
         return "/user/userEdit";
     }
@@ -98,6 +108,9 @@ public class UserController {
         User beforuser = userService.getUser(user.getName());
         if(user.getPassword() == null || user.getPassword().equals("")) {
             user.setPassword(beforuser.getPassword());
+        } else {
+            PasswordEncoder pwdEncoder = userService.passwordEncoder();
+            user.setPassword(pwdEncoder.encode(user.getPassword()));
         }
 
         int result = userService.updateUser(user);
@@ -106,7 +119,53 @@ public class UserController {
         } else {
             rttr.addFlashAttribute("msg", "개인정보 변경에 실패했습니다. 잠시 후 다시 시도해주세요");
         }
-        return "redirect:mypage?id="+beforuser.getId();
+        return "redirect:/user/detail.do";
+    }
+
+    @GetMapping("/user/detail.do")
+    public String userDetail(Principal principal, Model model) throws Exception {
+        User user = userService.getUserById(Long.valueOf(principal.getName()));
+
+        UserRating userRating = userService.getUserRating(user.getName());
+        model.addAttribute("userRating", userRating);
+
+        List<UserRating> ratingList = userService.getUserRatingList(user.getName());
+        model.addAttribute("ratingList", ratingList);
+
+        List<TradeVO> userTrades = tradeService.getTradeByName(user.getName());
+        model.addAttribute("userTrades", userTrades);
+
+        return "/user/myDetail";
+    }
+
+    @GetMapping("/user/myAccount.do")
+    public String myAccount(Principal principal, Model model) throws Exception {
+        User user = userService.getUserById(Long.valueOf(principal.getName()));
+        model.addAttribute("user", user);
+
+        return "/user/myAccount";
+    }
+
+    @PostMapping("/user/addAccountInfo.do")
+    public String addAccountInfo(User user, Principal principal) throws Exception {
+        user.setId(Long.valueOf(principal.getName()));
+        userService.updateAccount(user);
+        return "redirect:myAccount.do";
+    }
+
+    @GetMapping("/user/myRecommend.do")
+    public String myRecommend(Principal principal, HttpServletRequest request, Model model) throws Exception {
+        User user = userService.getUserById(Long.valueOf(principal.getName()));
+
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+        Page page = new Page(curPage);
+        page.setName(user.getName());
+        page.makePage(tradeService.totalTradeRecommend(page));
+
+        List<TradeVO> recommends = tradeService.myTradeRecommend(page);
+        model.addAttribute("recommends", recommends);
+        model.addAttribute("page", page);
+        return "/user/myRecommend";
     }
 
 }

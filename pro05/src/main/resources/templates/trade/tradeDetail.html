@@ -93,10 +93,7 @@
                             <h4 class="text-end">[[${trade.deliveryFee}]]<br><span> 배송비 </span></h4>
                         </li>
                     </ul>
-                    <div class="btn-group d-flex mt-5 pt-1">
-                        <button type="button" class="btn btn-lg btn-outline-dark"> 채팅하기 </button>
-                        <button type="button" class="btn btn-lg btn-dark"> 구매하기 </button>
-                    </div>
+                    <a th:href="@{/payment/addPayment.do(tno=${trade.tno})}" class="btn btn-lg btn-dark w-100 mt-4"> 구매하기 </a>
                 </div>
                 <div class="info-table mt-5">
                     <h5 class="mb-3"> 판매자 정보 </h5>
@@ -162,7 +159,7 @@
                     console.log(err);
                 }
             });
-        })
+        });
     });
 </script>
 </body>

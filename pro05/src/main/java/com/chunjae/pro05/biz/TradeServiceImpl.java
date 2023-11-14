@@ -81,4 +81,14 @@ public class TradeServiceImpl implements TradeService {
     public List<TradeVO> getTradeByName(String name) throws Exception {
         return tradeMapper.getTradeByName(name);
     }
+
+    @Override
+    public int totalTradeRecommend(Page page) throws Exception {
+        return tradeRecommendsMapper.totalTradeRecommend(page);
+    }
+
+    @Override
+    public List<TradeVO> myTradeRecommend(Page page) throws Exception {
+        return tradeRecommendsMapper.myTradeRecommend(page);
+    }
 }

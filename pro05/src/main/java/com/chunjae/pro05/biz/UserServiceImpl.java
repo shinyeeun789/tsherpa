@@ -74,9 +74,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int userJoin(User User) {
-        User.setPassword(passwordEncoder.encode(User.getPassword()));
-        return userMapper.userJoin(User);
+    public int userJoin(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userMapper.userJoin(user);
     }
 
     @Override
@@ -102,5 +102,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserRating> getUserRatingList(String name) {
         return userMapper.getUserRatingList(name);
+    }
+    public int updateAccount(User user) {
+        return userMapper.updateAccount(user);
     }
 }

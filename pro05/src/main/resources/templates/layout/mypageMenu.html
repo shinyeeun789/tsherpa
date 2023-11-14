@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="mypageFragment">
+    <h4> 마이페이지 </h4>
+    <h5 class="mt-4"> 쇼핑 정보 </h5>
+    <a th:href="@{/user/myRecommend.do}" class="d-block mt-2"> 찜한 내역 </a>
+    <a th:href="@{/}" class="d-block mt-2"> 구매내역 </a>
+    <a th:href="@{/}" class="d-block mt-2"> 판매내역 </a>
+    <h5 class="mt-4"> 내 정보 </h5>
+    <a th:href="@{/userEdit.do}" class="d-block mt-2"> 개인정보 수정 </a>
+    <a th:href="@{/user/myAccount.do}" class="d-block mt-2"> 계좌 관리 </a>
+</th:block>
+</html>

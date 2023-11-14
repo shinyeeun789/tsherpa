@@ -34,6 +34,9 @@ public class SecurityConfig {
     public TradeCategoryService tradeCategoryService() { return new TradeCategoryImpl(); }
 
     @Bean
+    public PaymentService paymentService() { return new PaymentServiceImpl(); }
+
+    @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }

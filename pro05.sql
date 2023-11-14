@@ -9,21 +9,39 @@ CREATE TABLE user(
 	password VARCHAR(300) NOT NULL,
 	username VARCHAR(50) NOT NULL,
 	email VARCHAR(100) NOT NULL,
-	address VARCHAR(300),
+	addr1 VARCHAR(300) NOT NULL,
+	addr2 VARCHAR(300),
+	postcode VARCHAR(30) NOT NULL,
 	tel VARCHAR(20),
+	birth DATE NOT NULL,
+	bank VARCHAR(50),
+	accountNum VARCHAR(100),
 	regdate DATETIME DEFAULT CURRENT_TIMESTAMP,
 	lev VARCHAR(20) DEFAULT 'USER',
 	act VARCHAR(20) DEFAULT 'JOIN',
 	CONSTRAINT key_name UNIQUE(name)
 );
 
-SELECT * FROM USER;
+SELECT * FROM user;
 
 INSERT INTO user
-VALUES(DEFAULT, 'admin', '$2a$10$KXY.EhEskta7wG/HvMSeZ.CQ4FuGQZOmaHTL2eZPnidD6AUvc.rUS', '관리자', 'admin@edu.com', NULL, NULL, DEFAULT, 'ADMIN', DEFAULT);
+VALUES(DEFAULT, 'admin', '$2a$10$KXY.EhEskta7wG/HvMSeZ.CQ4FuGQZOmaHTL2eZPnidD6AUvc.rUS', '관리자', 'admin@edu.com', NULL, NULL, NULL, NULL, DEFAULT, 'ADMIN', DEFAULT);
 
 INSERT INTO user
-VALUES(DEFAULT, 'kimname', '$2a$10$KXY.EhEskta7wG/HvMSeZ.CQ4FuGQZOmaHTL2eZPnidD6AUvc.rUS', '김이름', 'kim@edu.com', NULL, NULL, DEFAULT, 'USER', DEFAULT);
+VALUES(DEFAULT, 'kimname', '$2a$10$KXY.EhEskta7wG/HvMSeZ.CQ4FuGQZOmaHTL2eZPnidD6AUvc.rUS', '김이름', 'kim@edu.com', NULL, NULL, NULL, NULL, DEFAULT, 'USER', DEFAULT);
+
+
+drop table accountInfo;
+-- 계좌 정보 테이블
+CREATE TABLE accountInfo(
+	ano INT PRIMARY KEY AUTO_INCREMENT,			-- 계좌 정보 번호
+	id INT NOT NULL,									-- 사용자 아이디
+	bank VARCHAR(100) NOT NULL,					-- 은행명
+	accountNum VARCHAR(1000) NOT NULL,			-- 계좌번호
+	repAccount BOOLEAN DEFAULT FALSE,			-- 대표계좌여부
+	FOREIGN KEY (id) REFERENCES user(id)
+);
+
 
 -- 커뮤니티 카테고리 테이블 생성
 CREATE TABLE category(
@@ -75,8 +93,7 @@ INSERT INTO tradeCategory VALUES(DEFAULT, '보드게임');
 INSERT INTO tradeCategory VALUES(DEFAULT, '학급운영');
 INSERT INTO tradeCategory VALUES(DEFAULT, '기자재');
 
-DROP TABLE tradeRecommend;
-DROP TABLE trade;
+
 -- 거래 게시글 테이블 생성
 CREATE TABLE trade (
 	tno INT PRIMARY KEY AUTO_INCREMENT,
@@ -108,7 +125,7 @@ CREATE TABLE userRating (
 );
 
 -- 찜 목록 테이블
-CREATE TABLE tradeRecommends(
+CREATE TABLE traderecommends(
 	rno INT AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(20) NOT NULL,
 	tno INT NOT NULL,
@@ -116,9 +133,30 @@ CREATE TABLE tradeRecommends(
 	FOREIGN KEY (tno) REFERENCES trade(tno)
 );
 
-INSERT INTO userRating VALUES(DEFAULT, 'admin', 5, TRUE, 'contentssssss');
-INSERT INTO userRating VALUES(DEFAULT, 'admin', 4, TRUE, 'contentssssss');
-INSERT INTO userRating VALUES(DEFAULT, 'admin', 5, TRUE, 'contentssssss');
-INSERT INTO userRating VALUES(DEFAULT, 'admin', 3, TRUE, 'contentssssss');
 
-SELECT * FROM userRating;
+-- 결제 테이블 생성
+CREATE TABLE payment(
+	pno INT PRIMARY KEY AUTO_INCREMENT,
+	tno INT NOT NULL,
+	buyer VARCHAR(20) NOT NULL,
+	impUid VARCHAR(100) NOT NULL,
+	merchantUid VARCHAR(100) NOT NULL,
+	applyNum VARCHAR(100) NOT NULL,
+	FOREIGN KEY (tno) REFERENCES trade(tno),
+	FOREIGN KEY (buyer) REFERENCES user(NAME)
+);
+
+-- 배송 테이블 생성
+CREATE TABLE delivery(
+	dno INT PRIMARY KEY AUTO_INCREMENT,
+	pno INT NOT NULL,
+	addrress VARCHAR(500) NOT NULL,
+	dname VARCHAR(100),
+	dtel VARCHAR(13),
+	dstate VARCHAR(50) DEFAULT '결제 완료',
+	arrivalDate DATE
+);
+
+SELECT * FROM payment;
+SELECT * FROM delivery;
+SELECT * FROM trade;

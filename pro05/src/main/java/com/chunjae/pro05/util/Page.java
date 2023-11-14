@@ -24,6 +24,8 @@ public class Page {
     private String category;
     // 중고거래에 필요한 데이터
     private String location;
+    // 사용자 정보에 필요한 데이터
+    private String name;
 
     public Page(int curPageNum) {
         this.curPageNum = curPageNum;

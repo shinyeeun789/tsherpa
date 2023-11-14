@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chunjae.pro05.persis.TradeRecommendsMapper">
 
+    <select id="totalTradeRecommend" resultType="int">
+        SELECT count(*) FROM traderecommends WHERE name = #{name}
+    </select>
+
+    <select id="myTradeRecommend" resultType="com.chunjae.pro05.entity.TradeVO">
+        SELECT t.tno AS tno, tradeCate, t.name AS name, title, resdate, location, tradeType, price, deliveryFee, demage, state, itemImg
+        FROM trade t JOIN tradeCategory c ON (t.cno=c.cno) JOIN traderecommends tr ON (t.tno=tr.tno)
+        WHERE tr.name = #{name}
+        order by t.tno desc limit #{postStart}, #{postCount}
+    </select>
+
     <insert id="insertTradeRecommend">
         insert into tradeRecommends
         values(default, #{name}, #{tno})
