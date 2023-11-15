@@ -4,7 +4,7 @@
     <select id="tradeList" resultType="com.chunjae.pro05.entity.TradeVO">
         SELECT tno, tradeCate, name, title, resdate, location, tradeType, price, deliveryFee, demage, itemImg
         FROM trade t JOIN tradeCategory c ON (t.cno=c.cno)
-        WHERE state = '판매중'
+        WHERE (tradeType = '택배거래' AND state = '판매중') OR state = '판매중'
         <if test="type != null">
             <choose>
                 <when test="type == 'L'.toString()">
@@ -24,11 +24,8 @@
         <if test="category != null">
             AND t.cno = #{category}
         </if>
-        <if test="location != null and category == null">
-            AND location LIKE concat('%', #{location}, '%') OR tradeType = '택배거래'
-        </if>
-        <if test="location != null and category != null">
-            AND location LIKE concat('%', #{location}, '%') OR (tradeType = '택배거래' AND t.cno = #{category})
+        <if test="location != null">
+            AND location LIKE concat('%', #{location}, '%')
         </if>
         order by tno desc limit #{postStart}, #{postCount}
     </select>

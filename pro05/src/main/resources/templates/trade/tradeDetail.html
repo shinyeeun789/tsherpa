@@ -43,10 +43,8 @@
                     <span class="category" th:text="${trade.tradeCate}"></span>
                     <div class="d-flex justify-content-between mt-3">
                         <h3 th:text="${trade.title}"></h3>
-                        <th:block th:with="attr=${trade.tno} + ':tradeCookie'">
-                            <button th:if="${#session.getAttribute(attr) == null}" class="border-0 bg-body" id="plusRecommend" th:value="${trade.tno}"> <i class="fa-regular fa-heart fa-xl" style="color: #ed2c2c;"></i> 찜하기 </button>
-                            <button th:if="${#session.getAttribute(attr) != null}" class="border-0 bg-body" id="minusRecommend" th:value="${trade.tno}"> <i class="fa-solid fa-heart fa-xl" style="color: #ed2c2c;"></i> 찜하기 </button>
-                        </th:block>
+                        <button th:if="${!isRecommend}" class="border-0 bg-body" id="plusRecommend" th:value="${trade.tno}"> <i class="fa-regular fa-heart fa-xl" style="color: #ed2c2c;"></i> 찜하기 </button>
+                        <button th:if="${isRecommend}" class="border-0 bg-body" id="minusRecommend" th:value="${trade.tno}"> <i class="fa-solid fa-heart fa-xl" style="color: #ed2c2c;"></i> 찜하기 </button>
                     </div>
                     <hr>
                     <div class="col-lg-8" style="min-height: 30vh;" th:utext="${trade.content}"></div>
@@ -90,7 +88,7 @@
                         </li>
                         <li class="d-flex justify-content-between align-items-center" th:if='${!#strings.equals(trade.tradeType, "직거래")}'>
                             <i class="fa-solid fa-truck fa-xl" style="color: #f35525"></i>
-                            <h4 class="text-end">[[${trade.deliveryFee}]]<br><span> 배송비 </span></h4>
+                            <h4 class="text-end">[[${trade.deliveryFee}]]원<br><span> 배송비 </span></h4>
                         </li>
                     </ul>
                     <a th:href="@{/payment/addPayment.do(tno=${trade.tno})}" class="btn btn-lg btn-dark w-100 mt-4"> 구매하기 </a>
@@ -100,7 +98,7 @@
                     <ul>
                         <li class="d-flex justify-content-between align-items-center">
                             <i class="fa-solid fa-user-circle fa-xl" style="color: #f35525"></i>
-                            <h4 class="text-end"><a th:href="@{/seller/detail.do(name=${userRating.name})}">[[${userRating.name}]]님</a><br><span> 판매자 </span></h4>
+                            <h4 class="text-end"><a th:href="@{/seller/detail.do(name=${userRating.seller})}">[[${userRating.seller}]]님</a><br><span> 판매자 </span></h4>
                         </li>
                         <li class="d-flex justify-content-between align-items-center">
                             <i class="fa-solid fa-box fa-xl" style="color: #f35525"></i>

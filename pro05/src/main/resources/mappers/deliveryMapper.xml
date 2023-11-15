@@ -6,6 +6,6 @@
             SELECT pno FROM payment ORDER BY pno DESC LIMIT 1
         </selectKey>
         insert into delivery
-        values(default, #{pno}, #{address}, null, null, default, null)
+        values(default, #{pno}, #{address}, null, null, null, default, null)
     </insert>
 </mapper>

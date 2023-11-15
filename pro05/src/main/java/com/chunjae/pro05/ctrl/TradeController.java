@@ -58,12 +58,16 @@ public class TradeController {
     }
 
     @GetMapping("detail.do")
-    public String tradeDetail(@RequestParam int tno, Model model) throws Exception {
+    public String tradeDetail(@RequestParam int tno, Principal principal, Model model) throws Exception {
         TradeVO trade = tradeService.getTradeVO(tno);
         model.addAttribute("trade", trade);
 
         UserRating userRating = userService.getUserRating(trade.getName());
         model.addAttribute("userRating", userRating);
+
+        User user = userService.getUserById(Long.valueOf(principal.getName()));
+        boolean isRecommend = tradeService.isRecommend(tno, user.getName());
+        model.addAttribute("isRecommend", isRecommend);
 
         return "/trade/tradeDetail";
     }
@@ -179,6 +183,17 @@ public class TradeController {
             rttr.addFlashAttribute("msg", "글 삭제에 실패했습니다. 잠시 후 다시 시도해주세요.");
         }
         return "redirect:list.do";
+    }
+
+    @GetMapping("updateState.do")
+    public String updateState(Trade trade, RedirectAttributes rttr) throws Exception {
+        int result = tradeService.updateTradeStates(trade);
+        if(result > 0) {
+            rttr.addFlashAttribute("msg", "성공적으로 글이 삭제되었습니다.");
+        } else {
+            rttr.addFlashAttribute("msg", "글 삭제에 실패했습니다. 잠시 후 다시 시도해주세요.");
+        }
+        return "redirect:/user/myProduct.do";
     }
 
     //ckeditor를 이용한 이미지 업로드

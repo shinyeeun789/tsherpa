@@ -27,35 +27,75 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <span class="breadcrumb"><a href="/">Home</a> / <a th:href="@{/user/detail.do}"> 마이페이지 </a> / 판매내역 </span>
+                <span class="breadcrumb"><a href="/">Home</a> / <a
+                        th:href="@{/user/detail.do}"> 마이페이지 </a> / 판매내역 </span>
                 <h3> 판매내역 </h3>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container mt-5 pt-5">
-    <div class="row">
-        <div class="col-2">
-            <th:block th:replace="layout/mypageMenu :: mypageFragment"></th:block>
-        </div>
-        <div class="col">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th> # </th>
-                    <th> 상품명 </th>
-                    <th> 판매금액 </th>
-                    <th> 배송비 </th>
-                    <th> 처리상태 </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+<div class="section properties">
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <div class="col-2">
+                <th:block th:replace="layout/mypageMenu :: mypageFragment"></th:block>
+            </div>
+            <div class="col">
+                <table class="table table-hover text-center">
+                    <thead>
+                    <tr>
+                        <th> 거래종류</th>
+                        <th> 상품명</th>
+                        <th> 판매금액</th>
+                        <th> 배송비</th>
+                        <th> 처리상태</th>
+                        <th> 비고</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pro, status : ${myProductList}">
+                        <td th:text="${pro.tradeType}" class="align-middle"></td>
+                        <td th:text="${pro.title}" class="align-middle"></td>
+                        <td th:text="|${pro.price}원|" class="align-middle"></td>
+                        <td th:text="|${pro.deliveryFee}원|" class="align-middle"></td>
+                        <td th:if="${pro.dstate != null}" th:text="${pro.dstate}" class="align-middle"></td>
+                        <td th:if="${pro.dstate == null}" th:text="${pro.state}" class="align-middle"></td>
+                        <td>
+                            <a th:href="@{/trade/updateState.do(tno=${pro.tno})}"
+                               th:if="${pro.tradeType == '직거래' && pro.state != '판매완료'}"
+                               class="btn btn-primary btn-sm"> 거래완료 </a>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.size(myProductList) == 0}">
+                        <td colspan="6" class="text-center"> 판매중이거나 판매한 상품이 없습니다.</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!-- Pagination -->
+                <div class="row" th:if="${page.lastPageNum != 0}">
+                    <div class="col-lg-12">
+                        <ul class="pagination">
+                            <li th:if="${page.curPageNum > 5}">
+                                <a th:href="@{/user/myProduct.do(page=${page.blockStartNum - 1})}">
+                                    << </a>
+                            </li>
+                            <li th:each="i : ${#numbers.sequence(page.blockStartNum, page.blockLastNum)}">
+                                <a th:if="${page.curPageNum == i}"
+                                   th:href="@{/user/myProduct.do(page=${i})}"
+                                   th:text="${i}" class="is_active"></a>
+                                <a th:if="${page.curPageNum != i}"
+                                   th:href="@{/user/myProduct.do(page=${i})}"
+                                   th:text="${i}"></a>
+                            </li>
+                            <li th:if="${page.blockLastNum < page.totalPageCount}">
+                                <a th:href="@{/user/myProduct.do(page=${page.blockLastNum + 1})}">
+                                    >> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -91,4 +91,20 @@ public class TradeServiceImpl implements TradeService {
     public List<TradeVO> myTradeRecommend(Page page) throws Exception {
         return tradeRecommendsMapper.myTradeRecommend(page);
     }
+
+    @Override
+    public boolean isRecommend(int tno, String name) throws Exception {
+        Map<String, Object> data = new HashMap<>();
+        data.put("tno", tno);
+        data.put("name", name);
+        return tradeRecommendsMapper.isRecommend(data);
+    }
+
+    @Override
+    public int updateTradeStates(Trade trade) {
+        int result = tradeMapper.updateState(trade.getTno());
+
+
+        return 0;
+    }
 }

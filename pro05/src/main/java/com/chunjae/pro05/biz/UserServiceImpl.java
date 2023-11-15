@@ -106,4 +106,14 @@ public class UserServiceImpl implements UserService {
     public int updateAccount(User user) {
         return userMapper.updateAccount(user);
     }
+
+    @Override
+    public int insertUserRating(UserRating userRating) {
+        return userMapper.insertUserRating(userRating);
+    }
+
+    @Override
+    public int editUserRating(UserRating userRating) {
+        return userMapper.editUserRating(userRating);
+    }
 }

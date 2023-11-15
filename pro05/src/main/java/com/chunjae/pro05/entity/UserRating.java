@@ -6,7 +6,9 @@ import lombok.Data;
 public class UserRating {
 
     private int uid;
-    private String name;
+    private int tno;
+    private String seller;
+    private String buyer;
     private int rating;
     private boolean trustTrade;
     private String content;

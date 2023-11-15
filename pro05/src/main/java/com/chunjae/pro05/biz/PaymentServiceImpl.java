@@ -1,13 +1,17 @@
 package com.chunjae.pro05.biz;
 
 import com.chunjae.pro05.entity.Delivery;
+import com.chunjae.pro05.entity.AboutTradeVO;
 import com.chunjae.pro05.entity.Payment;
 import com.chunjae.pro05.persis.DeliveryMapper;
 import com.chunjae.pro05.persis.PaymentMapper;
 import com.chunjae.pro05.persis.TradeMapper;
+import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -32,5 +36,25 @@ public class PaymentServiceImpl implements PaymentService {
         result += tradeMapper.updateState(payment.getTno());
 
         return result;
+    }
+
+    @Override
+    public int totalPayment(Page page) throws Exception {
+        return paymentMapper.totalPayment(page);
+    }
+
+    @Override
+    public List<AboutTradeVO> myPayment(Page page) throws Exception {
+        return paymentMapper.myPayment(page);
+    }
+
+    @Override
+    public int totalProduct(Page page) throws Exception {
+        return paymentMapper.totalProduct(page);
+    }
+
+    @Override
+    public List<AboutTradeVO> myProduct(Page page) throws Exception {
+        return paymentMapper.myProduct(page);
     }
 }

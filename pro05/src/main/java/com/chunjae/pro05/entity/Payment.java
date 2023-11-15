@@ -14,4 +14,5 @@ public class Payment {
     private String impUid;
     private String merchantUid;
     private String applyNum;
+    private int price;
 }

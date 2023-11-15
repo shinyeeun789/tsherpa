@@ -1,10 +1,254 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 제목 </title>
+    <title> 판매내역 </title>
+    <th:block th:replace="layout/head :: headFragment"></th:block>
+    <style>
+        /* 리뷰 작성 시 별점 CSS */
+        .my-star{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            color: transparent;
+            text-shadow: 0 0 0 #f0f0f0;
+            font-size: 1.8em;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .my-star:hover {
+            text-shadow: 0 0 0 #ccc;
+        }
+
+        .my-star.on{
+            text-shadow: 0 0 0 #ffbc00;
+        }
+    </style>
 </head>
 <body>
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="/">Home</a> / <a
+                        th:href="@{/user/detail.do}"> 마이페이지 </a> / 구매내역 </span>
+                <h3> 구매내역 </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section properties">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <th:block th:replace="layout/mypageMenu :: mypageFragment"></th:block>
+            </div>
+            <div class="col">
+                <table class="table table-hover text-center">
+                    <thead>
+                    <tr>
+                        <th> #</th>
+                        <th> 주문상품</th>
+                        <th> 판매자</th>
+                        <th> 상태</th>
+                        <th> 배송예정일</th>
+                        <th> 비고 </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pay, status : ${paymentList}">
+                        <td class="align-middle" th:text="${pay.pno}"></td>
+                        <td class="align-middle" th:text="${pay.title}"></td>
+                        <td class="align-middle" th:text="${pay.name}"></td>
+                        <td class="align-middle" th:text="${pay.dstate}"></td>
+                        <td class="align-middle" th:with="result = ${pay.arrivalDate == null ? '-' : pay.arrivalDate}" th:text="${result}"></td>
+                        <td>
+                            <button th:id="${status.index}" class="btn btn-primary btn-sm addReviewBtn" th:if="${pay.isReview == 0}"> 거래후기 작성 </button>
+                            <button th:id="${status.index}" class="btn btn-outline-primary btn-sm editReviewBtn" th:if="${pay.isReview > 0}"> 거래후기 수정 </button>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.size(paymentList) == 0}">
+                        <td colspan="6" class="text-center"> 구매한 상품이 없습니다. </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <form th:action="@{/user/addReview.do}" method="post" class="pt-5 mt-5" id="addForm" style="display: none">
+                    <h4 class="mb-4"> 판매자 리뷰 작성하기 </h4>
+                    <label for="addSeller"> <i class="fa-solid fa-user-circle"></i> 판매자 </label>
+                    <input type="text" id="addSeller" name="seller" class="form-control" readonly>
+                    <input type="hidden" id="addTno" name="tno">
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <label> <i class="fa-regular fa-heart"></i> 별점 </label>
+                        <div class="star-wrap">
+                            <span class="my-star on" value="1">⭐</span>
+                            <span class="my-star" value="2">⭐</span>
+                            <span class="my-star" value="3">⭐</span>
+                            <span class="my-star" value="4">⭐</span>
+                            <span class="my-star" value="5">⭐</span>
+                            <input type="hidden" id="addRating" name="rating" value="1">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <label> <i class="fa-solid fa-shield"></i> 안전거래 여부 </label>
+                        <div>
+                            <div class="form-group">
+                                <input type="radio" class="form-check-input" id="addTrustTrade1" name="trustTrade" value="1" checked>
+                                <label class="form-label" for="addTrustTrade1"> 안전거래입니다. </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" class="form-check-input" id="addTrustTrade2" name="trustTrade" value="0">
+                                <label class="form-label" for="addTrustTrade2"> 신고합니다. </label>
+                            </div>
+                        </div>
+                    </div>
+                    <textarea name="content" id="addContent" class="form-control mt-3" cols="10" rows="10" maxlength="1950"
+                              placeholder="판매자와 상품에 대한 리뷰를 작성해주세요. 판매자에게 신고가 누적되면 활동이 정지될 수 있습니다."></textarea>
+                    <div class="d-flex justify-content-end">
+                        <input type="submit" class="btn btn-primary mt-3" value="등록하기">
+                    </div>
+                </form>
+                <form th:action="@{/user/editReview.do}" method="post" class="pt-5 mt-5" id="editForm" style="display: none">
+                    <h4 class="mb-4"> 판매자 리뷰 수정하기 </h4>
+                    <label for="editSeller"> <i class="fa-solid fa-user-circle"></i> 판매자 </label>
+                    <input type="text" id="editSeller" name="seller" class="form-control" readonly>
+                    <input type="hidden" id="uid" name="uid">
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <label> <i class="fa-regular fa-heart"></i> 별점 </label>
+                        <div class="star-wrap">
+                            <span class="my-star on" value="1">⭐</span>
+                            <span class="my-star" value="2">⭐</span>
+                            <span class="my-star" value="3">⭐</span>
+                            <span class="my-star" value="4">⭐</span>
+                            <span class="my-star" value="5">⭐</span>
+                            <input type="hidden" id="editRating" name="rating" value="1">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <label> <i class="fa-solid fa-shield"></i> 안전거래 여부 </label>
+                        <div>
+                            <div class="form-group">
+                                <input type="radio" class="form-check-input" id="editTrustTrade1" name="trustTrade" value="1" checked>
+                                <label class="form-label" for="editTrustTrade1"> 안전거래입니다. </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" class="form-check-input" id="editTrustTrade2" name="trustTrade" value="0">
+                                <label class="form-label" for="editTrustTrade2"> 신고합니다. </label>
+                            </div>
+                        </div>
+                    </div>
+                    <textarea name="content" id="editContent" class="form-control mt-3" cols="10" rows="10" maxlength="1950"
+                              placeholder="판매자와 상품에 대한 리뷰를 작성해주세요. 판매자에게 신고가 누적되면 활동이 정지될 수 있습니다."></textarea>
+                    <div class="d-flex justify-content-end">
+                        <input type="submit" class="btn btn-primary mt-3" value="수정하기">
+                    </div>
+                </form>
+
+                <!-- Pagination -->
+                <div class="row" th:if="${page.lastPageNum != 0}">
+                    <div class="col-lg-12">
+                        <ul class="pagination">
+                            <li th:if="${page.curPageNum > 5}">
+                                <a th:href="@{/user/myPayment.do(page=${page.blockStartNum - 1})}"> << </a>
+                            </li>
+                            <li th:each="i : ${#numbers.sequence(page.blockStartNum, page.blockLastNum)}">
+                                <a th:if="${page.curPageNum == i}" th:href="@{/user/myPayment.do(page=${i})}"
+                                   th:text="${i}" class="is_active"></a>
+                                <a th:if="${page.curPageNum != i}" th:href="@{/user/myPayment.do(page=${i})}"
+                                   th:text="${i}"></a>
+                            </li>
+                            <li th:if="${page.blockLastNum < page.totalPageCount}">
+                                <a th:href="@{/user/myPayment.do(page=${page.blockLastNum + 1})}"> >> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    $(document).ready(() => {
+        let paymentList = [[${paymentList}]];
+        let addToggle = true;
+        let editToggle = true;
+
+        // 리뷰 별점 작성
+        $("#addForm .my-star").click(function() {
+            $(this).parent().children('span').removeClass('on');
+            $(this).addClass('on').prevAll('span').addClass('on');
+            $("#addRating").attr("value", $(this).attr("value"));
+            return false;
+        });
+
+        $("#editForm .my-star").click(function() {
+            $(this).parent().children('span').removeClass('on');
+            $(this).addClass('on').prevAll('span').addClass('on');
+            $("#editRating").attr("value", $(this).attr("value"));
+            return false;
+        });
+
+        // 거래후기 작성 버튼 클릭 시
+        $(".addReviewBtn").click(function() {
+            let idx = $(this).attr("id");
+
+            if($("#addTno").val() == paymentList[idx].tno || addToggle) {
+                $("#addForm").slideToggle();
+                addToggle = false;
+            }
+
+            $("#addSeller").val(paymentList[idx].name);
+            $("#addTno").val(paymentList[idx].tno);
+        });
+
+        // 거래후기 수정 버튼 클릭 시
+        $(".editReviewBtn").click(function() {
+            let idx = $(this).attr("id");
+
+            // 다른 상품의 거래후기 수정 버튼 클릭 시 slideUp되지 않도록 처리
+            if($("#editContent").val() == paymentList[idx].content || editToggle) {
+                $("#editForm").slideToggle();
+                editToggle = false;
+            }
+
+            // 기존 데이터 화면에 출력하기
+            $("#editSeller").val(paymentList[idx].name);
+            $("#uid").val(paymentList[idx].uid);
+            $("#editRating").val(paymentList[idx].rating);
+            $("#editForm .my-star").removeClass("on");
+            for(let i = 0; i < paymentList[idx].rating; i++) {
+                $("#editForm .my-star").eq(i).addClass("on");
+            }
+
+            if(paymentList[idx].trustTrade) {
+                $("#editTrustTrade1").attr("checked", true);
+            } else {
+                $("#editTrustTrade2").attr("checked", true);
+            }
+            $("#editContent").val(paymentList[idx].content);
+        });
+    });
+</script>
+
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
 </body>
 </html>

@@ -2,9 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chunjae.pro05.persis.PaymentMapper">
 
+    <select id="totalPayment" resultType="integer">
+        select count(*) from payment where buyer = #{name}
+    </select>
+
+    <select id="myPayment" resultType="com.chunjae.pro05.entity.AboutTradeVO">
+        SELECT p.pno AS pno, t.tno as tno, title, name, dstate, arrivalDate, uid, rating, trustTrade, u.content AS content, IFNULL(uid, 0) AS 'isReview'
+        FROM payment p JOIN delivery d ON (p.pno=d.pno) JOIN trade t ON (t.tno=p.tno) LEFT OUTER JOIN userrating u ON (u.tno=t.tno)
+        WHERE p.buyer = #{name}
+        ORDER BY pno desc limit #{postStart}, #{postCount}
+    </select>
+
+    <select id="totalProduct">
+        select count(*) from payment p JOIN trade t ON (p.tno=t.tno) where name = #{name}
+    </select>
+
+    <select id="myProduct">
+        SELECT p.pno AS pno, t.tno as tno, tradeType, title, name, price, deliveryFee, state, dstate
+        FROM payment p JOIN delivery d ON (p.pno=d.pno) RIGHT OUTER JOIN trade t ON (t.tno=p.tno)
+        WHERE t.name = #{name}
+        ORDER BY pno desc limit #{postStart}, #{postCount}
+    </select>
+
     <insert id="addPayment">
         insert into payment
-        values(default, #{tno}, #{buyer}, #{impUid}, #{merchantUid}, #{applyNum})
+        values(default, #{tno}, #{buyer}, #{impUid}, #{merchantUid}, #{applyNum}, #{price})
     </insert>
 
 </mapper>

@@ -6,6 +6,7 @@ import com.chunjae.pro05.util.Page;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface TradeRecommendsMapper {
@@ -13,5 +14,6 @@ public interface TradeRecommendsMapper {
     int deleteTradeRecommend(TradeRecommends tradeRecommends);
     int totalTradeRecommend(Page page);
     List<TradeVO> myTradeRecommend(Page page);
+    boolean isRecommend(Map<String, Object> data);
 
 }

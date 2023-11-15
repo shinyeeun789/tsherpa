@@ -63,20 +63,28 @@
     </delete>
 
     <select id="getUserRating" resultType="com.chunjae.pro05.entity.UserRating">
-        SELECT * FROM (SELECT name, FORMAT(AVG(rating), 1) as avgRating, COUNT(trustTrade) as cntTrustTrade FROM userRating u GROUP BY name) a,
-                       (SELECT COUNT(tno) AS cntProducts FROM trade GROUP BY name) b
-        WHERE name = #{name}
+        SELECT * FROM (SELECT seller, FORMAT(AVG(rating), 1) as avgRating, COUNT(trustTrade) as cntTrustTrade FROM userRating u GROUP BY seller) a,
+                      (SELECT COUNT(tno) AS cntProducts FROM trade GROUP BY name) b
+        WHERE seller = #{seller}
         UNION ALL
-        SELECT #{name} AS NAME, 0 AS avgRating, 0 AS cntTrustTrade, 0 AS cntProducts FROM DUAL
+        SELECT #{seller} AS seller, 0 AS avgRating, 0 AS cntTrustTrade, 0 AS cntProducts FROM DUAL
         LIMIT 1
     </select>
 
     <select id="getUserRatingList" resultType="com.chunjae.pro05.entity.UserRating">
-        SELECT * FROM userRating WHERE name = #{name} ORDER BY RAND() LIMIT 6
+        SELECT * FROM userRating WHERE seller = #{seller} ORDER BY RAND() LIMIT 6
     </select>
 
     <update id="updateAccount">
         update user set bank = #{bank}, accountNum = #{accountNum} where id = #{id}
+    </update>
+
+    <insert id="insertUserRating">
+        insert into userRating values(default, #{tno}, #{seller}, #{buyer}, #{rating}, #{trustTrade}, #{content})
+    </insert>
+
+    <update id="editUserRating">
+        update userRating set rating = #{rating}, trustTrade = #{trustTrade}, content = #{content} where uid = #{uid}
     </update>
 
 </mapper>

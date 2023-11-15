@@ -1,18 +1,15 @@
 package com.chunjae.pro05.ctrl;
 
+import com.chunjae.pro05.biz.PaymentService;
 import com.chunjae.pro05.biz.TradeService;
 import com.chunjae.pro05.biz.UserService;
-import com.chunjae.pro05.entity.TradeRecommends;
-import com.chunjae.pro05.entity.TradeVO;
-import com.chunjae.pro05.entity.User;
-import com.chunjae.pro05.entity.UserRating;
+import com.chunjae.pro05.entity.*;
 import com.chunjae.pro05.exception.NoSuchDataException;
 import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +27,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private TradeService tradeService;
+    @Autowired
+    private PaymentService paymentService;
 
     @GetMapping("/userList.do")
     @ResponseBody
@@ -166,6 +165,59 @@ public class UserController {
         model.addAttribute("recommends", recommends);
         model.addAttribute("page", page);
         return "/user/myRecommend";
+    }
+
+    @GetMapping("/user/myProduct.do")
+    public String myProduct(Principal principal, HttpServletRequest request, Model model) throws Exception {
+        User user = userService.getUserById(Long.valueOf(principal.getName()));
+
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+        Page page = new Page(curPage);
+        page.setName(user.getName());
+        page.makePage(paymentService.totalProduct(page));
+
+        List<AboutTradeVO> myProductList = paymentService.myProduct(page);
+        model.addAttribute("myProductList", myProductList);
+        model.addAttribute("page", page);
+
+        return "/user/myProduct";
+    }
+
+    @GetMapping("/user/myPayment.do")
+    public String myPayment(Principal principal, HttpServletRequest request, Model model) throws Exception {
+        User user = userService.getUserById(Long.valueOf(principal.getName()));
+
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+        Page page = new Page(curPage);
+        page.setName(user.getName());
+        page.makePage(paymentService.totalPayment(page));
+
+        List<AboutTradeVO> paymentList = paymentService.myPayment(page);
+        model.addAttribute("paymentList", paymentList);
+        model.addAttribute("page", page);
+
+        return "/user/myPayment";
+    }
+
+    @PostMapping("/user/addReview.do")
+    public String addReview(Principal principal, UserRating userRating, RedirectAttributes rttr) throws Exception {
+        User user = userService.getUserById(Long.valueOf(principal.getName()));
+        userRating.setBuyer(user.getName());
+
+        int result = userService.insertUserRating(userRating);
+        if(result > 0) {
+            rttr.addFlashAttribute("msg", "리뷰가 작성되었습니다.");
+        } else {
+            rttr.addFlashAttribute("msg", "리뷰 작성에 실패했습니다. 잠시후 다시 시도해주세요");
+        }
+
+        return "redirect:/user/myPayment.do";
+    }
+
+    @PostMapping("/user/editReview.do")
+    public String editReview(UserRating userRating, RedirectAttributes rttr) throws Exception {
+        int result = userService.editUserRating(userRating);
+        return "redirect:/user/myPayment.do";
     }
 
 }

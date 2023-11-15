@@ -114,14 +114,19 @@ CREATE TABLE trade (
 	FOREIGN KEY (name) REFERENCES user(name)
 );
 
+
 -- 사용자 거래 정보 테이블
 CREATE TABLE userRating (
 	uid INT AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(20) NOT NULL,
+	tno INT NOT NULL,
+	seller VARCHAR(20) NOT NULL,
+	buyer VARCHAR(20) NOT NULL,
 	rating INT DEFAULT 0,
 	trustTrade BOOLEAN DEFAULT FALSE,
 	content VARCHAR(2000),
-	FOREIGN KEY (NAME) REFERENCES user(NAME)
+	FOREIGN KEY (tno) REFERENCES trade(tno) ON DELETE DUPLICATE,
+	FOREIGN KEY (seller) REFERENCES user(NAME) ON DELETE DUPLICATE,
+	FOREIGN KEY (buyer) REFERENCES user(NAME) ON DELETE DUPLICATE
 );
 
 -- 찜 목록 테이블
@@ -142,6 +147,7 @@ CREATE TABLE payment(
 	impUid VARCHAR(100) NOT NULL,
 	merchantUid VARCHAR(100) NOT NULL,
 	applyNum VARCHAR(100) NOT NULL,
+	price INT NOT NULL,
 	FOREIGN KEY (tno) REFERENCES trade(tno),
 	FOREIGN KEY (buyer) REFERENCES user(NAME)
 );
@@ -150,13 +156,18 @@ CREATE TABLE payment(
 CREATE TABLE delivery(
 	dno INT PRIMARY KEY AUTO_INCREMENT,
 	pno INT NOT NULL,
-	addrress VARCHAR(500) NOT NULL,
+	address VARCHAR(500) NOT NULL,
+	dcode VARCHAR(100), -- 송장번호
 	dname VARCHAR(100),
 	dtel VARCHAR(13),
 	dstate VARCHAR(50) DEFAULT '결제 완료',
 	arrivalDate DATE
 );
+DELETE FROM payment;
+DELETE FROM delivery;
+UPDATE trade SET state = '판매중' WHERE tno = 3;
 
 SELECT * FROM payment;
-SELECT * FROM delivery;
-SELECT * FROM trade;
+SELECT p.pno AS pno, t.tno as tno, tradeType, title, name, price, deliveryFee, state, dstate
+FROM payment p JOIN delivery d ON (p.pno=d.pno) RIGHT OUTER JOIN trade t ON (t.tno=p.tno)
+WHERE t.name = 'leeename'

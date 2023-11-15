@@ -19,5 +19,7 @@ public interface TradeService {
     public List<TradeVO> getTradeByName(String name) throws Exception;
     public int totalTradeRecommend(Page page) throws Exception;
     public List<TradeVO> myTradeRecommend(Page page) throws Exception;
+    public boolean isRecommend(int tno, String name) throws Exception;
+    public int updateTradeStates(Trade trade);
 
 }

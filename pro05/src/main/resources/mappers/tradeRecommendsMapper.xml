@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chunjae.pro05.persis.TradeRecommendsMapper">
 
+    <select id="isRecommend" resultType="boolean">
+        SELECT COUNT(*) FROM traderecommends
+        WHERE name = #{name} AND tno = #{tno}
+    </select>
+
     <select id="totalTradeRecommend" resultType="int">
         SELECT count(*) FROM traderecommends WHERE name = #{name}
     </select>
@@ -14,8 +19,7 @@
     </select>
 
     <insert id="insertTradeRecommend">
-        insert into tradeRecommends
-        values(default, #{name}, #{tno})
+        insert ignore into tradeRecommends values(default, #{name}, #{tno})
     </insert>
 
     <delete id="deleteTradeRecommend">

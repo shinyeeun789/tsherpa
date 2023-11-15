@@ -100,14 +100,14 @@
             <div class="col-lg-12">
                 <ul class="pagination">
                     <li th:if="${page.curPageNum > 5}">
-                        <a th:href="@{/trade/list.do(page=${page.blockStartNum - 1},type=${page.type},keyword=${page.keyword})}"> << </a>
+                        <a th:href="@{/trade/list.do(page=${page.blockStartNum - 1},type=${page.type},keyword=${page.keyword},location=${page.location})}"> << </a>
                     </li>
                     <li th:each="i : ${#numbers.sequence(page.blockStartNum, page.blockLastNum)}">
-                        <a th:if="${page.curPageNum == i}" th:href="@{/trade/list.do(page=${i},type=${page.type},keyword=${page.keyword})}" th:text="${i}" class="is_active"></a>
-                        <a th:if="${page.curPageNum != i}" th:href="@{/trade/list.do(page=${i},type=${page.type},keyword=${page.keyword})}" th:text="${i}"></a>
+                        <a th:if="${page.curPageNum == i}" th:href="@{/trade/list.do(page=${i},type=${page.type},keyword=${page.keyword},location=${page.location})}" th:text="${i}" class="is_active"></a>
+                        <a th:if="${page.curPageNum != i}" th:href="@{/trade/list.do(page=${i},type=${page.type},keyword=${page.keyword},location=${page.location})}" th:text="${i}"></a>
                     </li>
                     <li th:if="${page.blockLastNum < page.totalPageCount}">
-                        <a th:href="@{/trade/list.do(page=${page.blockLastNum + 1},type=${page.type},keyword=${page.keyword})}"> >> </a>
+                        <a th:href="@{/trade/list.do(page=${page.blockLastNum + 1},type=${page.type},keyword=${page.keyword},location=${page.location})}"> >> </a>
                     </li>
                 </ul>
             </div>

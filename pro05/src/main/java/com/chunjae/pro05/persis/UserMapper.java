@@ -25,5 +25,7 @@ public interface UserMapper {
     UserRating getUserRating(String name);
     List<UserRating> getUserRatingList(String name);
     int updateAccount(User user);
+    int insertUserRating(UserRating userRating);
+    int editUserRating(UserRating userRating);
 
 }
