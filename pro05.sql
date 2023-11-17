@@ -171,3 +171,7 @@ SELECT * FROM payment;
 SELECT p.pno AS pno, t.tno as tno, tradeType, title, name, price, deliveryFee, state, dstate
 FROM payment p JOIN delivery d ON (p.pno=d.pno) RIGHT OUTER JOIN trade t ON (t.tno=p.tno)
 WHERE t.name = 'leeename'
+
+SELECT * FROM (SELECT seller, FORMAT(AVG(rating), 1) as avgRating, COUNT(trustTrade) as cntTrustTrade FROM userRating u GROUP BY seller) a,
+(SELECT COUNT(tno) AS cntProducts FROM trade GROUP BY name) b
+WHERE seller = 'leeename'
