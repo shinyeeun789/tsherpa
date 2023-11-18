@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅</title>
+    <th:block th:replace="layout/head :: headFragment"></th:block>
+    <style>
+        #chat {
+            min-height: 60vh;
+            max-height: 60vh;
+            overflow-y: scroll;
+            margin: 10px auto;
+        }
+
+        .input-group{
+            max-width: 500px;
+            margin: 10px auto;
+        }
+
+        /* 내가 보낸 메시지 */
+        .my-message {
+            text-align: right;
+            background-color: #333;
+            color: #fff;
+            border-radius: 15px;
+            padding: 8px 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 다른 사람이 보낸 메시지 */
+        .others-message {
+            text-align: left;
+            background-color: #E2E2E2;
+            color: #333;
+            border-radius: 15px;
+            padding: 8px 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="/">Home</a> / <a th:href="@{/chat/list.do}"> 채팅방 목록 </a> / 채팅방 </span>
+                <h3> 채팅방 </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-3">
+            <div class="bg-dark text-center" style="margin: 0 auto; width: 200px; height: 200px; border-radius: 50%;">
+                <h4 class="text-white" style="line-height: 200px;" th:text="${user.seller}"></h4>
+            </div>
+            <div class="d-flex justify-content-between mt-5 p-2">
+                <span> 아이디 </span>
+                <span th:text="${user.seller}"></span>
+            </div>
+            <div class="d-flex justify-content-between p-2">
+                <span> 안전거래 </span>
+                <span th:text="|${user.cntTrustTrade}건|"></span>
+            </div>
+            <div class="d-flex justify-content-between p-2">
+                <span> 신뢰도 </span>
+                <span th:text="|${user.avgRating}점|"></span>
+            </div>
+            <div class="btn-group w-100 mt-3">
+                <button type="button" class="btn btn-lg btn-outline-danger" onclick="quit()"> 방 나가기 </button>
+                <button type="button" class="btn btn-lg btn-dark"> 거래완료 </button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="w-100">
+                <div id="chat">
+                    <th:block th:each="msg : ${beforeChat}">
+                        <div th:class="${msg.sender == #authentication.principal ? 'my-message' : 'others-message'}">
+                            [[${msg.message}]]
+                        </div>
+                    </th:block>
+                    <div class="msgArea"></div>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" id="content" placeholder="보낼 메세지를 입력하세요." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <input type="hidden" id="id" th:value="${#authentication.principal}">
+                    <input type="hidden" id="roomId" th:value="${roomId}" />
+                    <button type="button" value="전송" class="btn btn btn-primary" id="sendBtn" onclick="sendMsg()">전송</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+
+<!-- region websocket, 채팅 부분 js -->
+<script th:inline="javascript">
+    let chatInsertUrl = "/chat/insertChat.do";
+    let chatListUrl = "/chat/list.do";
+    let chatUrl = "ws://localhost:8086/ws/chat";
+
+    let socket = new WebSocket(chatUrl);
+    let roomId = document.getElementById('roomId').value;
+    let id = document.getElementById('id').value;
+
+    // 소켓 시작
+    socket.onopen = function (e) {
+        console.log('open server!')
+        enterRoom(socket);
+    };
+
+    // 소켓 종료
+    socket.onclose = function (e) {
+        console.log('disconnet');
+        console.log('WebSocket closed:', e);
+        location.href = chatListUrl;
+    };
+
+    // 에러발생
+    socket.onerror = function (e) {
+        console.log(e);
+    };
+
+    // 메세지 보냄
+    socket.onmessage = function (e) {
+        console.log("메시지 보냈따!!!!!!!!!!!!");
+        console.log(e.data);
+        // JSON 문자열을 JavaScript 객체로 파싱
+        let messageData = JSON.parse(e.data);
+        let id = $("#id").val();
+
+        // sender와 message를 추출
+        let sender = messageData.sender;
+        let message = messageData.message;
+
+        let msgArea = document.querySelector('.msgArea');
+        let newMsg = document.createElement('div');
+        newMsg.innerText = `${message}`;
+
+        if (id === sender) {
+            newMsg.className = 'my-message'; // 내 메시지일 경우
+        } else {
+            newMsg.className = 'others-message'; // 다른 사용자의 메시지일 경우
+        }
+
+        msgArea.append(newMsg);
+        scrollDown();
+    };
+
+    // 채팅방에 들어오는 경우
+    function enterRoom(socket) {
+        // Retrieve the CSRF token from the hidden input field
+        var enterMsg = {
+            "type": "ENTER",
+            "roomId": roomId,
+            "sender": id,
+            "message": ""
+        };
+        socket.send(JSON.stringify(enterMsg));
+    }
+
+    // 채팅방 메세지 보내는 경우
+    function sendMsg() {
+        let content = document.getElementById('content').value;
+        if(content) {
+            let talkMsg = {
+                "type": "TALK",
+                "roomId": roomId,
+                "sender": id,
+                "message": content
+            };
+            socket.send(JSON.stringify(talkMsg));
+
+            // ajax 요청
+            $.ajax({
+                type: "POST",
+                url: chatInsertUrl,
+                data: talkMsg,
+                cache: false,
+                success: function(result) {
+                    console.log(result);
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            });
+        }
+    }
+
+    // 채팅방 나가는 경우
+    function quit() {
+        var quitMsg = {
+            "type": "QUIT",
+            "roomId": roomId,
+            "sender": id,
+            "message": ""
+        };
+        socket.send(JSON.stringify(quitMsg));
+        location.href = chatListUrl;
+        socket.close();
+    }
+
+    // 채팅 입력시 채팅창 맨 아래로 이동
+    function scrollDown(){
+        let mySpace = document.getElementById("chat");
+        mySpace.scrollTop = mySpace.scrollHeight;
+    }
+
+    // 채팅 보내기
+    $(document).ready(function () {
+        $("#content").keyup(function(key) {
+            if(key.keyCode === 13) {
+                sendMsg();
+                $("#content").val("");
+                $("#content").focus();
+            }
+        });
+
+        $("#sendBtn").click(()=> {
+            $("#content").val("");
+            $("#content").focus();
+        })
+    });
+</script>
+<!-- endregion -->
+
+
+</body>
+</html>

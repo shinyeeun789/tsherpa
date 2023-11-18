@@ -163,15 +163,45 @@ CREATE TABLE delivery(
 	dstate VARCHAR(50) DEFAULT '결제 완료',
 	arrivalDate DATE
 );
+
+-- 채팅 테이블 생성
+CREATE TABLE chatroom(
+	roomId VARCHAR(200) PRIMARY key COMMENT '채팅방번호',
+	name VARCHAR(200) COMMENT '채팅방이름',
+	buyer VARCHAR(20) COMMENT '구매자',
+	seller VARCHAR(20) COMMENT '판매자',
+	tno int COMMENT '중고상품번호',
+	act VARCHAR(20) DEFAULT 'JOIN' COMMENT '활성화상태', -- JOIN(활성), DSBLD(비활성)
+	FOREIGN KEY(buyer) REFERENCES user(name) ON DELETE CASCADE,
+	FOREIGN KEY(seller) REFERENCES user(name) ON DELETE CASCADE,
+	FOREIGN KEY(tno) REFERENCES trade(tno) ON DELETE CASCADE
+);
+
+-- 채팅 메세지 테이블 생성
+CREATE TABLE chatmsg(
+	no BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '채팅메세지번호',
+	roomId VARCHAR(200) NOT NULL COMMENT '채팅방번호',
+	mtype VARCHAR(10) NOT NULL COMMENT '메세지타입',
+	sender VARCHAR(20) NOT NULL COMMENT '보내는이',
+	message VARCHAR(1000) NOT NULL COMMENT '내용',
+	resdate DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '작성일',
+	FOREIGN KEY(sender) REFERENCES user(name) ON DELETE CASCADE,
+	FOREIGN KEY(roomId) REFERENCES chatroom(roomId) ON DELETE CASCADE
+);
+
+SELECT * FROM chatmsg;
+
+SELECT * 
+from chatroom c JOIN (SELECT roomId,MAX(resdate) AS resdate FROM chatmsg GROUP BY roomId) m ON (c.roomId = m.roomId)
+
+SELECT * FROM chatmsg;
+
+SELECT roomId,MAX(resdate) AS resdate FROM chatmsg GROUP BY roomId
+
+
 DELETE FROM payment;
 DELETE FROM delivery;
 UPDATE trade SET state = '판매중' WHERE tno = 3;
 
 SELECT * FROM payment;
-SELECT p.pno AS pno, t.tno as tno, tradeType, title, name, price, deliveryFee, state, dstate
-FROM payment p JOIN delivery d ON (p.pno=d.pno) RIGHT OUTER JOIN trade t ON (t.tno=p.tno)
-WHERE t.name = 'leeename'
-
-SELECT * FROM (SELECT seller, FORMAT(AVG(rating), 1) as avgRating, COUNT(trustTrade) as cntTrustTrade FROM userRating u GROUP BY seller) a,
-(SELECT COUNT(tno) AS cntProducts FROM trade GROUP BY name) b
-WHERE seller = 'leeename'
+SELECT * FROM trade;

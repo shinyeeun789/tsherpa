@@ -97,7 +97,7 @@ public class UserController {
 
     @GetMapping("/userEdit.do")
     public String userEditForm(Principal principal, Model model) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
+        User user = userService.getByName(principal.getName());
         model.addAttribute("user", user);
         return "/user/userEdit";
     }
@@ -123,15 +123,13 @@ public class UserController {
 
     @GetMapping("/user/detail.do")
     public String userDetail(Principal principal, Model model) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
-
-        UserRating userRating = userService.getUserRating(user.getName());
+        UserRating userRating = userService.getUserRating(principal.getName());
         model.addAttribute("userRating", userRating);
 
-        List<UserRating> ratingList = userService.getUserRatingList(user.getName());
+        List<UserRating> ratingList = userService.getUserRatingList(principal.getName());
         model.addAttribute("ratingList", ratingList);
 
-        List<TradeVO> userTrades = tradeService.getTradeByName(user.getName());
+        List<TradeVO> userTrades = tradeService.getTradeByName(principal.getName());
         model.addAttribute("userTrades", userTrades);
 
         return "/user/myDetail";
@@ -139,7 +137,7 @@ public class UserController {
 
     @GetMapping("/user/myAccount.do")
     public String myAccount(Principal principal, Model model) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
+        User user = userService.getByName(principal.getName());
         model.addAttribute("user", user);
 
         return "/user/myAccount";
@@ -147,18 +145,16 @@ public class UserController {
 
     @PostMapping("/user/addAccountInfo.do")
     public String addAccountInfo(User user, Principal principal) throws Exception {
-        user.setId(Long.valueOf(principal.getName()));
+        user.setName(principal.getName());
         userService.updateAccount(user);
         return "redirect:myAccount.do";
     }
 
     @GetMapping("/user/myRecommend.do")
     public String myRecommend(Principal principal, HttpServletRequest request, Model model) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
-
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
         Page page = new Page(curPage);
-        page.setName(user.getName());
+        page.setName(principal.getName());
         page.makePage(tradeService.totalTradeRecommend(page));
 
         List<TradeVO> recommends = tradeService.myTradeRecommend(page);
@@ -169,11 +165,9 @@ public class UserController {
 
     @GetMapping("/user/myProduct.do")
     public String myProduct(Principal principal, HttpServletRequest request, Model model) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
-
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
         Page page = new Page(curPage);
-        page.setName(user.getName());
+        page.setName(principal.getName());
         page.makePage(paymentService.totalProduct(page));
 
         List<AboutTradeVO> myProductList = paymentService.myProduct(page);
@@ -185,11 +179,9 @@ public class UserController {
 
     @GetMapping("/user/myPayment.do")
     public String myPayment(Principal principal, HttpServletRequest request, Model model) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
-
         int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
         Page page = new Page(curPage);
-        page.setName(user.getName());
+        page.setName(principal.getName());
         page.makePage(paymentService.totalPayment(page));
 
         List<AboutTradeVO> paymentList = paymentService.myPayment(page);
@@ -201,8 +193,7 @@ public class UserController {
 
     @PostMapping("/user/addReview.do")
     public String addReview(Principal principal, UserRating userRating, RedirectAttributes rttr) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
-        userRating.setBuyer(user.getName());
+        userRating.setBuyer(principal.getName());
 
         int result = userService.insertUserRating(userRating);
         if(result > 0) {

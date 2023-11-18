@@ -66,8 +66,7 @@ public class FreeController {
 
     @PostMapping("insert.do")
     public String freeInsert(Free free, HttpServletRequest request, Principal principal, RedirectAttributes rttr) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
-        free.setName(user.getName());
+        free.setName(principal.getName());
         int result = freeService.insertFree(free);
         if(result > 0) {
             rttr.addFlashAttribute("msg", "게시판에 글이 등록되었습니다.");

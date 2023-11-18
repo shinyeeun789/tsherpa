@@ -31,8 +31,7 @@ public class FreeCommentController {
     @PostMapping("insert.do")
     @ResponseBody
     public List<FreeComment> freeCommentInsert(@RequestBody FreeComment comment, Principal principal) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
-        comment.setName(user.getName());
+        comment.setName(principal.getName());
 
         freeCommentService.insertFreeComment(comment);
 

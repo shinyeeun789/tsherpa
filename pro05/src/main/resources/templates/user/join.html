@@ -135,11 +135,11 @@
                 } else if(data == "") {
                     $("#msg").text("아이디가 확인되지 않았습니다. 다시 시도해주세요.")
                 }
-            },
+            }
             error:function(res) {
                 alert("아이디 중복 확인에 실패했습니다. 잠시 후 다시 시도해주세요.");
                 console.log(res.responseText);
-            }
+            },
         })
     }
 </script>

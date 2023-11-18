@@ -91,7 +91,13 @@
                             <h4 class="text-end">[[${trade.deliveryFee}]]원<br><span> 배송비 </span></h4>
                         </li>
                     </ul>
-                    <a th:href="@{/payment/addPayment.do(tno=${trade.tno})}" class="btn btn-lg btn-dark w-100 mt-4"> 구매하기 </a>
+                    <a th:href="@{/payment/addPayment.do(tno=${trade.tno})}" th:if='${!#strings.equals(trade.tradeType, "직거래")}' class="btn btn-lg btn-dark w-100 mt-4"> 구매하기 </a>
+                    <form th:action="@{/chat/createRoom.do}" method="post" th:if='${#strings.equals(trade.tradeType, "직거래")}'>
+                        <input type="hidden" name="tno" id="tno" th:value="${trade.tno}">
+                        <input type="hidden" name="seller" id="seller" th:value="${trade.name}">
+                        <input type="hidden" name="name" id="name" th:value="${trade.title}">
+                        <input type="submit" class="btn btn-lg btn-dark w-100 mt-4" value="채팅하기">
+                    </form>
                 </div>
                 <div class="info-table mt-5">
                     <h5 class="mb-3"> 판매자 정보 </h5>

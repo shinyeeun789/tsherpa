@@ -76,7 +76,7 @@
     </select>
 
     <update id="updateAccount">
-        update user set bank = #{bank}, accountNum = #{accountNum} where id = #{id}
+        update user set bank = #{bank}, accountNum = #{accountNum} where name = #{name}
     </update>
 
     <insert id="insertUserRating">

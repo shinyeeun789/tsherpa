@@ -40,7 +40,7 @@ public class AuthProvider implements AuthenticationProvider {
             } else {
                 roles.add(new SimpleGrantedAuthority("USER")); // 권한 부여
             }
-            token = new UsernamePasswordAuthenticationToken(userVo.getId(), null, roles);
+            token = new UsernamePasswordAuthenticationToken(userVo.getName(), null, roles);
             // 인증된 user 정보를 담아 SecurityContextHolder에 저장되는 token
 
             return token;

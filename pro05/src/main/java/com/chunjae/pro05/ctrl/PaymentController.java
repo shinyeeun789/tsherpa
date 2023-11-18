@@ -32,7 +32,7 @@ public class PaymentController {
 
     @GetMapping("addPayment.do")
     public String addPayment(@RequestParam int tno, Principal principal, Model model) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
+        User user = userService.getByName(principal.getName());
         model.addAttribute("user", user);
 
         TradeVO trade = tradeService.getTradeVO(tno);

@@ -18,7 +18,7 @@
     </select>
 
     <select id="myProduct">
-        SELECT p.pno AS pno, t.tno as tno, tradeType, title, name, price, deliveryFee, state, dstate
+        SELECT p.pno AS pno, t.tno as tno, tradeType, title, name, t.price, deliveryFee, state, dstate
         FROM payment p JOIN delivery d ON (p.pno=d.pno) RIGHT OUTER JOIN trade t ON (t.tno=p.tno)
         WHERE t.name = #{name}
         ORDER BY pno desc limit #{postStart}, #{postCount}

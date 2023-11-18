@@ -65,8 +65,7 @@ public class TradeController {
         UserRating userRating = userService.getUserRating(trade.getName());
         model.addAttribute("userRating", userRating);
 
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
-        boolean isRecommend = tradeService.isRecommend(tno, user.getName());
+        boolean isRecommend = tradeService.isRecommend(tno, principal.getName());
         model.addAttribute("isRecommend", isRecommend);
 
         return "/trade/tradeDetail";
@@ -90,9 +89,8 @@ public class TradeController {
             }
         }
         if(!session.getAttribute(trade.getTno() + ":tradeCookie").equals(session.getAttribute(trade.getTno() + ":tradeCookie ex"))) {
-            User user = userService.getUserById(Long.valueOf(principal.getName()));
             TradeRecommends tradeRecommends = new TradeRecommends();
-            tradeRecommends.setName(user.getName());
+            tradeRecommends.setName(principal.getName());
             tradeRecommends.setTno(trade.getTno());
             tradeService.updateRecommend(trade.getTno(), "Plus", tradeRecommends);
         }
@@ -106,9 +104,8 @@ public class TradeController {
         session.removeAttribute(trade.getTno() + ":tradeCookie");
         session.removeAttribute(trade.getTno() + ":tradeCookie ex");
 
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
         TradeRecommends tradeRecommends = new TradeRecommends();
-        tradeRecommends.setName(user.getName());
+        tradeRecommends.setName(principal.getName());
         tradeRecommends.setTno(trade.getTno());
         tradeService.updateRecommend(trade.getTno(), "Minus", tradeRecommends);
 
@@ -126,8 +123,7 @@ public class TradeController {
 
     @PostMapping("insert.do")
     public String tradeInsert(Trade trade, @RequestParam("upfile") MultipartFile file, Principal principal, RedirectAttributes rttr) throws Exception {
-        User user = userService.getUserById(Long.valueOf(principal.getName()));
-        trade.setName(user.getName());
+        trade.setName(principal.getName());
 
         String currentDir = System.getProperty("user.dir");           // 업로드 경로 설정
         String relativePath = File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "upload" + File.separator + "items";
