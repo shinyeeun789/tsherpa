@@ -71,7 +71,7 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-3">
-            <div class="bg-dark text-center" style="margin: 0 auto; width: 200px; height: 200px; border-radius: 50%;">
+            <div class="bg-dark text-center" style="margin: 0 auto; max-width: 200px; max-height: 200px; border-radius: 50%;">
                 <h4 class="text-white" style="line-height: 200px;" th:text="${user.seller}"></h4>
             </div>
             <div class="d-flex justify-content-between mt-5 p-2">
@@ -86,9 +86,14 @@
                 <span> 신뢰도 </span>
                 <span th:text="|${user.avgRating}점|"></span>
             </div>
+            <div class="d-flex justify-content-between p-2">
+                <span> 거래여부 </span>
+                <span th:text="${state}" th:style="${#strings.equals(state, '판매완료') ? 'color: red;' : 'color: #333;'}"></span>
+            </div>
             <div class="btn-group w-100 mt-3">
                 <button type="button" class="btn btn-lg btn-outline-danger" onclick="quit()"> 방 나가기 </button>
-                <button type="button" class="btn btn-lg btn-dark"> 거래완료 </button>
+                <a th:href="@{/payment/payComplete.do(tno=${chatRoom.tno}, buyer=${chatRoom.buyer})}" type="button" class="btn btn-lg btn-dark"
+                   th:if="${(chatRoom.seller == #authentication.principal) && (state == '판매중')}"> 거래완료 </a>
             </div>
         </div>
         <div class="col">
@@ -106,7 +111,7 @@
                 <input type="text" class="form-control" id="content" placeholder="보낼 메세지를 입력하세요." aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <input type="hidden" id="id" th:value="${#authentication.principal}">
-                    <input type="hidden" id="roomId" th:value="${roomId}" />
+                    <input type="hidden" id="roomId" th:value="${chatRoom.roomId}" />
                     <button type="button" value="전송" class="btn btn btn-primary" id="sendBtn" onclick="sendMsg()">전송</button>
                 </div>
             </div>
@@ -145,8 +150,6 @@
 
     // 메세지 보냄
     socket.onmessage = function (e) {
-        console.log("메시지 보냈따!!!!!!!!!!!!");
-        console.log(e.data);
         // JSON 문자열을 JavaScript 객체로 파싱
         let messageData = JSON.parse(e.data);
         let id = $("#id").val();

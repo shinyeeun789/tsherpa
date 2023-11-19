@@ -144,9 +144,9 @@ CREATE TABLE payment(
 	pno INT PRIMARY KEY AUTO_INCREMENT,
 	tno INT NOT NULL,
 	buyer VARCHAR(20) NOT NULL,
-	impUid VARCHAR(100) NOT NULL,
-	merchantUid VARCHAR(100) NOT NULL,
-	applyNum VARCHAR(100) NOT NULL,
+	impUid VARCHAR(100),
+	merchantUid VARCHAR(100),
+	applyNum VARCHAR(100),
 	price INT NOT NULL,
 	FOREIGN KEY (tno) REFERENCES trade(tno),
 	FOREIGN KEY (buyer) REFERENCES user(NAME)
@@ -189,19 +189,11 @@ CREATE TABLE chatmsg(
 	FOREIGN KEY(roomId) REFERENCES chatroom(roomId) ON DELETE CASCADE
 );
 
-SELECT * FROM chatmsg;
-
-SELECT * 
-from chatroom c JOIN (SELECT roomId,MAX(resdate) AS resdate FROM chatmsg GROUP BY roomId) m ON (c.roomId = m.roomId)
-
-SELECT * FROM chatmsg;
-
-SELECT roomId,MAX(resdate) AS resdate FROM chatmsg GROUP BY roomId
-
 
 DELETE FROM payment;
 DELETE FROM delivery;
-UPDATE trade SET state = '판매중' WHERE tno = 3;
+UPDATE trade SET state = '판매중' WHERE tno = 2;
+
 
 SELECT * FROM payment;
 SELECT * FROM trade;

@@ -66,11 +66,11 @@
                 <table class="table table-hover text-center">
                     <thead>
                     <tr>
-                        <th> #</th>
-                        <th> 주문상품</th>
-                        <th> 판매자</th>
-                        <th> 상태</th>
-                        <th> 배송예정일</th>
+                        <th> # </th>
+                        <th> 주문상품 </th>
+                        <th> 판매자 </th>
+                        <th> 상태 </th>
+                        <th> 배송예정일 </th>
                         <th> 비고 </th>
                     </tr>
                     </thead>
@@ -79,7 +79,7 @@
                         <td class="align-middle" th:text="${pay.pno}"></td>
                         <td class="align-middle" th:text="${pay.title}"></td>
                         <td class="align-middle" th:text="${pay.name}"></td>
-                        <td class="align-middle" th:text="${pay.dstate}"></td>
+                        <td class="align-middle" th:text="${pay.dstate == null ? '거래완료' : pay.dstate}"></td>
                         <td class="align-middle" th:with="result = ${pay.arrivalDate == null ? '-' : pay.arrivalDate}" th:text="${result}"></td>
                         <td>
                             <button th:id="${status.index}" class="btn btn-primary btn-sm addReviewBtn" th:if="${pay.isReview == 0}"> 거래후기 작성 </button>

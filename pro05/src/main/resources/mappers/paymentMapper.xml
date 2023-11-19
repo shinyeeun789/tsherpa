@@ -8,7 +8,7 @@
 
     <select id="myPayment" resultType="com.chunjae.pro05.entity.AboutTradeVO">
         SELECT p.pno AS pno, t.tno as tno, title, name, dstate, arrivalDate, uid, rating, trustTrade, u.content AS content, IFNULL(uid, 0) AS 'isReview'
-        FROM payment p JOIN delivery d ON (p.pno=d.pno) JOIN trade t ON (t.tno=p.tno) LEFT OUTER JOIN userrating u ON (u.tno=t.tno)
+        FROM payment p LEFT OUTER JOIN delivery d ON (p.pno=d.pno) JOIN trade t ON (t.tno=p.tno) LEFT OUTER JOIN userrating u ON (u.tno=t.tno)
         WHERE p.buyer = #{name}
         ORDER BY pno desc limit #{postStart}, #{postCount}
     </select>

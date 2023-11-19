@@ -57,4 +57,12 @@ public class PaymentServiceImpl implements PaymentService {
     public List<AboutTradeVO> myProduct(Page page) throws Exception {
         return paymentMapper.myProduct(page);
     }
+
+    @Override
+    @Transactional
+    public int payComplete(Payment payment) throws Exception {
+        int result = tradeMapper.updateState(payment.getTno());
+        result += paymentMapper.addPayment(payment);
+        return result;
+    }
 }

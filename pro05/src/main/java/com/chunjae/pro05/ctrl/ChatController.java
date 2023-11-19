@@ -1,11 +1,9 @@
 package com.chunjae.pro05.ctrl;
 
 import com.chunjae.pro05.biz.ChatService;
+import com.chunjae.pro05.biz.TradeService;
 import com.chunjae.pro05.biz.UserService;
-import com.chunjae.pro05.entity.ChatMessage;
-import com.chunjae.pro05.entity.ChatRoom;
-import com.chunjae.pro05.entity.User;
-import com.chunjae.pro05.entity.UserRating;
+import com.chunjae.pro05.entity.*;
 import com.chunjae.pro05.util.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +28,8 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
     @Autowired
+    private TradeService tradeService;
+    @Autowired
     private UserService userService;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -53,17 +53,18 @@ public class ChatController {
         int ck = chatService.findChatDist(chatRoom);            // 채팅방 존재 여부 확인
         if(ck == 0) {
             int ck2 = chatService.createRoom(chatRoom);
-            return "redirect:list.do";
+
         } else {
             response.setContentType("text/html;charset=UTF-8");;
-            return "redirect:list.do";
         }
+        return "redirect:list.do";
     }
 
     @GetMapping("chatRoom.do")
     public String chatRoom(Model model, @RequestParam String roomId, Principal principal) throws Exception {
         List<ChatMessage> chatMsg = chatService.findChatById(roomId);
         ChatRoom chatRoom = chatService.findRoomById(roomId);
+        Trade trade = tradeService.getTrade(chatRoom.getTno());
 
         if(chatRoom.getSeller().equals(principal.getName())) {          // 현재 로그인한 사람이 파는 사람이라면
             UserRating user = userService.getUserRating(chatRoom.getBuyer());
@@ -74,7 +75,8 @@ public class ChatController {
         }
 
         model.addAttribute("beforeChat", chatMsg);
-        model.addAttribute("roomId", roomId);
+        model.addAttribute("chatRoom", chatRoom);
+        model.addAttribute("state", trade.getState());
         return "chat/chatRoom";
     }
 

@@ -2081,3 +2081,1384 @@ java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-11-19 01:10:13.748 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
 2023-11-19 01:10:13.753 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 01:10:15.938 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 1344 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 01:10:15.938 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 01:10:16.081 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 01:10:16.081 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 01:10:16.842 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 01:10:16.842 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 01:10:16.842 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 01:10:16.842 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 01:10:16.921 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 01:10:16.921 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 840 ms
+2023-11-19 01:10:17.554 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@31325681, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4130423e, org.springframework.security.web.context.SecurityContextPersistenceFilter@2cc0dd, org.springframework.security.web.header.HeaderWriterFilter@2b3813ba, org.springframework.security.web.authentication.logout.LogoutFilter@85693ea, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@79b12879, org.springframework.security.web.session.ConcurrentSessionFilter@5b1cc851, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@70727652, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a6d12d1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@409f7fa4, org.springframework.security.web.session.SessionManagementFilter@412a6b19, org.springframework.security.web.access.ExceptionTranslationFilter@7ae5fbfe, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6cc36b64]
+2023-11-19 01:10:17.882 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 01:10:17.898 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 01:10:17.914 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 01:10:17.922 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.236 seconds (JVM running for 3.026)
+2023-11-19 01:10:24.483 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 01:10:24.483 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 01:10:24.483 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 01:10:24.530 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 01:10:24.610 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 01:10:24.656 ERROR [http-nio-8086-exec-1] [o.a.c.c.C.[.[.[/].[dispatcherServlet]] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getSeller()" because "chatRoom" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getSeller()" because "chatRoom" is null
+	at com.chunjae.pro05.ctrl.ChatController.chatRoom(ChatController.java:68)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:147)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:125)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:223)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:217)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 01:10:25.655 INFO  [http-nio-8086-exec-2] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=안녕하세요, lastDate=2023-11-19 01:02:47, act=JOIN, sessions=[])]
+2023-11-19 01:10:34.916 INFO  [http-nio-8086-exec-2] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=안녕하세요, lastDate=2023-11-19 01:02:47, act=JOIN, sessions=[])]
+2023-11-19 01:10:43.634 INFO  [http-nio-8086-exec-5] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=안녕하세요, lastDate=2023-11-19 01:02:47, act=JOIN, sessions=[])]
+2023-11-19 01:10:46.061 INFO  [http-nio-8086-exec-1] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=안녕하세요, lastDate=2023-11-19 01:02:47, act=JOIN, sessions=[])]
+2023-11-19 01:10:46.067 INFO  [http-nio-8086-exec-10] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=안녕하세요, lastDate=2023-11-19 01:02:47, act=JOIN, sessions=[])]
+2023-11-19 01:11:43.032 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 01:11:43.034 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 15:40:39.791 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 21048 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 15:40:39.799 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 15:40:39.975 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 15:40:39.975 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 15:40:40.894 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 15:40:40.894 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:40:40.906 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 15:40:40.906 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 15:40:40.977 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 15:40:40.977 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1002 ms
+2023-11-19 15:40:41.640 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@9e83d73, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b2b3f58, org.springframework.security.web.context.SecurityContextPersistenceFilter@274a7c63, org.springframework.security.web.header.HeaderWriterFilter@1891182d, org.springframework.security.web.authentication.logout.LogoutFilter@bdf4ff8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@29c762d4, org.springframework.security.web.session.ConcurrentSessionFilter@1dea972c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4f03deeb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@719bd0f5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@786649af, org.springframework.security.web.session.SessionManagementFilter@73b50fef, org.springframework.security.web.access.ExceptionTranslationFilter@6c1963bb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@67c882cd]
+2023-11-19 15:40:41.955 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 15:40:41.971 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:40:41.987 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 15:40:42.004 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.498 seconds (JVM running for 3.259)
+2023-11-19 15:42:18.945 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 30040 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 15:42:18.946 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 15:42:19.131 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 15:42:19.131 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 15:42:20.098 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 15:42:20.104 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:42:20.104 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 15:42:20.104 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 15:42:20.166 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 15:42:20.166 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1035 ms
+2023-11-19 15:42:20.783 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7341a50, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6f568401, org.springframework.security.web.context.SecurityContextPersistenceFilter@eecfce1, org.springframework.security.web.header.HeaderWriterFilter@66ed77ca, org.springframework.security.web.authentication.logout.LogoutFilter@3cb90aa2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1cbb8a84, org.springframework.security.web.session.ConcurrentSessionFilter@51a71616, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@12fa84e8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@70784b22, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2370c982, org.springframework.security.web.session.SessionManagementFilter@5f5d7af6, org.springframework.security.web.access.ExceptionTranslationFilter@6600def2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@311d15a1]
+2023-11-19 15:42:21.116 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 15:42:21.133 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:42:21.150 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 15:42:21.165 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.533 seconds (JVM running for 3.189)
+2023-11-19 15:42:21.298 INFO  [http-nio-8086-exec-2] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 15:42:21.298 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 15:42:21.298 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 15:43:18.964 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 18140 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 15:43:18.969 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 15:43:19.158 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 15:43:19.158 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 15:43:20.035 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 15:43:20.044 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:43:20.051 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 15:43:20.051 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 15:43:20.110 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 15:43:20.110 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 952 ms
+2023-11-19 15:43:20.743 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@fb35f0f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46e01868, org.springframework.security.web.context.SecurityContextPersistenceFilter@4321668a, org.springframework.security.web.header.HeaderWriterFilter@7b13ae3b, org.springframework.security.web.authentication.logout.LogoutFilter@4ec07676, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@197f82de, org.springframework.security.web.session.ConcurrentSessionFilter@6a8011f2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3b9931fb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@295f6fbe, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@158fa309, org.springframework.security.web.session.SessionManagementFilter@2a28e468, org.springframework.security.web.access.ExceptionTranslationFilter@64466a28, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6b87516e]
+2023-11-19 15:43:21.076 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 15:43:21.093 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:43:21.111 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 15:43:21.122 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.472 seconds (JVM running for 3.109)
+2023-11-19 15:43:21.258 INFO  [http-nio-8086-exec-2] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 15:43:21.258 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 15:43:21.258 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 15:43:28.912 INFO  [http-nio-8086-exec-8] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 15:43:29.040 INFO  [http-nio-8086-exec-8] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 15:43:29.416 INFO  [http-nio-8086-exec-10] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=안녕하세요, lastDate=2023-11-19 01:02:47, act=JOIN, sessions=[])]
+2023-11-19 15:43:45.192 INFO  [http-nio-8086-exec-4] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=안녕하세요, lastDate=2023-11-19 01:02:47, act=JOIN, sessions=[]), ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[])]
+2023-11-19 15:48:06.524 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 15:48:06.528 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 15:48:17.363 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 14088 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 15:48:17.366 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 15:48:17.593 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 15:48:17.594 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 15:48:18.529 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 15:48:18.536 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:48:18.537 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 15:48:18.537 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 15:48:18.609 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 15:48:18.610 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1016 ms
+2023-11-19 15:48:19.305 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@39a2b688, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3d3cacba, org.springframework.security.web.context.SecurityContextPersistenceFilter@6470a3ee, org.springframework.security.web.header.HeaderWriterFilter@6fdb4dad, org.springframework.security.web.authentication.logout.LogoutFilter@5b1cc851, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@10e29f11, org.springframework.security.web.session.ConcurrentSessionFilter@446c0e1f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@20bf9d0a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@47d0857f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@488c32c, org.springframework.security.web.session.SessionManagementFilter@55c24800, org.springframework.security.web.access.ExceptionTranslationFilter@78f3a8c2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@ae32a36]
+2023-11-19 15:48:19.629 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 15:48:19.644 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:48:19.661 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 15:48:19.672 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.613 seconds (JVM running for 3.352)
+2023-11-19 15:48:19.758 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 15:48:19.758 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 15:48:19.759 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 1 ms
+2023-11-19 15:48:19.802 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 15:48:19.918 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 15:48:19.950 INFO  [http-nio-8086-exec-1] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:48:33.125 INFO  [http-nio-8086-exec-5] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:48:45.715 ERROR [http-nio-8086-exec-3] [o.s.w.s.h.ExceptionWebSocketHandlerDecorator] - Closing session due to exception for StandardWebSocketSession[id=65394438-da5b-8086-13d4-1a7c912756c2, uri=ws://localhost:8086/ws/chat]
+java.lang.IllegalStateException: java.lang.IllegalStateException: The WebSocket session [1] has been closed and no method (apart from close()) may be called on a closed session
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at java.base/java.util.concurrent.ForkJoinTask.getThrowableException(ForkJoinTask.java:562)
+	at java.base/java.util.concurrent.ForkJoinTask.reportException(ForkJoinTask.java:591)
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:689)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:765)
+	at com.chunjae.pro05.config.WebSocketChatHandler.sendToEachSocket(WebSocketChatHandler.java:58)
+	at com.chunjae.pro05.config.WebSocketChatHandler.handleTextMessage(WebSocketChatHandler.java:47)
+	at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.handleMessage(WebSocketHandlerDecorator.java:75)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.handleMessage(LoggingWebSocketHandlerDecorator.java:56)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.handleMessage(ExceptionWebSocketHandlerDecorator.java:58)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.handleTextMessage(StandardWebSocketHandlerAdapter.java:114)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.access$000(StandardWebSocketHandlerAdapter.java:43)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:85)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:82)
+	at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:390)
+	at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:130)
+	at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:484)
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:284)
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:130)
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:184)
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:164)
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:152)
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.lang.IllegalStateException: The WebSocket session [1] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1061)
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:612)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketSession.sendTextMessage(StandardWebSocketSession.java:215)
+	at org.springframework.web.socket.adapter.AbstractWebSocketSession.sendMessage(AbstractWebSocketSession.java:108)
+	at com.chunjae.pro05.config.WebSocketChatHandler.lambda$sendToEachSocket$0(WebSocketChatHandler.java:60)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.HashMap$KeySpliterator.forEachRemaining(HashMap.java:1707)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290)
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:754)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2023-11-19 15:48:45.731 INFO  [http-nio-8086-exec-8] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:48:48.198 INFO  [http-nio-8086-exec-9] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:48:55.192 ERROR [http-nio-8086-exec-5] [o.s.w.s.h.ExceptionWebSocketHandlerDecorator] - Closing session due to exception for StandardWebSocketSession[id=7fb97f21-7199-0be5-21ba-c00c980ebc1b, uri=ws://localhost:8086/ws/chat]
+java.lang.IllegalStateException: java.lang.IllegalStateException: The WebSocket session [3] has been closed and no method (apart from close()) may be called on a closed session
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at java.base/java.util.concurrent.ForkJoinTask.getThrowableException(ForkJoinTask.java:562)
+	at java.base/java.util.concurrent.ForkJoinTask.reportException(ForkJoinTask.java:591)
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:689)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:765)
+	at com.chunjae.pro05.config.WebSocketChatHandler.sendToEachSocket(WebSocketChatHandler.java:58)
+	at com.chunjae.pro05.config.WebSocketChatHandler.handleTextMessage(WebSocketChatHandler.java:47)
+	at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.handleMessage(WebSocketHandlerDecorator.java:75)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.handleMessage(LoggingWebSocketHandlerDecorator.java:56)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.handleMessage(ExceptionWebSocketHandlerDecorator.java:58)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.handleTextMessage(StandardWebSocketHandlerAdapter.java:114)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.access$000(StandardWebSocketHandlerAdapter.java:43)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:85)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:82)
+	at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:390)
+	at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:130)
+	at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:484)
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:284)
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:130)
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:184)
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:164)
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:152)
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.lang.IllegalStateException: The WebSocket session [3] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1061)
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:612)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketSession.sendTextMessage(StandardWebSocketSession.java:215)
+	at org.springframework.web.socket.adapter.AbstractWebSocketSession.sendMessage(AbstractWebSocketSession.java:108)
+	at com.chunjae.pro05.config.WebSocketChatHandler.lambda$sendToEachSocket$0(WebSocketChatHandler.java:60)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.HashMap$KeySpliterator.forEachRemaining(HashMap.java:1707)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290)
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:754)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2023-11-19 15:48:55.372 INFO  [http-nio-8086-exec-7] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:49:26.647 ERROR [http-nio-8086-exec-10] [o.s.w.s.h.ExceptionWebSocketHandlerDecorator] - Closing session due to exception for StandardWebSocketSession[id=1b11968d-4c62-6eb1-0e7f-c49f3ea2d3fa, uri=ws://localhost:8086/ws/chat]
+java.lang.IllegalStateException: The WebSocket session [5] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1061)
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:612)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketSession.sendTextMessage(StandardWebSocketSession.java:215)
+	at org.springframework.web.socket.adapter.AbstractWebSocketSession.sendMessage(AbstractWebSocketSession.java:108)
+	at com.chunjae.pro05.config.WebSocketChatHandler.lambda$sendToEachSocket$0(WebSocketChatHandler.java:60)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.HashMap$KeySpliterator.forEachRemaining(HashMap.java:1707)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290)
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:754)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.helpComplete(ForkJoinPool.java:1223)
+	at java.base/java.util.concurrent.ForkJoinPool.helpComplete(ForkJoinPool.java:1915)
+	at java.base/java.util.concurrent.ForkJoinTask.awaitDone(ForkJoinTask.java:433)
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:687)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:765)
+	at com.chunjae.pro05.config.WebSocketChatHandler.sendToEachSocket(WebSocketChatHandler.java:58)
+	at com.chunjae.pro05.config.WebSocketChatHandler.handleTextMessage(WebSocketChatHandler.java:47)
+	at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.handleMessage(WebSocketHandlerDecorator.java:75)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.handleMessage(LoggingWebSocketHandlerDecorator.java:56)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.handleMessage(ExceptionWebSocketHandlerDecorator.java:58)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.handleTextMessage(StandardWebSocketHandlerAdapter.java:114)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.access$000(StandardWebSocketHandlerAdapter.java:43)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:85)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:82)
+	at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:390)
+	at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:130)
+	at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:484)
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:284)
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:130)
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:184)
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:164)
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:152)
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 15:49:26.731 INFO  [http-nio-8086-exec-2] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:49:28.057 INFO  [http-nio-8086-exec-3] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:50:14.168 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 15:50:14.172 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 15:50:22.505 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 27576 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 15:50:22.510 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 15:50:22.684 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 15:50:22.684 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 15:50:23.557 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 15:50:23.557 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:50:23.573 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 15:50:23.574 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 15:50:23.641 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 15:50:23.641 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 957 ms
+2023-11-19 15:50:24.275 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b87516e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b82ebbc, org.springframework.security.web.context.SecurityContextPersistenceFilter@2a28e468, org.springframework.security.web.header.HeaderWriterFilter@1c41088c, org.springframework.security.web.authentication.logout.LogoutFilter@4c8e4ea8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@62e242e0, org.springframework.security.web.session.ConcurrentSessionFilter@f2903b0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@bdf4ff8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@30bafe2a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3ff2e0f, org.springframework.security.web.session.SessionManagementFilter@5f8e09c0, org.springframework.security.web.access.ExceptionTranslationFilter@28de0ea6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7e413b90]
+2023-11-19 15:50:24.591 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 15:50:24.605 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 15:50:24.622 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 15:50:24.630 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.428 seconds (JVM running for 3.058)
+2023-11-19 15:50:24.791 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 15:50:24.791 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 15:50:24.791 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 15:50:24.841 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 15:50:24.909 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 15:50:24.932 INFO  [http-nio-8086-exec-1] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:53:41.059 ERROR [http-nio-8086-exec-2] [o.s.w.s.h.ExceptionWebSocketHandlerDecorator] - Closing session due to exception for StandardWebSocketSession[id=d874fc98-f2f4-5299-0375-24b1e69ceec6, uri=ws://localhost:8086/ws/chat]
+java.lang.IllegalStateException: The WebSocket session [0] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1061)
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:612)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketSession.sendTextMessage(StandardWebSocketSession.java:215)
+	at org.springframework.web.socket.adapter.AbstractWebSocketSession.sendMessage(AbstractWebSocketSession.java:108)
+	at com.chunjae.pro05.config.WebSocketChatHandler.lambda$sendToEachSocket$0(WebSocketChatHandler.java:60)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.HashMap$KeySpliterator.forEachRemaining(HashMap.java:1707)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290)
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:754)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.helpComplete(ForkJoinPool.java:1223)
+	at java.base/java.util.concurrent.ForkJoinPool.helpComplete(ForkJoinPool.java:1915)
+	at java.base/java.util.concurrent.ForkJoinTask.awaitDone(ForkJoinTask.java:433)
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:687)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:765)
+	at com.chunjae.pro05.config.WebSocketChatHandler.sendToEachSocket(WebSocketChatHandler.java:58)
+	at com.chunjae.pro05.config.WebSocketChatHandler.handleTextMessage(WebSocketChatHandler.java:47)
+	at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.handleMessage(WebSocketHandlerDecorator.java:75)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.handleMessage(LoggingWebSocketHandlerDecorator.java:56)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.handleMessage(ExceptionWebSocketHandlerDecorator.java:58)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.handleTextMessage(StandardWebSocketHandlerAdapter.java:114)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.access$000(StandardWebSocketHandlerAdapter.java:43)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:85)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:82)
+	at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:390)
+	at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:130)
+	at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:484)
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:284)
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:130)
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:184)
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:164)
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:152)
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 15:53:41.148 INFO  [http-nio-8086-exec-1] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:53:46.794 ERROR [http-nio-8086-exec-5] [o.s.w.s.h.ExceptionWebSocketHandlerDecorator] - Closing session due to exception for StandardWebSocketSession[id=befee657-b68f-255e-e6c5-e5023b7dc968, uri=ws://localhost:8086/ws/chat]
+java.lang.IllegalStateException: java.lang.IllegalStateException: The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at java.base/java.util.concurrent.ForkJoinTask.getThrowableException(ForkJoinTask.java:562)
+	at java.base/java.util.concurrent.ForkJoinTask.reportException(ForkJoinTask.java:591)
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:689)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:765)
+	at com.chunjae.pro05.config.WebSocketChatHandler.sendToEachSocket(WebSocketChatHandler.java:58)
+	at com.chunjae.pro05.config.WebSocketChatHandler.handleTextMessage(WebSocketChatHandler.java:47)
+	at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.handleMessage(WebSocketHandlerDecorator.java:75)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.handleMessage(LoggingWebSocketHandlerDecorator.java:56)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.handleMessage(ExceptionWebSocketHandlerDecorator.java:58)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.handleTextMessage(StandardWebSocketHandlerAdapter.java:114)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.access$000(StandardWebSocketHandlerAdapter.java:43)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:85)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:82)
+	at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:390)
+	at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:130)
+	at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:484)
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:284)
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:130)
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:184)
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:164)
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:152)
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.lang.IllegalStateException: The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1061)
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:612)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketSession.sendTextMessage(StandardWebSocketSession.java:215)
+	at org.springframework.web.socket.adapter.AbstractWebSocketSession.sendMessage(AbstractWebSocketSession.java:108)
+	at com.chunjae.pro05.config.WebSocketChatHandler.lambda$sendToEachSocket$0(WebSocketChatHandler.java:60)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.HashMap$KeySpliterator.forEachRemaining(HashMap.java:1707)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290)
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:754)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2023-11-19 15:53:46.826 INFO  [http-nio-8086-exec-10] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:55:05.389 INFO  [http-nio-8086-exec-6] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 15:55:10.942 ERROR [http-nio-8086-exec-4] [o.s.w.s.h.ExceptionWebSocketHandlerDecorator] - Closing session due to exception for StandardWebSocketSession[id=4cfc25d7-5196-ee0e-33f8-e0bcc551c94e, uri=ws://localhost:8086/ws/chat]
+java.lang.IllegalStateException: The WebSocket session [4] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1061)
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:612)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketSession.sendTextMessage(StandardWebSocketSession.java:215)
+	at org.springframework.web.socket.adapter.AbstractWebSocketSession.sendMessage(AbstractWebSocketSession.java:108)
+	at com.chunjae.pro05.config.WebSocketChatHandler.lambda$sendToEachSocket$0(WebSocketChatHandler.java:60)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.HashMap$KeySpliterator.forEachRemaining(HashMap.java:1707)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290)
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:754)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:686)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:765)
+	at com.chunjae.pro05.config.WebSocketChatHandler.sendToEachSocket(WebSocketChatHandler.java:58)
+	at com.chunjae.pro05.config.WebSocketChatHandler.handleTextMessage(WebSocketChatHandler.java:47)
+	at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.handleMessage(WebSocketHandlerDecorator.java:75)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.handleMessage(LoggingWebSocketHandlerDecorator.java:56)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.handleMessage(ExceptionWebSocketHandlerDecorator.java:58)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.handleTextMessage(StandardWebSocketHandlerAdapter.java:114)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.access$000(StandardWebSocketHandlerAdapter.java:43)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:85)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:82)
+	at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:390)
+	at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:130)
+	at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:484)
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:284)
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:130)
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:184)
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:164)
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:152)
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 15:55:10.975 INFO  [http-nio-8086-exec-9] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=ㅎㅇㅎㅇ, lastDate=2023-11-19 15:43:53, act=JOIN, sessions=[])]
+2023-11-19 16:02:36.799 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:02:36.803 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:02:46.562 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 2984 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:02:46.570 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:02:46.785 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:02:46.785 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:02:47.818 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:02:47.834 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:02:47.834 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:02:47.834 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:02:47.898 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:02:47.898 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1113 ms
+2023-11-19 16:02:48.638 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@18069c74, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@69a0cb7a, org.springframework.security.web.context.SecurityContextPersistenceFilter@4921a93e, org.springframework.security.web.header.HeaderWriterFilter@12409679, org.springframework.security.web.authentication.logout.LogoutFilter@421f7935, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2a0b7b9d, org.springframework.security.web.session.ConcurrentSessionFilter@3a038ef9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4eced953, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22fee53e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@12025900, org.springframework.security.web.session.SessionManagementFilter@215fb9ed, org.springframework.security.web.access.ExceptionTranslationFilter@5cb85106, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@65553ebd]
+2023-11-19 16:02:48.979 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:02:48.995 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:02:49.014 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:02:49.047 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.823 seconds (JVM running for 3.718)
+2023-11-19 16:02:58.963 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:02:58.963 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:02:58.963 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:03:06.396 INFO  [http-nio-8086-exec-6] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:03:06.565 INFO  [http-nio-8086-exec-6] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:03:08.461 INFO  [http-nio-8086-exec-6] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:04:57.124 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:04:57.128 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:05:06.659 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 17500 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:05:06.662 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:05:06.871 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:05:06.871 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:05:07.868 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:05:07.878 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:05:07.879 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:05:07.879 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:05:07.958 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:05:07.958 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1086 ms
+2023-11-19 16:05:08.806 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1324d846, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@8828c4a, org.springframework.security.web.context.SecurityContextPersistenceFilter@bc8d92c, org.springframework.security.web.header.HeaderWriterFilter@2617b878, org.springframework.security.web.authentication.logout.LogoutFilter@9d6887b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1421f383, org.springframework.security.web.session.ConcurrentSessionFilter@32a849d5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5e549cb1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3f116b7d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2db0f48e, org.springframework.security.web.session.SessionManagementFilter@7fae283d, org.springframework.security.web.access.ExceptionTranslationFilter@593408e7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@27921664]
+2023-11-19 16:05:09.257 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:05:09.278 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:05:09.300 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:05:09.314 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.979 seconds (JVM running for 3.765)
+2023-11-19 16:05:09.416 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:05:09.416 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:05:09.417 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 1 ms
+2023-11-19 16:05:09.473 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:05:09.572 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:05:09.606 INFO  [http-nio-8086-exec-1] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:11:04.988 WARN  [HikariPool-1 housekeeper] [com.zaxxer.hikari.pool.HikariPool] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m25s299ms484µs300ns).
+2023-11-19 16:11:05.022 INFO  [http-nio-8086-exec-5] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:11:05.067 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:11:05.071 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:16:00.671 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 15436 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:16:00.674 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:16:00.861 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:16:00.861 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:16:01.746 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:16:01.753 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:16:01.754 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:16:01.754 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:16:01.828 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:16:01.828 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 966 ms
+2023-11-19 16:16:02.530 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@17aa4c45, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@742a0a6a, org.springframework.security.web.context.SecurityContextPersistenceFilter@1d3fb910, org.springframework.security.web.header.HeaderWriterFilter@1d28ff77, org.springframework.security.web.authentication.logout.LogoutFilter@147be01e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@19c5fed, org.springframework.security.web.session.ConcurrentSessionFilter@11110450, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2d14abe3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@13514be7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@19d2b805, org.springframework.security.web.session.SessionManagementFilter@3c601220, org.springframework.security.web.access.ExceptionTranslationFilter@61825929, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@78abc32a]
+2023-11-19 16:16:02.931 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:16:02.948 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:16:02.968 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:16:02.983 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.616 seconds (JVM running for 3.291)
+2023-11-19 16:16:39.239 INFO  [http-nio-8086-exec-2] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:16:39.239 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:16:39.239 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:16:48.327 INFO  [http-nio-8086-exec-6] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:16:48.454 INFO  [http-nio-8086-exec-6] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:16:48.727 INFO  [http-nio-8086-exec-10] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:17:57.607 WARN  [http-nio-8086-exec-3] [o.m.jdbc.message.server.ErrorPacket] - Error: 1048-23000: Column 'impUid' cannot be null
+2023-11-19 16:17:57.690 ERROR [http-nio-8086-exec-3] [o.a.c.c.C.[.[.[/].[dispatcherServlet]] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: (conn=2577) Column 'impUid' cannot be null
+### The error may exist in file [D:\github\project05\pro05\build\resources\main\mappers\paymentMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into payment         values(default, ?, ?, ?, ?, ?, ?)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: (conn=2577) Column 'impUid' cannot be null
+; (conn=2577) Column 'impUid' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: (conn=2577) Column 'impUid' cannot be null] with root cause
+java.sql.SQLIntegrityConstraintViolationException: (conn=2577) Column 'impUid' cannot be null
+	at org.mariadb.jdbc.export.ExceptionFactory.createException(ExceptionFactory.java:290)
+	at org.mariadb.jdbc.export.ExceptionFactory.create(ExceptionFactory.java:370)
+	at org.mariadb.jdbc.message.ClientMessage.readPacket(ClientMessage.java:134)
+	at org.mariadb.jdbc.client.impl.StandardClient.readPacket(StandardClient.java:872)
+	at org.mariadb.jdbc.client.impl.StandardClient.readResults(StandardClient.java:811)
+	at org.mariadb.jdbc.client.impl.StandardClient.readResponse(StandardClient.java:730)
+	at org.mariadb.jdbc.client.impl.StandardClient.execute(StandardClient.java:654)
+	at org.mariadb.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:95)
+	at org.mariadb.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	at jdk.proxy2/jdk.proxy2.$Proxy65.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:142)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at jdk.proxy3/jdk.proxy3.$Proxy70.addPayment(Unknown Source)
+	at com.chunjae.pro05.biz.PaymentServiceImpl.payComplete(PaymentServiceImpl.java:63)
+	at com.chunjae.pro05.biz.PaymentServiceImpl$$FastClassBySpringCGLIB$$6e857351.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy.invokeMethod(CglibAopProxy.java:386)
+	at org.springframework.aop.framework.CglibAopProxy.access$000(CglibAopProxy.java:85)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:703)
+	at com.chunjae.pro05.biz.PaymentServiceImpl$$EnhancerBySpringCGLIB$$1a93af87_2.payComplete(<generated>)
+	at com.chunjae.pro05.ctrl.PaymentController.payComplete(PaymentController.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:147)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:125)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:223)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:217)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 16:17:57.791 WARN  [http-nio-8086-exec-8] [o.s.web.servlet.PageNotFound] - No mapping for GET /favicon.ico
+2023-11-19 16:20:30.245 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:20:30.249 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:20:34.291 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 27888 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:20:34.294 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:20:34.484 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:20:34.484 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:20:35.442 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:20:35.449 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:20:35.450 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:20:35.451 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:20:35.531 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:20:35.532 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1047 ms
+2023-11-19 16:20:36.143 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@74ab6b76, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7422fdb0, org.springframework.security.web.context.SecurityContextPersistenceFilter@1e48e54c, org.springframework.security.web.header.HeaderWriterFilter@5f1403eb, org.springframework.security.web.authentication.logout.LogoutFilter@45fc1043, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1c039152, org.springframework.security.web.session.ConcurrentSessionFilter@2b21692c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2b1f0595, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7a26d5ee, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@447484c0, org.springframework.security.web.session.SessionManagementFilter@3b5d382b, org.springframework.security.web.access.ExceptionTranslationFilter@5bb3b7ac, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@63105b90]
+2023-11-19 16:20:36.443 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:20:36.460 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:20:36.475 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:20:36.491 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.521 seconds (JVM running for 3.319)
+2023-11-19 16:20:44.235 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:20:44.235 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:20:44.235 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:20:44.330 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:20:44.455 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:20:44.514 ERROR [http-nio-8086-exec-1] [o.a.c.c.C.[.[.[/].[dispatcherServlet]] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getSeller()" because "chatRoom" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getSeller()" because "chatRoom" is null
+	at com.chunjae.pro05.ctrl.ChatController.chatRoom(ChatController.java:68)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:147)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:125)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:223)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:217)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 16:20:49.431 ERROR [http-nio-8086-exec-2] [o.a.c.c.C.[.[.[/].[dispatcherServlet]] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getSeller()" because "chatRoom" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getSeller()" because "chatRoom" is null
+	at com.chunjae.pro05.ctrl.ChatController.chatRoom(ChatController.java:68)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:147)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:125)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:223)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:217)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 16:20:54.856 WARN  [http-nio-8086-exec-3] [o.s.w.s.m.s.DefaultHandlerExceptionResolver] - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'roomId' for method parameter type String is not present]
+2023-11-19 16:20:59.274 INFO  [http-nio-8086-exec-1] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:21:03.040 INFO  [http-nio-8086-exec-8] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:24:12.581 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:24:12.585 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:24:22.198 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 31224 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:24:22.198 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:24:22.378 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:24:22.378 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:24:23.333 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:24:23.333 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:24:23.333 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:24:23.333 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:24:23.414 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:24:23.414 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1036 ms
+2023-11-19 16:24:24.040 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@38373337, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1140c280, org.springframework.security.web.context.SecurityContextPersistenceFilter@144b376d, org.springframework.security.web.header.HeaderWriterFilter@7ae5fbfe, org.springframework.security.web.authentication.logout.LogoutFilter@76d7edb5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7a5a7089, org.springframework.security.web.session.ConcurrentSessionFilter@1e050e28, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2cc0dd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d4fdec9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@31325681, org.springframework.security.web.session.SessionManagementFilter@2b3813ba, org.springframework.security.web.access.ExceptionTranslationFilter@1e29d1e9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7b3991ce]
+2023-11-19 16:24:24.378 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:24:24.394 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:24:24.412 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:24:24.425 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.541 seconds (JVM running for 3.199)
+2023-11-19 16:24:57.812 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 28952 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:24:57.812 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:24:58.013 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:24:58.013 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:24:58.999 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:24:59.015 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:24:59.015 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:24:59.015 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:24:59.096 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:24:59.096 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1083 ms
+2023-11-19 16:24:59.713 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@fb35f0f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46e01868, org.springframework.security.web.context.SecurityContextPersistenceFilter@3b9931fb, org.springframework.security.web.header.HeaderWriterFilter@2a28e468, org.springframework.security.web.authentication.logout.LogoutFilter@7185811a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2c3ca4dd, org.springframework.security.web.session.ConcurrentSessionFilter@7cfdd53b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@61825929, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6fcc0d9c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@158fa309, org.springframework.security.web.session.SessionManagementFilter@bdf4ff8, org.springframework.security.web.access.ExceptionTranslationFilter@7b13ae3b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3ff2e0f]
+2023-11-19 16:25:00.059 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:25:00.067 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:25:00.093 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:25:00.109 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.608 seconds (JVM running for 3.28)
+2023-11-19 16:25:00.142 INFO  [http-nio-8086-exec-2] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:25:00.142 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:25:00.142 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:25:00.181 INFO  [http-nio-8086-exec-2] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:25:00.246 INFO  [http-nio-8086-exec-2] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:25:00.276 INFO  [http-nio-8086-exec-2] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:25:00.684 INFO  [http-nio-8086-exec-4] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:25:06.385 INFO  [http-nio-8086-exec-3] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:25:09.245 INFO  [http-nio-8086-exec-6] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:25:41.922 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:25:41.925 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:25:50.235 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 31528 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:25:50.235 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:25:50.420 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:25:50.420 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:25:51.349 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:25:51.349 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:25:51.349 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:25:51.349 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:25:51.426 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:25:51.433 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1013 ms
+2023-11-19 16:25:52.070 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7b9224b7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b3991ce, org.springframework.security.web.context.SecurityContextPersistenceFilter@7b4e33a3, org.springframework.security.web.header.HeaderWriterFilter@24b84cf7, org.springframework.security.web.authentication.logout.LogoutFilter@2702094d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3a27419a, org.springframework.security.web.session.ConcurrentSessionFilter@1e29d1e9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@14c55874, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@412a6b19, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c58eaf3, org.springframework.security.web.session.SessionManagementFilter@3b0b4ba3, org.springframework.security.web.access.ExceptionTranslationFilter@47d0857f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@35adb90f]
+2023-11-19 16:25:52.389 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:25:52.400 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:25:52.408 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:25:52.425 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.501 seconds (JVM running for 3.208)
+2023-11-19 16:25:53.090 INFO  [http-nio-8086-exec-2] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:25:53.090 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:25:53.090 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:25:53.145 INFO  [http-nio-8086-exec-2] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:25:53.205 INFO  [http-nio-8086-exec-2] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:25:53.238 ERROR [http-nio-8086-exec-2] [o.a.c.c.C.[.[.[/].[dispatcherServlet]] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getTno()" because "chatRoom" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getTno()" because "chatRoom" is null
+	at com.chunjae.pro05.ctrl.ChatController.chatRoom(ChatController.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:147)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:125)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:223)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:217)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 16:26:58.701 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:26:58.705 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:27:06.450 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 7068 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:27:06.450 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:27:06.674 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:27:06.674 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:27:07.621 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:27:07.628 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:27:07.630 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:27:07.630 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:27:07.696 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:27:07.696 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1022 ms
+2023-11-19 16:27:08.308 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7a7875ee, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@32907b4f, org.springframework.security.web.context.SecurityContextPersistenceFilter@3e7a2ddd, org.springframework.security.web.header.HeaderWriterFilter@3c9ff293, org.springframework.security.web.authentication.logout.LogoutFilter@29040ed3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3e6ec9df, org.springframework.security.web.session.ConcurrentSessionFilter@5e895503, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76d7edb5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@67ad5e07, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@68ee2c50, org.springframework.security.web.session.SessionManagementFilter@5f97483, org.springframework.security.web.access.ExceptionTranslationFilter@2e717839, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@436e94c2]
+2023-11-19 16:27:08.630 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:27:08.646 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:27:08.662 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:27:08.678 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.515 seconds (JVM running for 3.188)
+2023-11-19 16:27:08.895 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:27:08.895 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:27:08.895 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:27:08.946 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:27:09.012 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:27:09.048 ERROR [http-nio-8086-exec-1] [o.a.c.c.C.[.[.[/].[dispatcherServlet]] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getTno()" because "chatRoom" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.chunjae.pro05.entity.ChatRoom.getTno()" because "chatRoom" is null
+	at com.chunjae.pro05.ctrl.ChatController.chatRoom(ChatController.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:147)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:125)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:223)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:217)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 16:27:20.317 INFO  [http-nio-8086-exec-6] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:27:29.048 INFO  [http-nio-8086-exec-5] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:27:35.510 INFO  [http-nio-8086-exec-4] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:27:40.337 INFO  [http-nio-8086-exec-4] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:27:47.436 INFO  [http-nio-8086-exec-6] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:27:56.258 ERROR [http-nio-8086-exec-7] [o.s.w.s.h.ExceptionWebSocketHandlerDecorator] - Closing session due to exception for StandardWebSocketSession[id=cf5035a5-8672-0734-4d79-447e6c130076, uri=ws://localhost:8086/ws/chat]
+java.lang.IllegalStateException: The WebSocket session [4] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1061)
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:612)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketSession.sendTextMessage(StandardWebSocketSession.java:215)
+	at org.springframework.web.socket.adapter.AbstractWebSocketSession.sendMessage(AbstractWebSocketSession.java:108)
+	at com.chunjae.pro05.config.WebSocketChatHandler.lambda$sendToEachSocket$0(WebSocketChatHandler.java:60)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.HashMap$KeySpliterator.forEachRemaining(HashMap.java:1707)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290)
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:754)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.helpComplete(ForkJoinPool.java:1223)
+	at java.base/java.util.concurrent.ForkJoinPool.helpComplete(ForkJoinPool.java:1915)
+	at java.base/java.util.concurrent.ForkJoinTask.awaitDone(ForkJoinTask.java:433)
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:687)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:765)
+	at com.chunjae.pro05.config.WebSocketChatHandler.sendToEachSocket(WebSocketChatHandler.java:58)
+	at com.chunjae.pro05.config.WebSocketChatHandler.handleTextMessage(WebSocketChatHandler.java:47)
+	at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.handleMessage(WebSocketHandlerDecorator.java:75)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.handleMessage(LoggingWebSocketHandlerDecorator.java:56)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.handleMessage(ExceptionWebSocketHandlerDecorator.java:58)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.handleTextMessage(StandardWebSocketHandlerAdapter.java:114)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.access$000(StandardWebSocketHandlerAdapter.java:43)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:85)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:82)
+	at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:390)
+	at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:130)
+	at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:484)
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:284)
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:130)
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85)
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:184)
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:164)
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:152)
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-19 16:27:56.279 INFO  [http-nio-8086-exec-4] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:28:04.346 INFO  [http-nio-8086-exec-8] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=메시지 보내는 중, lastDate=2023-11-19 15:56:44, act=JOIN, sessions=[])]
+2023-11-19 16:28:29.508 INFO  [http-nio-8086-exec-5] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=멋있찌?, lastDate=2023-11-19 16:28:27, act=JOIN, sessions=[])]
+2023-11-19 16:28:29.513 INFO  [http-nio-8086-exec-7] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=멋있찌?, lastDate=2023-11-19 16:28:27, act=JOIN, sessions=[])]
+2023-11-19 16:28:30.249 INFO  [http-nio-8086-exec-6] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=멋있찌?, lastDate=2023-11-19 16:28:27, act=JOIN, sessions=[])]
+2023-11-19 16:29:10.921 INFO  [http-nio-8086-exec-7] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=어쩌다 보니까 고쳐짐, lastDate=2023-11-19 16:29:07, act=JOIN, sessions=[])]
+2023-11-19 16:29:10.927 INFO  [http-nio-8086-exec-2] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=어쩌다 보니까 고쳐짐, lastDate=2023-11-19 16:29:07, act=JOIN, sessions=[])]
+2023-11-19 16:29:12.330 INFO  [http-nio-8086-exec-1] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=어쩌다 보니까 고쳐짐, lastDate=2023-11-19 16:29:07, act=JOIN, sessions=[])]
+2023-11-19 16:29:17.937 INFO  [http-nio-8086-exec-9] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=어쩌다 보니까 고쳐짐, lastDate=2023-11-19 16:29:07, act=JOIN, sessions=[])]
+2023-11-19 16:29:18.615 INFO  [http-nio-8086-exec-3] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=어쩌다 보니까 고쳐짐, lastDate=2023-11-19 16:29:07, act=JOIN, sessions=[])]
+2023-11-19 16:29:18.619 INFO  [http-nio-8086-exec-2] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=어쩌다 보니까 고쳐짐, lastDate=2023-11-19 16:29:07, act=JOIN, sessions=[])]
+2023-11-19 16:30:44.721 INFO  [http-nio-8086-exec-4] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=어쩌다 보니까 고쳐짐, lastDate=2023-11-19 16:29:07, act=JOIN, sessions=[])]
+2023-11-19 16:30:54.619 INFO  [http-nio-8086-exec-10] [com.chunjae.pro05.ctrl.ChatController] - [ChatRoom(roomId=2e5e4cde-31ae-4f91-a0c6-5a44a4e33630, name=학습교구 테스트, buyer=parkname, seller=choiname, tno=1, lastChat=asdfa, lastDate=2023-11-18 23:08:18, act=JOIN, sessions=[]), ChatRoom(roomId=ec971d1f-c3a5-4974-86e4-fcb36d8e66d0, name=학습교구 테스트, buyer=leeename, seller=choiname, tno=1, lastChat=어쩌다 보니까 고쳐짐, lastDate=2023-11-19 16:29:07, act=JOIN, sessions=[])]
+2023-11-19 16:34:59.503 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:34:59.503 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:35:07.292 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 12744 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:35:07.292 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:35:07.470 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:35:07.470 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:35:08.350 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:35:08.350 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:35:08.357 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:35:08.357 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:35:08.414 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:35:08.414 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 944 ms
+2023-11-19 16:35:09.013 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3c888f0d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@251da860, org.springframework.security.web.context.SecurityContextPersistenceFilter@587b491a, org.springframework.security.web.header.HeaderWriterFilter@27655412, org.springframework.security.web.authentication.logout.LogoutFilter@1a45b11f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@68ee2c50, org.springframework.security.web.session.ConcurrentSessionFilter@76d7edb5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1c5884b5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@202d9d17, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@794006ff, org.springframework.security.web.session.SessionManagementFilter@5e895503, org.springframework.security.web.access.ExceptionTranslationFilter@2702094d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3e6ec9df]
+2023-11-19 16:35:09.328 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:35:09.344 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:35:09.372 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:35:09.382 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.387 seconds (JVM running for 3.19)
+2023-11-19 16:35:27.149 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:35:27.149 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:35:27.149 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:35:27.281 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:35:27.419 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:38:40.173 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:38:40.178 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:38:47.906 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 30488 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:38:47.906 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:38:48.159 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:38:48.159 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:38:49.144 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:38:49.144 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:38:49.144 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:38:49.144 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:38:49.227 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:38:49.227 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1068 ms
+2023-11-19 16:38:49.822 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@436e94c2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@18668aea, org.springframework.security.web.context.SecurityContextPersistenceFilter@5f97483, org.springframework.security.web.header.HeaderWriterFilter@3d4fdec9, org.springframework.security.web.authentication.logout.LogoutFilter@536da905, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@17b4500, org.springframework.security.web.session.ConcurrentSessionFilter@5abf0cd5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@644a6c54, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@27655412, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@13a3592b, org.springframework.security.web.session.SessionManagementFilter@1a6d12d1, org.springframework.security.web.access.ExceptionTranslationFilter@22891f82, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@57dcf1f5]
+2023-11-19 16:38:50.147 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:38:50.163 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:38:50.179 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:38:50.190 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.576 seconds (JVM running for 3.288)
+2023-11-19 16:39:14.066 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:39:14.066 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:39:14.066 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:39:20.285 INFO  [http-nio-8086-exec-2] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:39:20.409 INFO  [http-nio-8086-exec-2] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:41:31.778 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:41:31.781 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:41:39.772 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 17560 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:41:39.772 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:41:39.980 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:41:39.980 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:41:40.918 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:41:40.934 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:41:40.934 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:41:40.934 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:41:40.996 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:41:40.996 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 1016 ms
+2023-11-19 16:41:41.596 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@68ee2c50, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@349d1397, org.springframework.security.web.context.SecurityContextPersistenceFilter@76d7edb5, org.springframework.security.web.header.HeaderWriterFilter@5f97483, org.springframework.security.web.authentication.logout.LogoutFilter@6af5a90f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7185a547, org.springframework.security.web.session.ConcurrentSessionFilter@64deb6ae, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@85693ea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@587b491a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d73d7ef, org.springframework.security.web.session.SessionManagementFilter@644a6c54, org.springframework.security.web.access.ExceptionTranslationFilter@3c9ff293, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@13a3592b]
+2023-11-19 16:41:41.917 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:41:41.927 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:41:41.943 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:41:41.958 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.498 seconds (JVM running for 3.158)
+2023-11-19 16:41:42.129 INFO  [http-nio-8086-exec-2] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:41:42.129 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:41:42.129 INFO  [http-nio-8086-exec-2] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:41:42.192 INFO  [http-nio-8086-exec-2] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:41:42.262 INFO  [http-nio-8086-exec-2] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:41:58.280 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:41:58.285 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.
+2023-11-19 16:42:06.100 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Starting Pro05Application using Java 17.0.8 on DESKTOP-7L0EMP8 with PID 10348 (D:\github\project05\pro05\build\classes\java\main started by tlsdp in D:\github\project05\pro05)
+2023-11-19 16:42:06.100 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - The following 1 profile is active: "local"
+2023-11-19 16:42:06.278 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-19 16:42:06.278 INFO  [restartedMain] [o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-19 16:42:07.162 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat initialized with port(s): 8086 (http)
+2023-11-19 16:42:07.162 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:42:07.162 INFO  [restartedMain] [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+2023-11-19 16:42:07.162 INFO  [restartedMain] [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-19 16:42:07.241 INFO  [restartedMain] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+2023-11-19 16:42:07.241 INFO  [restartedMain] [o.s.b.w.s.c.ServletWebServerApplicationContext] - Root WebApplicationContext: initialization completed in 963 ms
+2023-11-19 16:42:07.826 INFO  [restartedMain] [o.s.s.web.DefaultSecurityFilterChain] - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2280ec3b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@554bd701, org.springframework.security.web.context.SecurityContextPersistenceFilter@530bb705, org.springframework.security.web.header.HeaderWriterFilter@4951d63, org.springframework.security.web.authentication.logout.LogoutFilter@45ed37c5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4d674b69, org.springframework.security.web.session.ConcurrentSessionFilter@97c23ad, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@66525cb9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@50dae799, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@29499f0c, org.springframework.security.web.session.SessionManagementFilter@13514be7, org.springframework.security.web.access.ExceptionTranslationFilter@4c8e4ea8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@86576fc]
+2023-11-19 16:42:08.169 INFO  [restartedMain] [o.s.b.d.a.OptionalLiveReloadServer] - LiveReload server is running on port 35729
+2023-11-19 16:42:08.185 INFO  [restartedMain] [o.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8086"]
+2023-11-19 16:42:08.201 INFO  [restartedMain] [o.s.b.w.embedded.tomcat.TomcatWebServer] - Tomcat started on port(s): 8086 (http) with context path ''
+2023-11-19 16:42:08.211 INFO  [restartedMain] [com.chunjae.pro05.Pro05Application] - Started Pro05Application in 2.408 seconds (JVM running for 3.049)
+2023-11-19 16:42:08.376 INFO  [http-nio-8086-exec-1] [o.a.c.c.C.[Tomcat].[localhost].[/]] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-19 16:42:08.376 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Initializing Servlet 'dispatcherServlet'
+2023-11-19 16:42:08.376 INFO  [http-nio-8086-exec-1] [o.s.web.servlet.DispatcherServlet] - Completed initialization in 0 ms
+2023-11-19 16:42:08.426 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Starting...
+2023-11-19 16:42:08.496 INFO  [http-nio-8086-exec-1] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Start completed.
+2023-11-19 16:42:57.423 WARN  [http-nio-8086-exec-9] [o.a.catalina.util.SessionIdGeneratorBase] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [101] milliseconds.
+2023-11-19 16:47:20.962 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown initiated...
+2023-11-19 16:47:20.973 INFO  [SpringApplicationShutdownHook] [com.zaxxer.hikari.HikariDataSource] - HikariPool-1 - Shutdown completed.

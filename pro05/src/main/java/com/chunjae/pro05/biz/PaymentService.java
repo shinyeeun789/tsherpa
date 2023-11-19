@@ -14,5 +14,6 @@ public interface PaymentService {
     public List<AboutTradeVO> myPayment(Page page) throws Exception;
     public int totalProduct(Page page) throws Exception;
     public List<AboutTradeVO> myProduct(Page page) throws Exception;
+    public int payComplete(Payment payment) throws Exception;
 
 }

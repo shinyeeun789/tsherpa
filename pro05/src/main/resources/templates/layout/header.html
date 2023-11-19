@@ -13,10 +13,10 @@
                         </a>
                         <ul class="nav">
                             <li><a th:href="@{/trade/list.do}" id="trade"> 중고거래 </a></li>
-                            <li><a th:href="@{/}"> 교육뉴스 </a></li>
                             <li><a th:href="@{/free/list.do}"> 커뮤니티 </a></li>
                             <li><a th:href="@{/}"> 고객지원 </a></li>
 
+                            <li><a th:href="@{/chat/list.do}"><i class="fa-solid fa-comments"></i> 내 채팅 </a></li>
                             <li sec:authorize="isAnonymous()">
                                 <a th:href="@{/login.do}"><i class="fa fa-user"></i> 로그인 </a>
                             </li>
