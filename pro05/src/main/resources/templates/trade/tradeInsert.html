@@ -35,7 +35,7 @@
 </div>
 <div class="section properties">
     <div class="container">
-        <form th:action="@{/trade/insert.do}" method="post" class="mt-4 mb-5" enctype="multipart/form-data">
+        <form th:action="@{/trade/insert.do}" method="post" onsubmit="return locationCheck(this)" class="mt-4 mb-5" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-3">
                     <label for="cno" class="form-label"> 카테고리 </label>
@@ -434,6 +434,16 @@
                 $("#location2").append('<option value="서귀포시">서귀포시</option>' +
                     '<option value="제주시">제주시</option>');
                 break;
+        }
+    }
+
+    function locationCheck(f) {
+        if(f.location1.value == '' || f.location2.value == '') {
+            alert("거래 장소를 입력해주세요");
+            f.location1.focus();
+            return false;
+        } else {
+            return true;
         }
     }
 

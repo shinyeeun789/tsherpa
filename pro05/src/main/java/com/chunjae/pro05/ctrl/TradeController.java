@@ -6,6 +6,7 @@ import com.chunjae.pro05.biz.UserService;
 import com.chunjae.pro05.entity.*;
 import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
+@CrossOrigin("http://localhost:8086")
 @RequestMapping("/trade/*")
 public class TradeController {
+
+    @Value("d:\\upload\\trade")
+    private String uploadFolder;
 
     @Autowired
     private TradeCategoryService tradeCategoryService;
@@ -125,14 +130,11 @@ public class TradeController {
     public String tradeInsert(Trade trade, @RequestParam("upfile") MultipartFile file, Principal principal, RedirectAttributes rttr) throws Exception {
         trade.setName(principal.getName());
 
-        String currentDir = System.getProperty("user.dir");           // 업로드 경로 설정
-        String relativePath = File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "upload" + File.separator + "items";
-        String fileDir = currentDir + relativePath;
-        File folder = new File(fileDir);
+        File folder = new File(uploadFolder);
         if(!folder.exists()) {                                  // 폴더가 존재하지 않으면 폴더 생성
             folder.mkdirs();
         }
-        System.out.println(fileDir);
+        System.out.println(uploadFolder);
 
         String originalFileName = file.getOriginalFilename(); // 첨부파일의 실제 파일명
         if (!originalFileName.isEmpty()) {
@@ -163,9 +165,37 @@ public class TradeController {
     }
 
     @PostMapping("edit.do")
-    public String tradeEdit(Trade trade, @RequestParam("upfile") MultipartFile file, RedirectAttributes rttr) throws Exception {
+    public String tradeEdit(Trade trade, @RequestParam("upfile") MultipartFile file, Principal principal, RedirectAttributes rttr) throws Exception {
+        
+        File folder = new File(uploadFolder);
+        if(!folder.exists()) {                          // 폴더가 존재하지 않으면 생성함
+            folder.mkdirs();
+        }
 
-        // 수정하기 구현 필요
+        // 파일이 새롭게 업로드되었다면 기존 파일 삭제
+        Trade beforeTrade = tradeService.getTrade(trade.getTno());
+        if(file.getSize() != 0) {
+            File oldFile = new File(uploadFolder + "\\" + beforeTrade.getItemImg());
+            if(oldFile.exists()) {
+                oldFile.delete();
+            }
+        } else {
+            trade.setItemImg(beforeTrade.getItemImg());
+        }
+
+        String originalFileName = file.getOriginalFilename(); // 첨부파일의 실제 파일명
+        if (!originalFileName.isEmpty()) {
+            String saveFileName = UUID.randomUUID().toString() + originalFileName.substring(originalFileName.lastIndexOf("."));     // 파일 이름을 랜덤으로 설정
+            trade.setItemImg(saveFileName);
+            file.transferTo(new File(folder, saveFileName));    // 파일을 업로드 폴더에 저장
+        }
+
+        int result = tradeService.tradeEdit(trade);
+        if(result > 0) {
+            rttr.addFlashAttribute("msg", "글이 등록되었습니다.");
+        } else {
+            rttr.addFlashAttribute("msg", "글 등록에 실패했습니다. 잠시 후 다시 시도해주세요.");
+        }
 
         return "redirect:detail.do?tno=" + trade.getTno();
     }
@@ -210,12 +240,8 @@ public class TradeController {
             byte[] bytes = upload.getBytes();
 
             //이미지 경로 생성
-            String rootPath = System.getProperty("user.dir");           // 업로드 경로 설정
-            String fileDir = rootPath + "/src/main/resources/static/upload/items/";
-            String ckUploadPath = fileDir + uid + "_" + fileName;
-            File folder = new File(fileDir);
-            System.out.println("path:"+fileDir);	// 이미지 저장경로 console에 확인
-            System.out.println("ckUploadPath:"+ckUploadPath);
+            String ckUploadPath = uploadFolder + "\\" + uid + "_" + fileName;
+            File folder = new File(uploadFolder);
             //해당 디렉토리 확인
             if(!folder.exists()){
                 try{
@@ -251,13 +277,10 @@ public class TradeController {
     //ckeditor를 이용한 서버에 전송된 이미지 뿌려주기
     @RequestMapping(value="ckImgSubmit.do")
     public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileName, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String path = uploadFolder + "\\" + uid + "_" + fileName;
         //서버에 저장된 이미지 경로
-        String rootPath = System.getProperty("user.dir");           // 업로드 경로 설정
-        String fileDir = rootPath + "/src/main/resources/static/upload/items/";
-        String sDirPath = fileDir + uid + "_" + fileName;
-        System.out.println(sDirPath);
-
-        File imgFile = new File(sDirPath);
+        File imgFile = new File(path);
+        System.out.println(path);
 
         //사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.
         if(imgFile.isFile()){

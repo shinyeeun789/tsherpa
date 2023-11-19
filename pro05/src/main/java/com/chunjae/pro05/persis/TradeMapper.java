@@ -16,7 +16,7 @@ public interface TradeMapper {
     TradeVO getTradeVO(int tno);
     Trade getTrade(int tno);
     int tradeInsert(Trade trade);
-    int tradeEdit(int tno);
+    int tradeEdit(Trade trade);
     int tradeDelete(int tno);
     int updateRecommend(Map<String, Object> data);
     List<TradeVO> getTradeByName(String name);

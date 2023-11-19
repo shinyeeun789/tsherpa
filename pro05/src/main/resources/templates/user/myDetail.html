@@ -63,7 +63,7 @@
                     <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv" th:each="trade : ${userTrades}">
                         <div class="item pt-0">
                             <a th:href="@{/trade/detail.do(tno=${trade.tno})}">
-                                <img th:src="'/upload/items/' + ${trade.itemImg}" alt="이미지를 찾지 못했습니다." th:style="${#strings.equals(trade.state, '판매완료') ? 'filter: brightness(0.5)' : ''}">
+                                <img th:src="'/upload/trade/' + ${trade.itemImg}" alt="이미지를 찾지 못했습니다." th:style="${#strings.equals(trade.state, '판매완료') ? 'filter: brightness(0.5)' : ''}">
                             </a>
                             <span class="category" th:text="${trade.tradeCate}"></span>
                             <h6 th:if="${#strings.equals(trade.state, '판매중')}" th:text="${trade.price} + '원'"></h6>

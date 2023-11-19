@@ -6,6 +6,7 @@ import com.chunjae.pro05.biz.UserService;
 import com.chunjae.pro05.entity.*;
 import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,14 +28,14 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/free/*")
 public class FreeController {
+
+    @Value("d:\\upload\\free")
+    private String uploadFolder;
     @Autowired
     private FreeService freeService;
 
     @Autowired
     private FreeCommentService freeCommentService;
-
-    @Autowired
-    private UserService userService;
 
     @RequestMapping(value = "list.do", method = RequestMethod.GET)
     public String freeList(HttpServletRequest request, Model model) throws Exception {
@@ -199,12 +200,8 @@ public class FreeController {
             byte[] bytes = upload.getBytes();
 
             //이미지 경로 생성
-            String rootPath = System.getProperty("user.dir");           // 업로드 경로 설정
-            String fileDir = rootPath + "/src/main/resources/static/upload/free/";
-            String ckUploadPath = fileDir + uid + "_" + fileName;
-            File folder = new File(fileDir);
-            System.out.println("path:"+fileDir);	// 이미지 저장경로 console에 확인
-            System.out.println("ckUploadPath:"+ckUploadPath);
+            String ckUploadPath = uploadFolder + "\\" + uid + "_" + fileName;
+            File folder = new File(uploadFolder);
             //해당 디렉토리 확인
             if(!folder.exists()){
                 try{
@@ -240,13 +237,10 @@ public class FreeController {
     //ckeditor를 이용한 서버에 전송된 이미지 뿌려주기
     @RequestMapping(value="ckImgSubmit.do")
     public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileName, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String path = uploadFolder + "\\" + uid + "_" + fileName;
         //서버에 저장된 이미지 경로
-        String rootPath = System.getProperty("user.dir");           // 업로드 경로 설정
-        String fileDir = rootPath + "/src/main/resources/static/upload/free/";
-        String sDirPath = fileDir + uid + "_" + fileName;
-        System.out.println(sDirPath);
-
-        File imgFile = new File(sDirPath);
+        File imgFile = new File(path);
+        System.out.println(path);
 
         //사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.
         if(imgFile.isFile()){

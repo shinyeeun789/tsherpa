@@ -96,7 +96,7 @@
 
 <script>
     $(document).ready(function() {
-        $("#id").keyup(function() {
+        $("#name").keyup(function() {
             $("#id_chk").val("no");
             if($(this).val() != "") {
                 $("#msg").html("아이디 중복 체크를 진행해주세요");
@@ -109,9 +109,9 @@
 
     // 아이디 중복 체크 함수
     function idCheck() {
-        if($("#id").val() == "") {
+        if($("#name").val() == "") {
             $("#msg").html("아이디를 입력한 후 중복 체크를 진행해주세요");
-            $("#id").focus();
+            $("#name").focus();
             return;
         }
 
@@ -135,7 +135,7 @@
                 } else if(data == "") {
                     $("#msg").text("아이디가 확인되지 않았습니다. 다시 시도해주세요.")
                 }
-            }
+            },
             error:function(res) {
                 alert("아이디 중복 확인에 실패했습니다. 잠시 후 다시 시도해주세요.");
                 console.log(res.responseText);

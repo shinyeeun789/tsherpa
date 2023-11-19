@@ -58,7 +58,7 @@
     </select>
 
     <select id="getTradeVO" resultType="com.chunjae.pro05.entity.TradeVO">
-        SELECT tno, tradeCate, id, t.name as name, title, content, resdate, location, tradeType, price, deliveryFee, demage, recommend, itemImg
+        SELECT tno, tradeCate, t.name as name, title, content, resdate, location, tradeType, price, deliveryFee, demage, recommend, itemImg
         FROM trade t JOIN tradeCategory c ON (t.cno=c.cno) JOIN user u ON (t.name=u.name)
         WHERE tno = #{tno}
     </select>

@@ -14,7 +14,7 @@ public interface TradeService {
     public Trade getTrade(int tno) throws Exception;
     public int tradeInsert(Trade trade) throws Exception;
     public int updateRecommend(int tno, String type, TradeRecommends tradeRecommend) throws Exception;
-    public int tradeEdit(int tno) throws Exception;
+    public int tradeEdit(Trade trade) throws Exception;
     public int tradeDelete(int tno) throws Exception;
     public List<TradeVO> getTradeByName(String name) throws Exception;
     public int totalTradeRecommend(Page page) throws Exception;

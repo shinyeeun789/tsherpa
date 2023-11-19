@@ -50,8 +50,8 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public int tradeEdit(int tno) throws Exception {
-        return tradeMapper.tradeEdit(tno);
+    public int tradeEdit(Trade trade) throws Exception {
+        return tradeMapper.tradeEdit(trade);
     }
 
     @Override

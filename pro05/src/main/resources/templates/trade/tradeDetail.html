@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="main-image">
-                    <img th:src="'/upload/items/' + ${trade.itemImg}" alt="이미지를 찾지 못했습니다.">
+                    <img th:src="'/upload/trade/' + ${trade.itemImg}" alt="이미지를 찾지 못했습니다.">
                 </div>
                 <div class="main-content">
                     <span class="category" th:text="${trade.tradeCate}"></span>
@@ -48,7 +48,7 @@
                     </div>
                     <hr>
                     <div class="col-lg-8" style="min-height: 30vh;" th:utext="${trade.content}"></div>
-                    <div class="d-flex justify-content-end mb-4" th:if="${#strings.equals(#authentication.principal, trade.id)}">
+                    <div class="d-flex justify-content-end mb-4" th:if="${#strings.equals(#authentication.principal, trade.name)}">
                         <div class="btn-group">
                             <a th:href="@{/trade/edit.do(tno=${trade.tno})}" class="btn btn-outline-dark"> 수정 </a>
                             <a th:href="@{/trade/delete.do(tno=${trade.tno})}" class="btn btn-danger"> 삭제 </a>

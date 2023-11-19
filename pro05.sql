@@ -22,16 +22,6 @@ CREATE TABLE user(
 	CONSTRAINT key_name UNIQUE(name)
 );
 
-SELECT * FROM user;
-
-INSERT INTO user
-VALUES(DEFAULT, 'admin', '$2a$10$KXY.EhEskta7wG/HvMSeZ.CQ4FuGQZOmaHTL2eZPnidD6AUvc.rUS', '관리자', 'admin@edu.com', NULL, NULL, NULL, NULL, DEFAULT, 'ADMIN', DEFAULT);
-
-INSERT INTO user
-VALUES(DEFAULT, 'kimname', '$2a$10$KXY.EhEskta7wG/HvMSeZ.CQ4FuGQZOmaHTL2eZPnidD6AUvc.rUS', '김이름', 'kim@edu.com', NULL, NULL, NULL, NULL, DEFAULT, 'USER', DEFAULT);
-
-
-drop table accountInfo;
 -- 계좌 정보 테이블
 CREATE TABLE accountInfo(
 	ano INT PRIMARY KEY AUTO_INCREMENT,			-- 계좌 정보 번호
@@ -39,7 +29,7 @@ CREATE TABLE accountInfo(
 	bank VARCHAR(100) NOT NULL,					-- 은행명
 	accountNum VARCHAR(1000) NOT NULL,			-- 계좌번호
 	repAccount BOOLEAN DEFAULT FALSE,			-- 대표계좌여부
-	FOREIGN KEY (id) REFERENCES user(id)
+	FOREIGN KEY (id) REFERENCES user(id) ON DELETE CASCADE
 );
 
 
@@ -66,7 +56,7 @@ CREATE TABLE free(
 	resdate TIMESTAMP DEFAULT CURRENT_TIME,
 	views INT DEFAULT 0,
 	recommend INT DEFAULT 0,
-	FOREIGN KEY (cate) REFERENCES category(cate)
+	FOREIGN KEY (cate) REFERENCES category(cate) ON DELETE CASCADE
 );
 
 -- 댓글 테이블 생성
@@ -110,8 +100,8 @@ CREATE TABLE trade (
 	recommend INT DEFAULT 0,
 	itemImg VARCHAR(500) NOT NULL,
 	state VARCHAR(50) DEFAULT '판매중',
-	FOREIGN KEY (cno) REFERENCES tradeCategory(cno),
-	FOREIGN KEY (name) REFERENCES user(name)
+	FOREIGN KEY (cno) REFERENCES tradeCategory(cno) ON DELETE CASCADE,
+	FOREIGN KEY (name) REFERENCES user(name) ON DELETE CASCADE
 );
 
 
@@ -124,9 +114,9 @@ CREATE TABLE userRating (
 	rating INT DEFAULT 0,
 	trustTrade BOOLEAN DEFAULT FALSE,
 	content VARCHAR(2000),
-	FOREIGN KEY (tno) REFERENCES trade(tno) ON DELETE DUPLICATE,
-	FOREIGN KEY (seller) REFERENCES user(NAME) ON DELETE DUPLICATE,
-	FOREIGN KEY (buyer) REFERENCES user(NAME) ON DELETE DUPLICATE
+	FOREIGN KEY (tno) REFERENCES trade(tno) ON DELETE CASCADE,
+	FOREIGN KEY (seller) REFERENCES user(NAME) ON DELETE CASCADE,
+	FOREIGN KEY (buyer) REFERENCES user(NAME) ON DELETE CASCADE
 );
 
 -- 찜 목록 테이블
@@ -134,8 +124,8 @@ CREATE TABLE traderecommends(
 	rno INT AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(20) NOT NULL,
 	tno INT NOT NULL,
-	FOREIGN KEY (NAME) REFERENCES user(NAME),
-	FOREIGN KEY (tno) REFERENCES trade(tno)
+	FOREIGN KEY (NAME) REFERENCES user(NAME) ON DELETE CASCADE,
+	FOREIGN KEY (tno) REFERENCES trade(tno) ON DELETE CASCADE
 );
 
 
@@ -148,8 +138,8 @@ CREATE TABLE payment(
 	merchantUid VARCHAR(100),
 	applyNum VARCHAR(100),
 	price INT NOT NULL,
-	FOREIGN KEY (tno) REFERENCES trade(tno),
-	FOREIGN KEY (buyer) REFERENCES user(NAME)
+	FOREIGN KEY (tno) REFERENCES trade(tno) ON DELETE CASCADE,
+	FOREIGN KEY (buyer) REFERENCES user(NAME) ON DELETE CASCADE
 );
 
 -- 배송 테이블 생성
@@ -161,7 +151,8 @@ CREATE TABLE delivery(
 	dname VARCHAR(100),
 	dtel VARCHAR(13),
 	dstate VARCHAR(50) DEFAULT '결제 완료',
-	arrivalDate DATE
+	arrivalDate DATE,
+	FOREIGN KEY (pno) REFERENCES payment(pno) ON DELETE CASCADE
 );
 
 -- 채팅 테이블 생성
@@ -192,8 +183,7 @@ CREATE TABLE chatmsg(
 
 DELETE FROM payment;
 DELETE FROM delivery;
-UPDATE trade SET state = '판매중' WHERE tno = 2;
 
+SELECT * FROM trade;
 
 SELECT * FROM payment;
-SELECT * FROM trade;

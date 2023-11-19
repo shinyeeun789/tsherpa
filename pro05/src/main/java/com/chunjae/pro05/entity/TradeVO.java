@@ -8,7 +8,6 @@ public class TradeVO {
     private int tno;
     private String tradeCate;
     private String title;
-    private String id;
     private String name;
     private String resdate;
     private String location;
