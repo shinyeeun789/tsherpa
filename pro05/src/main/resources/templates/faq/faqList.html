@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Q&A </title>
+    <th:block th:replace="layout/head :: headFragment"></th:block>
+
+</head>
+<body>
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="/">Home</a> / FAQ </span>
+                <h3> FAQ </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section properties" style="min-height: 40vh;">
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <form th:action="@{/faq/list.do}" class="d-flex justify-content-end" style="width: 40%">
+                <select name="type" id="type" class="form-select w-25">
+                    <option value="T" id="T"> 제목 </option>
+                    <option value="C" id="C"> 내용 </option>
+                    <option value="W" id="W"> 작성자 </option>
+                </select>
+                <input type="text" name="keyword" id="keyword" class="form-control" autocomplete="off" th:value="${page.keyword}">
+                <input type="submit" class="btn btn-dark" value="검색">
+            </form>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-2">
+                <div class="list-group text-center w-100">
+                    <a th:href="@{/notice/list.do}" class="list-group-item list-group-item-action"> 공지사항 </a>
+                    <a th:href="@{/qna/list.do}" class="list-group-item list-group-item-action"> Q&A </a>
+                    <a th:href="@{/faq/list.do}" class="list-group-item list-group-item-action active"> FAQ </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item" th:each="faq, status : ${faqList}">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" th:data-bs-target="${'#flush-collapse' + status.count}" aria-expanded="false"
+                                    th:aria-controls="|flush-collapse${status.count}|">
+                                [[${faq.question}]]
+                            </button>
+                        </h2>
+                        <div th:id="|flush-collapse${status.count}|" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body text-primary p-4" th:text="${faq.answer}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.pro05.persis.FaqMapper">
+    <!-- FAQ 목록 -->
+    <select id="faqList" resultType="com.chunjae.pro05.entity.Faq">
+        <![CDATA[
+        select * from faq
+        ]]>
+        <where>
+            <if test="type != null">
+                <trim prefixOverrides="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            question LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            answer LIKE concat('%', #{keyword}, '%')
+                        </when>
+                    </choose>
+                </trim>
+            </if>
+        </where>
+        <![CDATA[
+        ORDER BY fno ASC LIMIT #{postStart}, #{postCount}
+        ]]>
+    </select>
+
+    <!-- FAQ 전체 글수 구하기 -->
+    <select id="getCount" resultType="integer">
+        select count(*) from faq
+        <where>
+            <if test="type != null">
+                <trim prefixOverrides="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            question LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            answer LIKE concat('%', #{keyword}, '%')
+                        </when>
+                    </choose>
+                </trim>
+            </if>
+        </where>
+    </select>
+</mapper>

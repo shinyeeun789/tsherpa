@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.pro05.persis.NoticeMapper">
+	<!-- 공지사항 목록 -->
+	<select id="noticeList" resultType="com.chunjae.pro05.entity.Notice">
+		<![CDATA[
+        select * from notice
+        ]]>
+		<where>
+			<if test="type != null">
+				<trim prefixOverrides="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title LIKE concat('%', #{keyword}, '%')
+						</when>
+						<when test="type == 'C'.toString()">
+							content LIKE concat('%', #{keyword}, '%')
+						</when>
+					</choose>
+				</trim>
+			</if>
+		</where>
+		<![CDATA[
+        ORDER BY seq DESC LIMIT #{postStart}, #{postCount}
+        ]]>
+	</select>
+
+	<select id="noticeListLimit" resultType="com.chunjae.pro05.entity.Notice">
+		select * from notice order by seq desc limit 6;
+	</select>
+
+	<!-- 공지사항 전체 글수 구하기 -->
+	<select id="getCount" resultType="integer">
+		select count(*) from notice
+		<where>
+			<if test="type != null">
+				<trim prefixOverrides="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title LIKE concat('%', #{keyword}, '%')
+						</when>
+						<when test="type == 'C'.toString()">
+							content LIKE concat('%', #{keyword}, '%')
+						</when>
+						<when test="type == 'W'.toString()">
+							nickname LIKE concat('%', #{keyword}, '%')
+						</when>
+					</choose>
+				</trim>
+			</if>
+		</where>
+	</select>
+
+	<!-- 글 상세보기 -->
+	<select id="noticeDetail" resultType="com.chunjae.pro05.entity.Notice">
+		select * from notice where seq=#{seq}
+	</select>
+
+	<select id="noticeRef" parameterType="hashMap" resultType="com.chunjae.pro05.entity.Notice">
+		select * from notice
+		<choose>
+			<when test="type == 'next'.toString()">
+				<![CDATA[
+                 where seq > #{seq} limit 1
+                ]]>
+			</when>
+			<when test="type == 'prev'.toString()">
+				<![CDATA[
+                 WHERE seq < #{seq} ORDER BY seq DESC LIMIT 1
+                ]]>
+			</when>
+		</choose>
+	</select>
+
+	<!-- 글 수 카운트 -->
+	<select id="totalCount" resultType="integer" >
+		select count(*) from notice
+	</select>
+
+	<insert id="noticeInsert">
+		insert into notice values (default, #{title}, #{content}, 'admin', default, default)
+	</insert>
+
+	<delete id="noticeDelete">
+		delete from notice where seq=#{seq}
+	</delete>
+
+	<update id="noticeEdit">
+		update notice set title=#{title}, content=#{content} where seq=#{seq}
+	</update>
+
+	<update id="countUp">
+		update notice set visited=visited+1 where seq=#{seq}
+	</update>
+
+</mapper>
