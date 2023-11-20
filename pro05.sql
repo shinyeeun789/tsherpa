@@ -148,7 +148,6 @@ INSERT INTO tradeCategory VALUES(DEFAULT, '보드게임');
 INSERT INTO tradeCategory VALUES(DEFAULT, '학급운영');
 INSERT INTO tradeCategory VALUES(DEFAULT, '기자재');
 
-
 -- 거래 게시글 테이블 생성
 CREATE TABLE trade (
 	tno INT PRIMARY KEY AUTO_INCREMENT,
