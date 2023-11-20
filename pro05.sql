@@ -244,11 +244,3 @@ CREATE TABLE chatmsg(
 	FOREIGN KEY(sender) REFERENCES user(name) ON DELETE CASCADE,
 	FOREIGN KEY(roomId) REFERENCES chatroom(roomId) ON DELETE CASCADE
 );
-
-
-DELETE FROM payment;
-DELETE FROM delivery;
-
-SELECT * FROM trade;
-
-SELECT * FROM payment;

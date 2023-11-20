@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.pro05.persis.FileInfoMapper">
+
+    <!-- 파일 추가 -->
+    <insert id="fileInfoInsert">
+        insert into fileInfo(articleNo, savefolder, originfile, savefile)
+        values
+        <foreach collection="fileInfoList" item="fileInfo" separator=" , ">
+            (#{articleNo}, #{fileInfo.saveFolder}, #{fileInfo.originFile}, #{fileInfo.saveFile})
+        </foreach>
+    </insert>
+
+    <!-- 자료실 번호 별 파일 리스트 가져오기 -->
+    <select id="fileInfoList" resultType="com.chunjae.pro05.entity.FileInfo">
+        select * from fileInfo
+        where articleNo = #{articleNo}
+    </select>
+
+    <!-- 파일 삭제 -->
+    <delete id="fileInfoDelete">
+        delete from fileInfo
+        where articleNo = #{articleNo}
+    </delete>
+</mapper>

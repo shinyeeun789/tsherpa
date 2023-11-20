@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.pro05.persis.DataRoomMapper">
+    <select id="dataRoomList" resultType="com.chunjae.pro05.entity.DataRoom">
+        <![CDATA[
+        select * from dataRoom
+        ]]>
+        <where>
+            <if test="type != null">
+                <trim prefixOverrides="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            title LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            content LIKE concat('%', #{keyword}, '%')
+                        </when>
+                    </choose>
+                </trim>
+            </if>
+        </where>
+        <![CDATA[
+        ORDER BY articleNo DESC LIMIT #{postStart}, #{postCount}
+        ]]>
+    </select>
+
+    <select id="getCount" resultType="integer">
+        select count(*) from dataRoom
+        <where>
+            <if test="type != null">
+                <trim prefixOverrides="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            title LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            content LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            author LIKE concat('%', #{keyword}, '%')
+                        </when>
+                    </choose>
+                </trim>
+            </if>
+        </where>
+    </select>
+
+    <insert id="dataRoomInsert">
+        insert into dataRoom(id, title, content)
+        values(#{id}, #{title}, #{content})
+        <selectKey resultType="int" keyProperty="articleNo" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="dataRoomEdit">
+        update dataRoom
+        set title=#{title}, content=#{content}
+        where articleNo = #{articleNo}
+    </update>
+
+    <select id="dataRoomDetail" resultType="com.chunjae.pro05.entity.DataRoom">
+        select * from dataRoom
+        where articleNo = #{articleNo}
+    </select>
+
+    <select id="dataRoomRef" parameterType="hashMap" resultType="com.chunjae.pro05.entity.DataRoom">
+        select * from dataRoom
+        <choose>
+            <when test="type == 'next'.toString()">
+                <![CDATA[
+                 where articleNo > #{articleNo} limit 1
+                ]]>
+            </when>
+            <when test="type == 'prev'.toString()">
+                <![CDATA[
+                 WHERE articleNo < #{articleNo} ORDER BY articleNo DESC LIMIT 1
+                ]]>
+            </when>
+        </choose>
+    </select>
+
+    <delete id="dataRoomDelete">
+        delete from dataRoom
+        where articleNo = #{articleNo}
+    </delete>
+</mapper>
