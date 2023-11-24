@@ -438,7 +438,7 @@
     }
 
     function locationCheck(f) {
-        if(f.location1.value == '' || f.location2.value == '') {
+        if(f.tradeType == '직거래' && (f.location1.value == '' || f.location2.value == '')) {
             alert("거래 장소를 입력해주세요");
             f.location1.focus();
             return false;

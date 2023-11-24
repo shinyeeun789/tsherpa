@@ -108,6 +108,9 @@
         read_pw = !read_pw;
         $("#password").attr("disabled", read_pw);
         $("#msg").slideToggle();
+        if(read_pw) {
+            $("#password").val("");
+        }
     }
 
     function findAddr() {

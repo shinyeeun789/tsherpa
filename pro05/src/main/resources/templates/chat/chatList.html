@@ -67,13 +67,14 @@
                         <p th:if="${room.seller == #authentication.principal}" class="text-white" style="line-height: 80px;" th:text="${room.buyer}"></p>
                     </div>
                     <div style="margin-left: 20px;">
-                        <h4 th:if="${room.buyer == #authentication.principal}" th:text="|${room.seller} (${room.name})|"></h4>
+                        <h4 th:if="${room.buyer == #authentication.principal}" th:text="|${room.seller} (${room.name})|"></h4>000000000
                         <h4 th:if="${room.seller == #authentication.principal}" th:text="|${room.buyer} (${room.name})|"></h4>
                         <p th:text="${room.lastChat}"></p>
                     </div>
                 </div>
                 <p th:text="${room.lastDate}"></p>
             </div>
+            <div th:if="${#lists.size(roomList) == 0}"> 채팅방이 없습니다. </div>
         </div>
     </div>
 </div>

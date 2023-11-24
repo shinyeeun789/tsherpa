@@ -103,4 +103,15 @@
         update trade set state = '판매완료' where tno = #{tno}
     </update>
 
+    <select id="locationRank" resultType="java.util.HashMap">
+        SELECT location, COUNT(*) AS cnt FROM trade
+        WHERE tradeType != '택배거래'
+        GROUP BY location
+        ORDER BY cnt DESC LIMIT 10;
+    </select>
+
+    <select id="tradeCntList" resultType="java.util.HashMap">
+        SELECT
+    </select>
+
 </mapper>

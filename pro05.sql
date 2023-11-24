@@ -22,6 +22,8 @@ CREATE TABLE user(
 	CONSTRAINT key_name UNIQUE(name)
 );
 
+SELECT * FROM user;
+
 -- 계좌 정보 테이블
 CREATE TABLE accountInfo(
 	ano INT PRIMARY KEY AUTO_INCREMENT,			-- 계좌 정보 번호
@@ -69,6 +71,7 @@ CREATE TABLE free_com (
 	recommend INT DEFAULT 0,
 	FOREIGN KEY (fno) REFERENCES free(fno) ON DELETE CASCADE
 );
+
 
 -- 공지사항 테이블 생성
 CREATE TABLE notice (
@@ -243,3 +246,16 @@ CREATE TABLE chatmsg(
 	FOREIGN KEY(sender) REFERENCES user(name) ON DELETE CASCADE,
 	FOREIGN KEY(roomId) REFERENCES chatroom(roomId) ON DELETE CASCADE
 );
+
+
+SELECT label, SUM(profit) AS profit FROM
+            (SELECT DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 YEAR), '%Y') AS label, 0 AS profit FROM dual
+             UNION ALL
+             SELECT DATE_FORMAT(sdate, '%Y') AS label, SUM(lprice) AS profit FROM lecture l JOIN register r ON (l.lcode=r.lcode)
+             WHERE sdate >= DATE_ADD(NOW(), INTERVAL -1 YEAR)
+             GROUP BY DATE_FORMAT(sdate, '%Y')) a
+        GROUP BY label
+        
+(SELECT DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 YEAR), '%Y') AS label, 0 AS profit FROM dual
+ UNION ALL
+ SELECT DATE_FORMAT(sdate, '%Y') AS label, SUM(lprice) AS profit FROM lecture l JOIN register r ON (l.lcode=r.lcode) 

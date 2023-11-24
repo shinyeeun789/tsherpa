@@ -21,5 +21,7 @@ public interface TradeMapper {
     int updateRecommend(Map<String, Object> data);
     List<TradeVO> getTradeByName(String name);
     int updateState(int tno);
+    List<Map<String, Object>> locationRank();
+    List<Map<String, Integer>> tradeCntList();
 
 }

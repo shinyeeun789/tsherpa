@@ -227,36 +227,27 @@
                                     <h6 class="fw-semibold mb-0"> 랭킹 </h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0"> 아이디 </h6>
+                                    <h6 class="fw-semibold mb-0"> 지역 </h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0"> 이름 </h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0"> 방문횟수 </h6>
+                                    <h6 class="fw-semibold mb-0"> 판매글 개수 </h6>
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
-<!--                            <c:forEach var="rank" items="${visitRank}" varStatus="status">-->
-<!--                                <tr>-->
-<!--                                    <td class="border-bottom-0">-->
-<!--                                        <div class="d-flex align-items-center gap-2">-->
-<!--                                            <span class="badge bg-primary rounded-3 fw-semibold">${status.index + 1}위</span>-->
-<!--                                        </div>-->
-<!--                                    </td>-->
-<!--                                    <td class="border-bottom-0">-->
-<!--                                        <h6 class="fw-semibold mb-1">${rank.id}</h6>-->
-<!--                                        <span class="fw-normal">${rank.email}</span>-->
-<!--                                    </td>-->
-<!--                                    <td class="border-bottom-0">-->
-<!--                                        <p class="mb-0 fw-normal">${rank.name}</p>-->
-<!--                                    </td>-->
-<!--                                    <td class="border-bottom-0">-->
-<!--                                        <h6 class="fw-semibold mb-0 fs-4">${rank.visited}번</h6>-->
-<!--                                    </td>-->
-<!--                                </tr>-->
-<!--                            </c:forEach>-->
+                                <tr th:each="rank, status : ${locationRank}">
+                                    <td class="border-bottom-0">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <span class="badge bg-primary rounded-3 fw-semibold">[[${status.index + 1}]]위</span>
+                                        </div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1" th:text="${rank.location}"></h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <p class="mb-0 fw-normal" th:text="|${rank.cnt}건|"></p>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -268,7 +259,7 @@
 <script>
     $(document).ready(() => {
         // $.ajax({
-        //     url: "/admin/userCntList.do",
+        //     url: "/admin/tradeCntList.do",
         //     type: "post",
         //     dataType: "json",
         //     success: function(data) {

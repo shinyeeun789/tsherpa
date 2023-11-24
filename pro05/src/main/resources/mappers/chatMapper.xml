@@ -5,9 +5,9 @@
     <!-- 채팅방 목록 출력 -->
     <select id="findAllRoom" resultType="com.chunjae.pro05.entity.ChatRoom">
         SELECT c.*, message as lastChat, resdate as lastDate
-        FROM chatroom c JOIN (SELECT roomId,MAX(resdate) AS maxDate FROM chatmsg GROUP BY roomId) m ON (c.roomId = m.roomId)
-                        JOIN chatmsg msg ON (c.roomId = msg.roomId)
-        WHERE resdate = maxDate and (buyer = #{name} or seller = #{name})
+        FROM chatroom c LEFT OUTER JOIN (SELECT roomId, MAX(resdate) AS maxDate FROM chatmsg GROUP BY roomId) m ON (c.roomId = m.roomId)
+                        LEFT OUTER JOIN chatmsg msg ON (c.roomId = msg.roomId)
+        WHERE (resdate = maxDate and (buyer = #{name} or seller = #{name})) OR (maxDate IS NULL)
     </select>
     
     <!-- 구매자와의 채팅방 목록 출력 -->

@@ -2,7 +2,9 @@ package com.chunjae.pro05.ctrl;
 
 import com.chunjae.pro05.biz.FreeService;
 import com.chunjae.pro05.biz.QnaService;
+import com.chunjae.pro05.biz.TradeService;
 import com.chunjae.pro05.biz.UserService;
+import com.chunjae.pro05.entity.Trade;
 import com.chunjae.pro05.entity.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,32 +34,32 @@ public class AdminController {
     private UserService userService;
 
     @Autowired
-    private FreeService freeService;
+    private TradeService tradeService;
 
     @Autowired
     private QnaService qnaService;
 
     @RequestMapping("dashboard.do")
     public String dashboard(Model model) throws Exception {
-//        List<User> visitRank = userService.visitRank();
-//        model.addAttribute("visitRank", visitRank);
+        List<Map<String, Object>> locationRank = tradeService.locationRank();
+        model.addAttribute("locationRank", locationRank);
 
         return "/admin/dashboard";
     }
 
-    @PostMapping("userCntList")
+    @PostMapping("tradeCntList")
     public void getUserCnt(HttpServletResponse response) throws Exception {
-//        List<Map<String, Integer>> userCntList = userService.userCntList();
-//        JSONArray jsonArray = new JSONArray();
-//        for(Map<String, Integer> userCnt : userCntList) {
-//            JSONObject obj = new JSONObject();
-//            obj.put("label", userCnt.get("label"));
-//            obj.put("teaCnt", userCnt.get("teaCnt"));
-//            obj.put("stuCnt", userCnt.get("stuCnt"));
-//            jsonArray.put(obj);
-//        }
-//        PrintWriter out = response.getWriter();
-//        out.println(jsonArray);
+        List<Map<String, Integer>> tradeCntList = tradeService.tradeCntList();
+        JSONArray jsonArray = new JSONArray();
+        for(Map<String, Integer> tradeCnt : tradeCntList) {
+            JSONObject obj = new JSONObject();
+            obj.put("label", tradeCnt.get("label"));
+            obj.put("teaCnt", tradeCnt.get("teaCnt"));
+            obj.put("stuCnt", tradeCnt.get("stuCnt"));
+            jsonArray.put(obj);
+        }
+        PrintWriter out = response.getWriter();
+        out.println(jsonArray);
     }
 
     @PostMapping("profitYearReport")

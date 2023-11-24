@@ -102,9 +102,16 @@ public class TradeServiceImpl implements TradeService {
 
     @Override
     public int updateTradeStates(Trade trade) {
-        int result = tradeMapper.updateState(trade.getTno());
+        return tradeMapper.updateState(trade.getTno());
+    }
 
+    @Override
+    public List<Map<String, Object>> locationRank() throws Exception {
+        return tradeMapper.locationRank();
+    }
 
-        return 0;
+    @Override
+    public List<Map<String, Integer>> tradeCntList() throws Exception {
+        return tradeMapper.tradeCntList();
     }
 }

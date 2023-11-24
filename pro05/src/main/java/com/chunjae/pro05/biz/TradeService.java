@@ -6,6 +6,7 @@ import com.chunjae.pro05.entity.TradeVO;
 import com.chunjae.pro05.util.Page;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TradeService {
     public List<TradeVO> tradeList(Page page) throws Exception;
@@ -20,6 +21,8 @@ public interface TradeService {
     public int totalTradeRecommend(Page page) throws Exception;
     public List<TradeVO> myTradeRecommend(Page page) throws Exception;
     public boolean isRecommend(int tno, String name) throws Exception;
-    public int updateTradeStates(Trade trade);
+    public int updateTradeStates(Trade trade) throws Exception;
+    public List<Map<String, Object>> locationRank() throws Exception;
+    public List<Map<String, Integer>> tradeCntList() throws Exception;
 
 }
