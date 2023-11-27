@@ -111,7 +111,24 @@
     </select>
 
     <select id="tradeCntList" resultType="java.util.HashMap">
-        SELECT
+        SELECT a.label
+             ,directCnt
+             ,deliCnt
+        FROM
+            (SELECT DATE_FORMAT(payDate, '%Y-%m') AS label
+                  ,COUNT(*) AS directCnt
+             FROM payment
+             WHERE payDate >= DATE_ADD(NOW(), INTERVAL -1 YEAR)
+               AND impUid IS NOT NULL
+             GROUP BY label) a
+                JOIN
+            (SELECT DATE_FORMAT(payDate, '%Y-%m') AS label
+                  ,COUNT(*) AS deliCnt
+             FROM payment
+             WHERE payDate >= DATE_ADD(NOW(), INTERVAL -1 YEAR)
+               AND impUid IS NULL
+             GROUP BY label) b
+            ON (a.label = b.label)
     </select>
 
 </mapper>

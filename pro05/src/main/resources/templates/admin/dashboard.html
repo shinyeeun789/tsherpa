@@ -63,64 +63,15 @@
                             <span>
                                 <i class="fa-solid fa-circle-question"></i>
                             </span>
-                            <span class="hide-menu"> 고객지원관리 </span>
-                        </a>
-                    </li>
-                    <li class="nav-small-cap">
-                        <span class="hide-menu"> 강의관리 </span>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="${path}/admin/lectureMgmt" aria-expanded="false">
-                            <span>
-                                <i class="fa-solid fa-photo-film"></i>
-                            </span>
-                            <span class="hide-menu"> 강의목록 </span>
+                            <span class="hide-menu"> 정산관리 </span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="${path}/admin/closeLectureMgmt" aria-expanded="false">
+                        <a class="sidebar-link" href="${path}/admin/qnaMgmt" aria-expanded="false">
                             <span>
-                                <i class="fa-solid fa-circle-xmark"></i>
+                                <i class="fa-solid fa-circle-question"></i>
                             </span>
-                            <span class="hide-menu"> 폐강관리 </span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="${path}/admin/lectureInsert" aria-expanded="false">
-                            <span>
-                                <i class="fa-solid fa-file-video"></i>
-                            </span>
-                            <span class="hide-menu"> 강의등록 </span>
-                        </a>
-                    </li>
-                    <li class="nav-small-cap">
-                        <span class="hide-menu"> 강사관리 </span>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="${path}/admin/teacherMgmt" aria-expanded="false">
-                            <span>
-                                <i class="fa-solid fa-table-list"></i>
-                            </span>
-                            <span class="hide-menu"> 강사목록 </span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="${path}/admin/teacherInsert" aria-expanded="false">
-                            <span>
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                            </span>
-                            <span class="hide-menu"> 강사정보 등록 </span>
-                        </a>
-                    </li>
-                    <li class="nav-small-cap">
-                        <span class="hide-menu"> 이벤트 관리 </span>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="${path}/admin/eventMgmt" aria-expanded="false">
-                            <span>
-                                <i class="fa-solid fa-gifts"></i>
-                            </span>
-                            <span class="hide-menu"> 이벤트 관리 </span>
+                            <span class="hide-menu"> 배송관리 </span>
                         </a>
                     </li>
                 </ul>
@@ -147,7 +98,7 @@
                         <div class="card-body">
                             <div class="d-block mb-9">
                                 <div class="mb-3 mb-sm-0">
-                                    <h5 class="card-title fw-semibold"> 월별 회원수 추이 </h5>
+                                    <h5 class="card-title fw-semibold"> 월별 거래 추이 </h5>
                                 </div>
                             </div>
                             <div id="chart"></div>
@@ -159,7 +110,7 @@
                         <div class="col-lg-12">
                             <div class="card overflow-hidden">
                                 <div class="card-body p-4">
-                                    <h5 class="card-title mb-9 fw-semibold">Yearly Point Earnings</h5>
+                                    <h5 class="card-title mb-9 fw-semibold"> 티셀파 연수입 </h5>
                                     <div class="row align-items-center">
                                         <div class="col-8">
                                             <h4 class="fw-semibold mb-3" id="profit"></h4>
@@ -192,8 +143,8 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row alig n-items-start">
-                                        <div class="col-8">
-                                            <h5 class="card-title mb-9 fw-semibold"> Monthly Payment Earnings </h5>
+                                        <div class="col-9">
+                                            <h5 class="card-title mb-9 fw-semibold"> 티셀파 월수입 </h5>
                                             <h4 class="fw-semibold mb-3" id="payProfitReport"></h4>
                                             <div class="d-flex align-items-center pb-1">
                                                 <span class="me-2 rounded-circle round-20 d-flex align-items-center justify-content-center" id="payProfit"></span>
@@ -201,10 +152,10 @@
                                                 <p class="fs-3 mb-0">last month</p>
                                             </div>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <div class="d-flex justify-content-end">
                                                 <div class="text-white bg-secondary rounded-circle p-6 d-flex align-items-center justify-content-center">
-                                                    <i class="ti ti-currency-dollar fs-6"></i>
+                                                    <i class="fa-solid fa-won-sign"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,7 +169,7 @@
             </div>
             <div class="card w-100">
                 <div class="card-body p-4">
-                    <h5 class="card-title fw-semibold mb-4"> 방문 횟수 순위 </h5>
+                    <h5 class="card-title fw-semibold mb-4"> 판매 지역 순위 </h5>
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle">
                             <thead class="text-dark fs-4">
@@ -235,19 +186,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="rank, status : ${locationRank}">
-                                    <td class="border-bottom-0">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <span class="badge bg-primary rounded-3 fw-semibold">[[${status.index + 1}]]위</span>
-                                        </div>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-1" th:text="${rank.location}"></h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal" th:text="|${rank.cnt}건|"></p>
-                                    </td>
-                                </tr>
+                            <tr th:each="rank, status : ${locationRank}">
+                                <td class="border-bottom-0">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-primary rounded-3 fw-semibold">[[${status.index + 1}]]위</span>
+                                    </div>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-1" th:text="${rank.location}"></h6>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <p class="mb-0 fw-normal" th:text="|${rank.cnt}건|"></p>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -258,460 +209,256 @@
 </div>
 <script>
     $(document).ready(() => {
-        // $.ajax({
-        //     url: "/admin/tradeCntList.do",
-        //     type: "post",
-        //     dataType: "json",
-        //     success: function(data) {
-        //         const labelList = [];
-        //         const teaCnt = [];
-        //         const stuCnt = [];
-        //         for(let i=0; i<data.length; i++) {
-        //             let temp = data[i];
-        //             labelList[i] = temp.label;
-        //             teaCnt[i] = temp.teaCnt;
-        //             stuCnt[i] = temp.stuCnt;
-        //         }
-        //         let chart = {
-        //             series: [
-        //                 { name: "월별 회원가입한 학생 수", data: stuCnt },
-        //                 { name: "월별 회원가입한 선생님 수", data: teaCnt },
-        //             ],
-        //             chart: {
-        //                 type: "bar",
-        //                 height: 345,
-        //                 offsetX: -15,
-        //                 toolbar: { show: true },
-        //                 foreColor: "#adb0bb",
-        //                 fontFamily: 'inherit',
-        //                 sparkline: { enabled: false },
-        //             },
-        //             colors: ["#5D87FF", "#49BEFF"],
-        //             plotOptions: {
-        //                 bar: {
-        //                     horizontal: false,
-        //                     columnWidth: "35%",
-        //                     borderRadius: [6],
-        //                     borderRadiusApplication: 'end',
-        //                     borderRadiusWhenStacked: 'all'
-        //                 },
-        //             },
-        //             markers: { size: 0 },
-        //             dataLabels: {
-        //                 enabled: false,
-        //             },
-        //             legend: {
-        //                 show: false,
-        //             },
-        //             grid: {
-        //                 borderColor: "rgba(0,0,0,0.1)",
-        //                 strokeDashArray: 3,
-        //                 xaxis: {
-        //                     lines: {
-        //                         show: false,
-        //                     },
-        //                 },
-        //             },
-        //             xaxis: {
-        //                 type: "category",
-        //                 categories: labelList,
-        //                 labels: {
-        //                     style: { cssClass: "grey--text lighten-2--text fill-color" },
-        //                 },
-        //             },
-        //             yaxis: {
-        //                 show: true,
-        //                 min: 0,
-        //                 max: 10,
-        //                 tickAmount: 4,
-        //                 labels: {
-        //                     style: {
-        //                         cssClass: "grey--text lighten-2--text fill-color",
-        //                     },
-        //                 },
-        //             },
-        //             stroke: {
-        //                 show: true,
-        //                 width: 3,
-        //                 lineCap: "butt",
-        //                 colors: ["transparent"],
-        //             },
-        //             tooltip: { theme: "light" },
-        //             responsive: [
-        //                 {
-        //                     breakpoint: 600,
-        //                     options: {
-        //                         plotOptions: {
-        //                             bar: {
-        //                                 borderRadius: 3,
-        //                             }
-        //                         },
-        //                     }
-        //                 }
-        //             ]
-        //         };
-        //         let chartTag = new ApexCharts(document.querySelector("#chart"), chart);
-        //         chartTag.render();
-        //     },
-        //     error: function (err) {
-        //         console.log(err);
-        //     }
-        // });
-
-        var labelList = ['7월', '8월', '9월', '10월', '11월'];
-        const teaCnt = [1,5,3,5,7];
-        const stuCnt = [2,4,5,6,8];
-        var chart = {
-            series: [
-                { name: "월별 회원가입한 학생 수", data: stuCnt },
-                { name: "월별 회원가입한 선생님 수", data: teaCnt },
-            ],
-            chart: {
-                type: "bar",
-                height: 345,
-                offsetX: -15,
-                toolbar: { show: true },
-                foreColor: "#adb0bb",
-                fontFamily: 'inherit',
-                sparkline: { enabled: false },
-            },
-            colors: ["#5D87FF", "#49BEFF"],
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: "35%",
-                    borderRadius: [6],
-                    borderRadiusApplication: 'end',
-                    borderRadiusWhenStacked: 'all'
-                },
-            },
-            markers: { size: 0 },
-            dataLabels: {
-                enabled: false,
-            },
-            legend: {
-                show: false,
-            },
-            grid: {
-                borderColor: "rgba(0,0,0,0.1)",
-                strokeDashArray: 3,
-                xaxis: {
-                    lines: {
+        $.ajax({
+            url: "/admin/tradeCntList.do",
+            type: "post",
+            dataType: "json",
+            success: function(data) {
+                const labelList = [];
+                const directCnt = [];
+                const deliCnt = [];
+                for(let i=0; i<data.length; i++) {
+                    let temp = data[i];
+                    labelList[i] = temp.label;
+                    directCnt[i] = temp.directCnt;
+                    deliCnt[i] = temp.deliCnt;
+                }
+                let chart = {
+                    series: [
+                        { name: "월별 직거래 수", data: directCnt },
+                        { name: "월별 택배거래 수", data: deliCnt },
+                    ],
+                    chart: {
+                        type: "bar",
+                        height: 345,
+                        offsetX: -15,
+                        toolbar: { show: true },
+                        foreColor: "#adb0bb",
+                        fontFamily: 'inherit',
+                        sparkline: { enabled: false },
+                    },
+                    colors: ["#5D87FF", "#49BEFF"],
+                    plotOptions: {
+                        bar: {
+                            horizontal: false,
+                            columnWidth: "35%",
+                            borderRadius: [6],
+                            borderRadiusApplication: 'end',
+                            borderRadiusWhenStacked: 'all'
+                        },
+                    },
+                    markers: { size: 0 },
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    legend: {
                         show: false,
                     },
-                },
-            },
-            xaxis: {
-                type: "category",
-                categories: labelList,
-                labels: {
-                    style: { cssClass: "grey--text lighten-2--text fill-color" },
-                },
-            },
-            yaxis: {
-                show: true,
-                min: 0,
-                max: 10,
-                tickAmount: 4,
-                labels: {
-                    style: {
-                        cssClass: "grey--text lighten-2--text fill-color",
+                    grid: {
+                        borderColor: "rgba(0,0,0,0.1)",
+                        strokeDashArray: 3,
+                        xaxis: {
+                            lines: {
+                                show: false,
+                            },
+                        },
                     },
-                },
-            },
-            stroke: {
-                show: true,
-                width: 3,
-                lineCap: "butt",
-                colors: ["transparent"],
-            },
-            tooltip: { theme: "light" },
-            responsive: [
-                {
-                    breakpoint: 600,
-                    options: {
-                        plotOptions: {
-                            bar: {
-                                borderRadius: 3,
+                    xaxis: {
+                        type: "category",
+                        categories: labelList,
+                        labels: {
+                            style: { cssClass: "grey--text lighten-2--text fill-color" },
+                        },
+                    },
+                    yaxis: {
+                        show: true,
+                        min: 0,
+                        max: 10,
+                        tickAmount: 4,
+                        labels: {
+                            style: {
+                                cssClass: "grey--text lighten-2--text fill-color",
+                            },
+                        },
+                    },
+                    stroke: {
+                        show: true,
+                        width: 3,
+                        lineCap: "butt",
+                        colors: ["transparent"],
+                    },
+                    tooltip: { theme: "light" },
+                    responsive: [
+                        {
+                            breakpoint: 600,
+                            options: {
+                                plotOptions: {
+                                    bar: {
+                                        borderRadius: 3,
+                                    }
+                                },
                             }
-                        },
-                    }
+                        }
+                    ]
+                };
+                let chartTag = new ApexCharts(document.querySelector("#chart"), chart);
+                chartTag.render();
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        $.ajax({
+            url: "/admin/profitYearReport.do",
+            type: "post",
+            dataType: "json",
+            success: function(data) {
+                const labelList = [];
+                const profitList = [];
+                for(let i=0; i<data.length; i++) {
+                    let temp = data[i];
+                    labelList[i] = temp.label;
+                    profitList[i] = temp.profit;
+                    $(".profitYear").eq(i).text(labelList[i]);
                 }
-            ]
-        };
-        let chartTag = new ApexCharts(document.querySelector("#chart"), chart);
-        chartTag.render();
-
-        // $.ajax({
-        //     url: "/admin/profitYearReport.do",
-        //     type: "post",
-        //     dataType: "json",
-        //     success: function(data) {
-        //         const labelList = [];
-        //         const profitList = [];
-        //         for(let i=0; i<data.length; i++) {
-        //             let temp = data[i];
-        //             labelList[i] = temp.label;
-        //             profitList[i] = temp.profit;
-        //             $(".profitYear").eq(i).text(labelList[i]);
-        //         }
-        //         $("#profit").text(profitList[1] + " 포인트");
-        //         let result = profitList[1] == 0 ? -100 : (profitList[1] - profitList[0]) / profitList[1] * 100;
-        //         $("#profitDiff").text(result + "%");
-        //         if(result >= 0) {
-        //             $("#yearIcon").html('<i class="ti ti-arrow-up-left text-success"></i>');
-        //             $("#yearIcon").addClass('bg-light-success');
-        //         } else {
-        //             $("#yearIcon").html('<i class="ti ti-arrow-down-right text-danger"></i>');
-        //             $("#yearIcon").addClass('bg-light-danger');
-        //         }
-        //         var breakup = {
-        //             color: "#5D87FF",
-        //             series: profitList,
-        //             labels: labelList,
-        //             chart: {
-        //                 width: 180,
-        //                 type: "donut",
-        //                 fontFamily: "Plus Jakarta Sans', sans-serif",
-        //                 foreColor: "#5D87FF",
-        //             },
-        //             plotOptions: {
-        //                 pie: {
-        //                     startAngle: 0,
-        //                     endAngle: 360,
-        //                     donut: {
-        //                         size: '75%',
-        //                     },
-        //                 },
-        //             },
-        //             stroke: {
-        //                 show: false,
-        //             },
-        //
-        //             dataLabels: {
-        //                 enabled: false,
-        //             },
-        //
-        //             legend: {
-        //                 show: false,
-        //             },
-        //             colors: ["#5D87FF", "#ecf2ff", "#F9F9FD"],
-        //
-        //             responsive: [
-        //                 {
-        //                     breakpoint: 991,
-        //                     options: {
-        //                         chart: {
-        //                             width: 150,
-        //                         },
-        //                     },
-        //                 },
-        //             ],
-        //             tooltip: {
-        //                 theme: "dark",
-        //                 fillSeriesColor: false,
-        //             },
-        //         };
-        //
-        //         var chart = new ApexCharts(document.querySelector("#breakup"), breakup);
-        //         chart.render();
-        //     },
-        //     error: function(err) {
-        //         console.log(err);
-        //     }
-        // });
-
-        var labelList = ['2022년', '2023년'];
-        var profitList = [100000, 15000];
-        $("#profit").text(profitList[1] + " 포인트");
-        var result = profitList[1] == 0 ? -100 : (profitList[1] - profitList[0]) / profitList[1] * 100;
-        $("#profitDiff").text(result + "%");
-        if(result >= 0) {
-            $("#yearIcon").html('<i class="ti ti-arrow-up-left text-success"></i>');
-            $("#yearIcon").addClass('bg-light-success');
-        } else {
-            $("#yearIcon").html('<i class="ti ti-arrow-down-right text-danger"></i>');
-            $("#yearIcon").addClass('bg-light-danger');
-        }
-        var breakup = {
-            color: "#5D87FF",
-            series: profitList,
-            labels: labelList,
-            chart: {
-                width: 180,
-                type: "donut",
-                fontFamily: "Plus Jakarta Sans', sans-serif",
-                foreColor: "#5D87FF",
-            },
-            plotOptions: {
-                pie: {
-                    startAngle: 0,
-                    endAngle: 360,
-                    donut: {
-                        size: '75%',
+                $("#profit").text(profitList[1] + " 원");
+                let result = profitList[1] == 0 ? -100 : (profitList[1] - profitList[0]) / profitList[1] * 100;
+                $("#profitDiff").text(result + "%");
+                if(result >= 0) {
+                    $("#yearIcon").html('<i class="fa-solid fa-arrow-trend-up fa-xs"></i>');
+                    $("#yearIcon").addClass('bg-light-success');
+                } else {
+                    $("#yearIcon").html('<i class="fa-solid fa-arrow-trend-down fa-xs"></i>');
+                    $("#yearIcon").addClass('bg-light-danger');
+                }
+                var breakup = {
+                    color: "#5D87FF",
+                    series: profitList,
+                    labels: labelList,
+                    chart: {
+                        width: 180,
+                        type: "donut",
+                        fontFamily: "Plus Jakarta Sans', sans-serif",
+                        foreColor: "#5D87FF",
                     },
-                },
-            },
-            stroke: {
-                show: false,
-            },
-
-            dataLabels: {
-                enabled: false,
-            },
-
-            legend: {
-                show: false,
-            },
-            colors: ["#5D87FF", "#ecf2ff", "#F9F9FD"],
-
-            responsive: [
-                {
-                    breakpoint: 991,
-                    options: {
-                        chart: {
-                            width: 150,
+                    plotOptions: {
+                        pie: {
+                            startAngle: 0,
+                            endAngle: 360,
+                            donut: {
+                                size: '75%',
+                            },
                         },
                     },
-                },
-            ],
-            tooltip: {
-                theme: "dark",
-                fillSeriesColor: false,
-            },
-        };
+                    stroke: {
+                        show: false,
+                    },
 
-        var chart = new ApexCharts(document.querySelector("#breakup"), breakup);
-        chart.render();
+                    dataLabels: {
+                        enabled: false,
+                    },
 
-        // $.ajax({
-        //     url: "/admin/profitPayReport.do",
-        //     type: "post",
-        //     dataType: "json",
-        //     success: function(data) {
-        //         const labelList = [];
-        //         const profitList = [];
-        //         for(let i=0; i<data.length; i++) {
-        //             let temp = data[i];
-        //             labelList[i] = temp.label;
-        //             profitList[i] = temp.profit;
-        //         }
-        //         $("#payProfitReport").text(profitList[1] + " 원");
-        //         let result = profitList[1] == 0 ? -100 : (profitList[1] - profitList[0]) / profitList[1] * 100;
-        //         $("#payProfitDiff").text(result + "%");
-        //         if(result >= 0) {
-        //             $("#payProfit").html('<i class="ti ti-arrow-up-left text-success"></i>');
-        //             $("#payProfit").addClass('bg-light-success');
-        //         } else {
-        //             $("#payProfit").html('<i class="ti ti-arrow-down-right text-danger"></i>');
-        //             $("#payProfit").addClass('bg-light-danger');
-        //         }
-        //         var earning = {
-        //             chart: {
-        //                 id: "sparkline3",
-        //                 type: "area",
-        //                 height: 60,
-        //                 sparkline: {
-        //                     enabled: true,
-        //                 },
-        //                 group: "sparklines",
-        //                 fontFamily: "Plus Jakarta Sans', sans-serif",
-        //                 foreColor: "#adb0bb",
-        //             },
-        //             series: [
-        //                 {
-        //                     name: "Earnings",
-        //                     color: "#49BEFF",
-        //                     data: profitList,
-        //                 },
-        //             ],
-        //             stroke: {
-        //                 curve: "smooth",
-        //                 width: 2,
-        //             },
-        //             fill: {
-        //                 colors: ["#f3feff"],
-        //                 type: "solid",
-        //                 opacity: 0.05,
-        //             },
-        //
-        //             markers: {
-        //                 size: 0,
-        //             },
-        //             tooltip: {
-        //                 theme: "dark",
-        //                 fixed: {
-        //                     enabled: true,
-        //                     position: "right",
-        //                 },
-        //                 x: {
-        //                     show: false,
-        //                 },
-        //             },
-        //         };
-        //         new ApexCharts(document.querySelector("#earning"), earning).render();
-        //     },
-        //     error: function(err) {
-        //         console.log(err);
-        //     }
-        // });
+                    legend: {
+                        show: false,
+                    },
+                    colors: ["#F9F9FD", "#ecf2ff", "#5D87FF"],
 
-        var labelList = ['10월', '11월'];
-        var profitList = [14000, 20000];
-        $("#payProfitReport").text(profitList[1] + " 원");
-        var result = profitList[1] == 0 ? -100 : (profitList[1] - profitList[0]) / profitList[1] * 100;
-        $("#payProfitDiff").text(result + "%");
-        if(result >= 0) {
-            $("#payProfit").html('<i class="ti ti-arrow-up-left text-success"></i>');
-            $("#payProfit").addClass('bg-light-success');
-        } else {
-            $("#payProfit").html('<i class="ti ti-arrow-down-right text-danger"></i>');
-            $("#payProfit").addClass('bg-light-danger');
-        }
-        var earning = {
-            chart: {
-                id: "sparkline3",
-                type: "area",
-                height: 60,
-                sparkline: {
-                    enabled: true,
-                },
-                group: "sparklines",
-                fontFamily: "Plus Jakarta Sans', sans-serif",
-                foreColor: "#adb0bb",
-            },
-            series: [
-                {
-                    name: "Earnings",
-                    color: "#49BEFF",
-                    data: profitList,
-                },
-            ],
-            stroke: {
-                curve: "smooth",
-                width: 2,
-            },
-            fill: {
-                colors: ["#f3feff"],
-                type: "solid",
-                opacity: 0.05,
-            },
+                    responsive: [
+                        {
+                            breakpoint: 991,
+                            options: {
+                                chart: {
+                                    width: 150,
+                                },
+                            },
+                        },
+                    ],
+                    tooltip: {
+                        theme: "dark",
+                        fillSeriesColor: false,
+                    },
+                };
 
-            markers: {
-                size: 0,
+                var chart = new ApexCharts(document.querySelector("#breakup"), breakup);
+                chart.render();
             },
-            tooltip: {
-                theme: "dark",
-                fixed: {
-                    enabled: true,
-                    position: "right",
-                },
-                x: {
-                    show: false,
-                },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+        $.ajax({
+            url: "/admin/profitMonthReport.do",
+            type: "post",
+            dataType: "json",
+            success: function(data) {
+                const labelList = [];
+                const profitList = [];
+                for(let i=0; i<data.length; i++) {
+                    let temp = data[i];
+                    labelList[i] = temp.label;
+                    profitList[i] = temp.profit;
+                }
+                $("#payProfitReport").text(profitList[1] + " 원");
+                let result = profitList[1] == 0 ? -100 : (profitList[1] - profitList[0]) / profitList[1] * 100;
+                $("#payProfitDiff").text(result + "%");
+                if(result >= 0) {
+                    $("#payProfit").html('<i class="fa-solid fa-arrow-trend-up fa-xs"></i>');
+                    $("#payProfit").addClass('bg-light-success');
+                } else {
+                    $("#payProfit").html('<i class="fa-solid fa-arrow-trend-down fa-xs"></i>');
+                    $("#payProfit").addClass('bg-light-danger');
+                }
+                var earning = {
+                    chart: {
+                        id: "sparkline3",
+                        type: "area",
+                        height: 60,
+                        sparkline: {
+                            enabled: true,
+                        },
+                        group: "sparklines",
+                        fontFamily: "Plus Jakarta Sans', sans-serif",
+                        foreColor: "#adb0bb",
+                    },
+                    series: [
+                        {
+                            name: "Earnings",
+                            color: "#49BEFF",
+                            data: profitList,
+                        },
+                    ],
+                    stroke: {
+                        curve: "smooth",
+                        width: 2,
+                    },
+                    fill: {
+                        colors: ["#f3feff"],
+                        type: "solid",
+                        opacity: 0.05,
+                    },
+
+                    markers: {
+                        size: 0,
+                    },
+                    tooltip: {
+                        theme: "dark",
+                        fixed: {
+                            enabled: true,
+                            position: "right",
+                        },
+                        x: {
+                            show: false,
+                        },
+                    },
+                };
+                new ApexCharts(document.querySelector("#earning"), earning).render();
             },
-        };
-        new ApexCharts(document.querySelector("#earning"), earning).render();
+            error: function(err) {
+                console.log(err);
+            }
+        });
     });
 </script>
 

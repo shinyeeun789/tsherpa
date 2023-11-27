@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -64,5 +65,15 @@ public class PaymentServiceImpl implements PaymentService {
         int result = tradeMapper.updateState(payment.getTno());
         result += paymentMapper.addPayment(payment);
         return result;
+    }
+
+    @Override
+    public List<Map<String, Integer>> yearProfit() throws Exception {
+        return paymentMapper.yearProfit();
+    }
+
+    @Override
+    public List<Map<String, Integer>> monthProfit() throws Exception {
+        return paymentMapper.monthProfit();
     }
 }

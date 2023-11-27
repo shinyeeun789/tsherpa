@@ -92,7 +92,7 @@
                         </li>
                     </ul>
                     <a th:href="@{/payment/addPayment.do(tno=${trade.tno})}" th:if='${!#strings.equals(trade.tradeType, "직거래")}' class="btn btn-lg btn-dark w-100 mt-4"> 구매하기 </a>
-                    <form th:action="@{/chat/createRoom.do}" method="post" th:if='${#strings.equals(trade.tradeType, "직거래")}'>
+                    <form th:action="@{/chat/createRoom.do}" method="post" th:if='${#strings.equals(trade.tradeType, "직거래") and !#strings.equals(trade.name, #authentication.principal)}'>
                         <input type="hidden" name="tno" id="tno" th:value="${trade.tno}">
                         <input type="hidden" name="seller" id="seller" th:value="${trade.name}">
                         <input type="hidden" name="name" id="name" th:value="${trade.title}">

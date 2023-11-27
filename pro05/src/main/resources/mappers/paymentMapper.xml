@@ -29,4 +29,36 @@
         values(default, #{tno}, #{buyer}, #{impUid}, #{merchantUid}, #{applyNum}, #{price})
     </insert>
 
+    <select id="yearProfit" resultType="java.util.HashMap">
+        SELECT label
+             ,SUM(profit) AS profit
+        FROM
+            (SELECT DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 YEAR), '%Y') AS label
+                  ,0 AS profit
+             FROM dual
+             UNION ALL
+             SELECT DATE_FORMAT(payDate, '%Y') AS label
+                  ,SUM(price) AS profit
+             FROM payment
+             WHERE payDate >= DATE_ADD(NOW(), INTERVAL -1 YEAR)
+             GROUP BY DATE_FORMAT(payDate, '%Y')) a
+        GROUP BY label
+    </select>
+
+    <select id="monthProfit" resultType="java.util.HashMap">
+        SELECT label
+             ,SUM(profit) AS profit
+        FROM
+            (SELECT DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 MONTH), '%Y-%m') AS label
+                  ,0 AS profit
+             FROM dual
+             UNION ALL
+             SELECT DATE_FORMAT(payDate, '%Y-%m') AS label
+                  ,SUM(price) AS profit
+             FROM payment
+             WHERE payDate >= DATE_ADD(NOW(), INTERVAL -1 MONTH)
+             GROUP BY DATE_FORMAT(payDate, '%Y-%m')) a
+        GROUP BY label
+    </select>
+
 </mapper>

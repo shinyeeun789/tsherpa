@@ -1,9 +1,6 @@
 package com.chunjae.pro05.ctrl;
 
-import com.chunjae.pro05.biz.FreeService;
-import com.chunjae.pro05.biz.QnaService;
-import com.chunjae.pro05.biz.TradeService;
-import com.chunjae.pro05.biz.UserService;
+import com.chunjae.pro05.biz.*;
 import com.chunjae.pro05.entity.Trade;
 import com.chunjae.pro05.entity.User;
 import org.json.JSONArray;
@@ -37,7 +34,7 @@ public class AdminController {
     private TradeService tradeService;
 
     @Autowired
-    private QnaService qnaService;
+    private PaymentService paymentService;
 
     @RequestMapping("dashboard.do")
     public String dashboard(Model model) throws Exception {
@@ -47,47 +44,47 @@ public class AdminController {
         return "/admin/dashboard";
     }
 
-    @PostMapping("tradeCntList")
+    @PostMapping("tradeCntList.do")
     public void getUserCnt(HttpServletResponse response) throws Exception {
         List<Map<String, Integer>> tradeCntList = tradeService.tradeCntList();
         JSONArray jsonArray = new JSONArray();
         for(Map<String, Integer> tradeCnt : tradeCntList) {
             JSONObject obj = new JSONObject();
             obj.put("label", tradeCnt.get("label"));
-            obj.put("teaCnt", tradeCnt.get("teaCnt"));
-            obj.put("stuCnt", tradeCnt.get("stuCnt"));
+            obj.put("directCnt", tradeCnt.get("directCnt"));
+            obj.put("deliCnt", tradeCnt.get("deliCnt"));
             jsonArray.put(obj);
         }
         PrintWriter out = response.getWriter();
         out.println(jsonArray);
     }
 
-    @PostMapping("profitYearReport")
+    @PostMapping("profitYearReport.do")
     public void profitYearReport(HttpServletResponse response) throws Exception {
-//        List<Map<String, Integer>> profitList = registerService.yearProfit();
-//        JSONArray jsonArray = new JSONArray();
-//        for(Map<String, Integer> profits : profitList) {
-//            JSONObject obj = new JSONObject();
-//            obj.put("label", profits.get("label"));
-//            obj.put("profit", profits.get("profit"));
-//            jsonArray.put(obj);
-//        }
-//        PrintWriter out = response.getWriter();
-//        out.println(jsonArray);
+        List<Map<String, Integer>> profitList = paymentService.yearProfit();
+        JSONArray jsonArray = new JSONArray();
+        for(Map<String, Integer> profits : profitList) {
+            JSONObject obj = new JSONObject();
+            obj.put("label", profits.get("label"));
+            obj.put("profit", profits.get("profit"));
+            jsonArray.put(obj);
+        }
+        PrintWriter out = response.getWriter();
+        out.println(jsonArray);
     }
 
-    @PostMapping("profitPayReport")
+    @PostMapping("profitMonthReport.do")
     public void profitPayReport(HttpServletResponse response) throws Exception {
-//        List<Map<String, Integer>> profitList = registerService.payProfit();
-//        JSONArray jsonArray = new JSONArray();
-//        for(Map<String, Integer> profits : profitList) {
-//            JSONObject obj = new JSONObject();
-//            obj.put("label", profits.get("label"));
-//            obj.put("profit", profits.get("profit"));
-//            jsonArray.put(obj);
-//        }
-//        PrintWriter out = response.getWriter();
-//        out.println(jsonArray);
+        List<Map<String, Integer>> profitList = paymentService.monthProfit();
+        JSONArray jsonArray = new JSONArray();
+        for(Map<String, Integer> profits : profitList) {
+            JSONObject obj = new JSONObject();
+            obj.put("label", profits.get("label"));
+            obj.put("profit", profits.get("profit"));
+            jsonArray.put(obj);
+        }
+        PrintWriter out = response.getWriter();
+        out.println(jsonArray);
     }
 
 }

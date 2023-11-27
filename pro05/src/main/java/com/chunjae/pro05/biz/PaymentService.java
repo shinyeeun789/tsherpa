@@ -6,6 +6,7 @@ import com.chunjae.pro05.entity.Payment;
 import com.chunjae.pro05.util.Page;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PaymentService {
 
@@ -15,5 +16,7 @@ public interface PaymentService {
     public int totalProduct(Page page) throws Exception;
     public List<AboutTradeVO> myProduct(Page page) throws Exception;
     public int payComplete(Payment payment) throws Exception;
+    public List<Map<String, Integer>> yearProfit() throws Exception;
+    public List<Map<String, Integer>> monthProfit() throws Exception;
 
 }

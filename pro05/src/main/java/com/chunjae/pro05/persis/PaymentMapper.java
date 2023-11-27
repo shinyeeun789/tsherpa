@@ -6,6 +6,7 @@ import com.chunjae.pro05.util.Page;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface PaymentMapper {
@@ -15,5 +16,7 @@ public interface PaymentMapper {
     List<AboutTradeVO> myPayment(Page page);
     int totalProduct(Page page);
     List<AboutTradeVO> myProduct(Page page);
+    List<Map<String, Integer>> yearProfit();
+    List<Map<String, Integer>> monthProfit();
 
 }

@@ -42,6 +42,7 @@ public class ChatController {
         logger.info(roomList.toString());
         model.addAttribute("roomList",roomList);
         model.addAttribute("page", page);
+        System.out.println(roomList);
         return "chat/chatList";
     }
 
