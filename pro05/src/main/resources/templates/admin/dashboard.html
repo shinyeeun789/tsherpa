@@ -40,7 +40,7 @@
                         <span class="hide-menu">Home</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link active" href="${path}/admin/dashboard" aria-expanded="false">
+                        <a class="sidebar-link active" th:href="@{/admin/dashboard.do}" aria-expanded="false">
                             <span>
                                 <i class="fa-solid fa-chart-line"></i>
                             </span>
@@ -51,7 +51,7 @@
                         <span class="hide-menu"> Management </span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="${path}/admin/userMgmt" aria-expanded="false">
+                        <a class="sidebar-link" th:href="@{/admin/userMgmt.do}" aria-expanded="false">
                             <span>
                                 <i class="fa-solid fa-user"></i>
                             </span>
@@ -59,17 +59,17 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="${path}/admin/qnaMgmt" aria-expanded="false">
+                        <a class="sidebar-link" th:href="@{/admin/paymentMgmt.do}" aria-expanded="false">
                             <span>
-                                <i class="fa-solid fa-circle-question"></i>
+                                <i class="fa-solid fa-won-sign"></i>
                             </span>
                             <span class="hide-menu"> 정산관리 </span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="${path}/admin/qnaMgmt" aria-expanded="false">
+                        <a class="sidebar-link" th:href="@{/admin/deliveryMgmt.do}" aria-expanded="false">
                             <span>
-                                <i class="fa-solid fa-circle-question"></i>
+                                <i class="fa-solid fa-truck"></i>
                             </span>
                             <span class="hide-menu"> 배송관리 </span>
                         </a>

@@ -87,4 +87,54 @@
         update userRating set rating = #{rating}, trustTrade = #{trustTrade}, content = #{content} where uid = #{uid}
     </update>
 
+    <select id="userMgmtList" resultType="com.chunjae.pro05.entity.UserRatingVO">
+        SELECT id
+             ,name
+             ,username
+             ,email
+             ,regdate
+             ,AVG(rating) AS ratingAvg
+             ,COUNT(IF(trustTrade, 1, NULL)) AS trustTradeCnt
+        FROM user u
+                 JOIN userrating ur ON u.name = ur.seller
+        <where>
+            <if test="type != null">
+                <trim prefixOverrides="OR">
+                    <choose>
+                        <when test="type == 'I'.toString()">
+                            name LIKE concat('%', #{keyword}, '%')
+                        </when>
+                        <when test="type == 'N'.toString()">
+                            username LIKE concat('%', #{keyword}, '%')
+                        </when>
+                    </choose>
+                </trim>
+            </if>
+        </where>
+        GROUP BY name
+        ORDER BY trustTradeCnt, ratingAvg LIMIT #{postStart}, #{postCount}
+    </select>
+
+    <select id="getUserMgmtCount" resultType="integer">
+        SELECT COUNT(*)
+        FROM (SELECT name
+            FROM user u
+            INNER JOIN userrating ur ON u.name = ur.seller
+            <where>
+                <if test="type != null">
+                    <trim prefixOverrides="OR">
+                        <choose>
+                            <when test="type == 'I'.toString()">
+                                name LIKE concat('%', #{keyword}, '%')
+                            </when>
+                            <when test="type == 'N'.toString()">
+                                username LIKE concat('%', #{keyword}, '%')
+                            </when>
+                        </choose>
+                    </trim>
+                </if>
+            </where>
+            GROUP BY name) a;
+    </select>
+
 </mapper>

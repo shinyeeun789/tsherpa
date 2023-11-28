@@ -247,16 +247,3 @@ CREATE TABLE chatmsg(
 	FOREIGN KEY(sender) REFERENCES user(name) ON DELETE CASCADE,
 	FOREIGN KEY(roomId) REFERENCES chatroom(roomId) ON DELETE CASCADE
 );
-
-
-SELECT label, SUM(profit) AS profit FROM
-            (SELECT DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 YEAR), '%Y') AS label, 0 AS profit FROM dual
-             UNION ALL
-             SELECT DATE_FORMAT(sdate, '%Y') AS label, SUM(lprice) AS profit FROM lecture l JOIN register r ON (l.lcode=r.lcode)
-             WHERE sdate >= DATE_ADD(NOW(), INTERVAL -1 YEAR)
-             GROUP BY DATE_FORMAT(sdate, '%Y')) a
-        GROUP BY label
-        
-(SELECT DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 YEAR), '%Y') AS label, 0 AS profit FROM dual
- UNION ALL
- SELECT DATE_FORMAT(sdate, '%Y') AS label, SUM(lprice) AS profit FROM lecture l JOIN register r ON (l.lcode=r.lcode) 

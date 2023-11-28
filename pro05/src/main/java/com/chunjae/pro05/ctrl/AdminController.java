@@ -3,6 +3,8 @@ package com.chunjae.pro05.ctrl;
 import com.chunjae.pro05.biz.*;
 import com.chunjae.pro05.entity.Trade;
 import com.chunjae.pro05.entity.User;
+import com.chunjae.pro05.entity.UserRatingVO;
+import com.chunjae.pro05.util.Page;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +87,24 @@ public class AdminController {
         }
         PrintWriter out = response.getWriter();
         out.println(jsonArray);
+    }
+
+    @GetMapping("/userMgmt.do")
+    public String userMgmt(HttpServletRequest request, Model model) throws Exception {
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page(curPage);
+        page.setKeyword(request.getParameter("keyword"));
+        page.setType(request.getParameter("type"));
+
+        // 페이징에 필요한 데이터 만들기
+        int total = userService.getUserMgmtCount(page);
+        page.makePage(total);
+        model.addAttribute("page", page);
+
+        List<UserRatingVO> userMgmtList = userService.userMgmtList(page);
+        model.addAttribute("userMgmtList", userMgmtList);
+        return "/admin/userMgmt";
     }
 
 }

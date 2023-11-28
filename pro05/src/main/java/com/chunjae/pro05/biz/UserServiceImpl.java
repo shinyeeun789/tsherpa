@@ -2,7 +2,9 @@ package com.chunjae.pro05.biz;
 
 import com.chunjae.pro05.entity.User;
 import com.chunjae.pro05.entity.UserRating;
+import com.chunjae.pro05.entity.UserRatingVO;
 import com.chunjae.pro05.persis.UserMapper;
+import com.chunjae.pro05.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -115,5 +117,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public int editUserRating(UserRating userRating) {
         return userMapper.editUserRating(userRating);
+    }
+
+    @Override
+    public List<UserRatingVO> userMgmtList(Page page) {
+        return userMapper.userMgmtList(page);
+    }
+
+    @Override
+    public int getUserMgmtCount(Page page) {
+        return userMapper.getUserMgmtCount(page);
     }
 }

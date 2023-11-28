@@ -2,6 +2,8 @@ package com.chunjae.pro05.biz;
 
 import com.chunjae.pro05.entity.User;
 import com.chunjae.pro05.entity.UserRating;
+import com.chunjae.pro05.entity.UserRatingVO;
+import com.chunjae.pro05.util.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
@@ -27,5 +29,7 @@ public interface UserService {
     public int updateAccount(User user);
     public int insertUserRating(UserRating userRating);
     public int editUserRating(UserRating userRating);
+    public List<UserRatingVO> userMgmtList(Page page);
+    public int getUserMgmtCount(Page page);
 
 }

@@ -2,6 +2,8 @@ package com.chunjae.pro05.persis;
 
 import com.chunjae.pro05.entity.User;
 import com.chunjae.pro05.entity.UserRating;
+import com.chunjae.pro05.entity.UserRatingVO;
+import com.chunjae.pro05.util.Page;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -27,5 +29,7 @@ public interface UserMapper {
     int updateAccount(User user);
     int insertUserRating(UserRating userRating);
     int editUserRating(UserRating userRating);
+    List<UserRatingVO> userMgmtList(Page page);
+    int getUserMgmtCount(Page page);
 
 }
