@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dashboard </title>
+    <title> 회원관리 </title>
     <th:block th:replace="layout/head :: headFragment"></th:block>
     <!-- 관리자 페이지 CSS 적용 -->
     <link rel="stylesheet" th:href="@{/css/admin-style.css}" />
@@ -103,7 +103,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="user : ${userMgmtList}" th:onclick="|location.href='@{/admin/userDetail.do(name=${user.name}, page=${curPage})}'|" style="cursor: pointer">
+                <tr th:each="user : ${userMgmtList}" th:onclick="|location.href='@{/admin/userDetail.do(name=${user.name}, page=${page.curPageNum})}'|" style="cursor: pointer">
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.username}"></td>
                     <td th:text="${user.email}"></td>
@@ -140,5 +140,6 @@
 
 <th:block th:replace="layout/footer :: footerFragment"></th:block>
 <script th:src="@{/js/sidebarmenu.js}"></script>
+<script th:src="@{/js/app.min.js}"></script>
 </body>
 </html>

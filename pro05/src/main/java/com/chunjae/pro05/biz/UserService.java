@@ -31,5 +31,6 @@ public interface UserService {
     public int editUserRating(UserRating userRating);
     public List<UserRatingVO> userMgmtList(Page page);
     public int getUserMgmtCount(Page page);
+    public UserRatingVO getUserRatingVO(String name);
 
 }

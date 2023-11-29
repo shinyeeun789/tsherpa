@@ -128,4 +128,9 @@ public class UserServiceImpl implements UserService {
     public int getUserMgmtCount(Page page) {
         return userMapper.getUserMgmtCount(page);
     }
+
+    @Override
+    public UserRatingVO getUserRatingVO(String name) {
+        return userMapper.getUserRatingVO(name);
+    }
 }

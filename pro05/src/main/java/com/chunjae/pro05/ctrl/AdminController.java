@@ -3,6 +3,7 @@ package com.chunjae.pro05.ctrl;
 import com.chunjae.pro05.biz.*;
 import com.chunjae.pro05.entity.Trade;
 import com.chunjae.pro05.entity.User;
+import com.chunjae.pro05.entity.UserRating;
 import com.chunjae.pro05.entity.UserRatingVO;
 import com.chunjae.pro05.util.Page;
 import org.json.JSONArray;
@@ -105,6 +106,17 @@ public class AdminController {
         List<UserRatingVO> userMgmtList = userService.userMgmtList(page);
         model.addAttribute("userMgmtList", userMgmtList);
         return "/admin/userMgmt";
+    }
+
+    @GetMapping("/userDetail.do")
+    public String userDetail(@RequestParam String name, Model model) throws Exception {
+
+        UserRatingVO userRatingInfo = userService.getUserRatingVO(name);
+        System.out.println(userRatingInfo);
+
+        model.addAttribute("userRating", userRatingInfo);
+
+        return "/admin/userDetail";
     }
 
 }

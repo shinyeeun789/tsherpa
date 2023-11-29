@@ -137,4 +137,18 @@
             GROUP BY name) a;
     </select>
 
+    <select id="getUserRatingVO" resultType="com.chunjae.pro05.entity.UserRatingVO">
+        SELECT ur.seller AS name
+             , u.username
+             , u.email
+             , u.regdate
+             , FORMAT(AVG(ur.rating), 1) AS ratingAvg
+             , SUM(ur.trustTrade) AS trustTradeCnt
+        FROM user u
+                 INNER JOIN trade t ON u.name = t.name
+                 LEFT JOIN userrating ur ON t.name = ur.seller
+        WHERE ur.seller = #{name}
+        GROUP BY ur.seller
+    </select>
+
 </mapper>
