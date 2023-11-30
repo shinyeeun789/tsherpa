@@ -109,12 +109,26 @@ public class AdminController {
     }
 
     @GetMapping("/userDetail.do")
-    public String userDetail(@RequestParam String name, Model model) throws Exception {
+    public String userDetail(@RequestParam String name, HttpServletRequest request, Model model) throws Exception {
 
         UserRatingVO userRatingInfo = userService.getUserRatingVO(name);
-        System.out.println(userRatingInfo);
-
         model.addAttribute("userRating", userRatingInfo);
+
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page(curPage);
+        page.setKeyword(request.getParameter("keyword"));
+        page.setType(request.getParameter("type"));
+        page.setName(name);
+
+        // 페이징에 필요한 데이터 만들기
+        int total = userService.getUserMgmtCount(page);
+        page.makePage(total);
+        model.addAttribute("page", page);
+
+        List<UserRatingVO> userRatingList = userService.userRatingListInUserDetail(page);
+        model.addAttribute("userRatingList", userRatingList);
+        System.out.println(userRatingList);
 
         return "/admin/userDetail";
     }

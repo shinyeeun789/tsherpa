@@ -32,5 +32,6 @@ public interface UserService {
     public List<UserRatingVO> userMgmtList(Page page);
     public int getUserMgmtCount(Page page);
     public UserRatingVO getUserRatingVO(String name);
+    public List<UserRatingVO> userRatingListInUserDetail(Page page);
 
 }

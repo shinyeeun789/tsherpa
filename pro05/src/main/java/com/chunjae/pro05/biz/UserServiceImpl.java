@@ -133,4 +133,9 @@ public class UserServiceImpl implements UserService {
     public UserRatingVO getUserRatingVO(String name) {
         return userMapper.getUserRatingVO(name);
     }
+
+    @Override
+    public List<UserRatingVO> userRatingListInUserDetail(Page page) {
+        return userMapper.userRatingListInUserDetail(page);
+    }
 }

@@ -151,4 +151,11 @@
         GROUP BY ur.seller
     </select>
 
+    <select id="userRatingListInUserDetail" resultType="com.chunjae.pro05.entity.UserRatingVO">
+        SELECT ur.*, title
+        FROM userrating ur
+                 INNER JOIN trade t ON ur.tno = t.tno
+        WHERE seller = #{name}
+    </select>
+
 </mapper>

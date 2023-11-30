@@ -17,4 +17,12 @@ public class UserRatingVO {
     private String regdate;
     private float ratingAvg;
     private int trustTradeCnt;
+
+    // userDetail에 사용
+    private int uid;
+    private String title;
+    private String buyer;
+    private int rating;
+    private int trustTrade;
+    private String content;
 }

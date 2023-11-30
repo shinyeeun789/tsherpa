@@ -32,5 +32,6 @@ public interface UserMapper {
     List<UserRatingVO> userMgmtList(Page page);
     int getUserMgmtCount(Page page);
     UserRatingVO getUserRatingVO(String name);
+    List<UserRatingVO> userRatingListInUserDetail(Page page);
 
 }

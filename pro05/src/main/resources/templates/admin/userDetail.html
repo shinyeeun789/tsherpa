@@ -98,7 +98,7 @@
                     <h3 class="text-white" th:text="${userRating.name}"></h3>
                 </div>
                 <div>
-                    <h5 th:text="${userRating.username}"></h5>
+                    <h3 th:text="${userRating.username}"></h3>
                     <p class="mb-0">
                         <span class="text-indigo d-inline-block" style="width: 100px;"><i class="fa-solid fa-envelope"></i> 이메일 </span> [[${userRating.email}]]
                     </p>
@@ -115,6 +115,55 @@
                         [[${userRating.trustTradeCnt}]] 회
                     </p>
                 </div>
+            </div>
+            <table class="table table-hover text-center">
+                <thead>
+                <tr>
+                    <td> # </td>
+                    <td> 상품명 </td>
+                    <td> 작성자 </td>
+                    <td> 별점 </td>
+                    <td> 안전거래 여부 </td>
+                    <td> 내용 </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ratingInfo : ${userRatingList}">
+                    <td th:text="${ratingInfo.uid}"></td>
+                    <td th:text="${ratingInfo.title}"></td>
+                    <td th:text="${ratingInfo.buyer}"></td>
+                    <td class="text-start">
+                        <span th:each="num : ${#numbers.sequence(1, ratingInfo.rating)}">
+                            <i class="fa-solid fa-star" style="color: #ffed24;"></i>
+                        </span>
+                    </td>
+                    <td th:if="${ratingInfo.trustTrade == 1}" th:text="O"></td>
+                    <td th:if="${ratingInfo.trustTrade == 0}" th:text="X"></td>
+                    <td th:text="${ratingInfo.content}" class="text-start"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <div class="row" th:if="${page.lastPageNum != 0}">
+                <div class="col-lg-12">
+                    <ul class="pagination">
+                        <li th:if="${page.curPageNum > 5}">
+                            <a th:href="@{/admin/userDetail.do(name=${page.name},page=${page.blockStartNum - 1},type=${page.type},keyword=${page.keyword})}"> << </a>
+                        </li>
+                        <li th:each="i : ${#numbers.sequence(page.blockStartNum, page.blockLastNum)}">
+                            <a th:if="${page.curPageNum == i}" th:href="@{/admin/userDetail.do(name=${page.name},page=${i},type=${page.type},keyword=${page.keyword})}" th:text="${i}" class="is_active"></a>
+                            <a th:if="${page.curPageNum != i}" th:href="@{/admin/userDetail.do(name=${page.name},page=${i},type=${page.type},keyword=${page.keyword})}" th:text="${i}"></a>
+                        </li>
+                        <li th:if="${page.blockLastNum < page.totalPageCount}">
+                            <a th:href="@{/admin/userDetail.do(name=${page.name},page=${page.blockLastNum + 1},type=${page.type},keyword=${page.keyword})}"> >> </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-lg btn-danger"> 활동정지 </button>
             </div>
         </div>
     </div>
