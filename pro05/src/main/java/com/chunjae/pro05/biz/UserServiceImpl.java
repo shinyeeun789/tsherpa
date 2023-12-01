@@ -138,4 +138,9 @@ public class UserServiceImpl implements UserService {
     public List<UserRatingVO> userRatingListInUserDetail(Page page) {
         return userMapper.userRatingListInUserDetail(page);
     }
+
+    @Override
+    public int updateUserAct(User user) {
+        return userMapper.updateUserAct(user);
+    }
 }

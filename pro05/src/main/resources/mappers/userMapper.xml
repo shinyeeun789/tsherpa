@@ -142,6 +142,7 @@
              , u.username
              , u.email
              , u.regdate
+             , u.act
              , FORMAT(AVG(ur.rating), 1) AS ratingAvg
              , SUM(ur.trustTrade) AS trustTradeCnt
         FROM user u
@@ -157,5 +158,11 @@
                  INNER JOIN trade t ON ur.tno = t.tno
         WHERE seller = #{name}
     </select>
+
+    <update id="updateUserAct" parameterType="com.chunjae.pro05.entity.User">
+        UPDATE user
+        SET act = #{act}
+        WHERE name = #{name}
+    </update>
 
 </mapper>

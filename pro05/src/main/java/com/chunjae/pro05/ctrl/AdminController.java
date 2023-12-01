@@ -128,9 +128,18 @@ public class AdminController {
 
         List<UserRatingVO> userRatingList = userService.userRatingListInUserDetail(page);
         model.addAttribute("userRatingList", userRatingList);
-        System.out.println(userRatingList);
 
         return "/admin/userDetail";
+    }
+
+    @PostMapping("/updateUserAct.do")
+    @ResponseBody
+    public int updateUserAct(String name, String act) throws Exception {
+        User user = new User();
+        user.setName(name);
+        user.setAct(act);
+        int result = userService.updateUserAct(user);
+        return result;
     }
 
 }

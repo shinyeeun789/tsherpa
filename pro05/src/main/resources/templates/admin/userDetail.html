@@ -98,7 +98,7 @@
                     <h3 class="text-white" th:text="${userRating.name}"></h3>
                 </div>
                 <div>
-                    <h3 th:text="${userRating.username}"></h3>
+                    <h3 id="username" th:text="${userRating.username}"></h3>
                     <p class="mb-0">
                         <span class="text-indigo d-inline-block" style="width: 100px;"><i class="fa-solid fa-envelope"></i> 이메일 </span> [[${userRating.email}]]
                     </p>
@@ -163,8 +163,51 @@
             </div>
 
             <div class="d-flex justify-content-end">
-                <button class="btn btn-lg btn-danger"> 활동정지 </button>
+                <button th:if="${#strings.equals(userRating.act, 'JOIN')}" class="btn btn-lg btn-danger" id="banned_user"> 활동정지 </button>
+                <button th:if="${#strings.equals(userRating.act, 'BAN')}" class="btn btn-lg btn-indigo" id="join_user"> 활동정지 취소 </button>
             </div>
+            <script type="text/javascript">
+                $(document).ready(() => {
+                    $("#banned_user").on("click", () => {
+                        $.ajax({
+                            url: "/admin/updateUserAct.do",
+                            type: "post",
+                            dataType: "json",
+                            data: {"name" : "[[${userRating.name}]]", "act" : "BAN"},
+                            success: function(data) {
+                                if(data > 0) {
+                                    alert("[[${userRating.username}]]님이 활동 정지됩니다.");
+                                    $("#banned_user").attr("class", "btn btn-lg btn-indigo");
+                                    $("#banned_user").attr("id", "join_user");
+                                    $("#banned_user").text("활동정지 취소");
+                                }
+                            },
+                            error: function(err) {
+                                console.log(err);
+                            }
+                        });
+                    });
+                    $("#join_user").on("click", () => {
+                        $.ajax({
+                            url: "/admin/updateUserAct.do",
+                            type: "post",
+                            dataType: "json",
+                            data: {"name" : "[[${userRating.name}]]", "act" : "JOIN"},
+                            success: function(data) {
+                                if(data > 0) {
+                                    alert("[[${userRating.username}]]님의 활동 정지가 해제됩니다.");
+                                    $("#join_user").attr("class", "btn btn-lg btn-danger");
+                                    $("#join_user").attr("id", "join_user");
+                                    $("#join_user").text("활동정지");
+                                }
+                            },
+                            error: function(err) {
+                                console.log(err);
+                            }
+                        });
+                    });
+                });
+            </script>
         </div>
     </div>
 </div>

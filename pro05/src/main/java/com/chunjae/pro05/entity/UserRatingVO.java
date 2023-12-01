@@ -19,6 +19,7 @@ public class UserRatingVO {
     private int trustTradeCnt;
 
     // userDetail에 사용
+    private String act;
     private int uid;
     private String title;
     private String buyer;
