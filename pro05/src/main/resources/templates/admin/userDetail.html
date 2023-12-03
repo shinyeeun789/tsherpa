@@ -178,8 +178,8 @@
                                 if(data > 0) {
                                     alert("[[${userRating.username}]]님이 활동 정지됩니다.");
                                     $("#banned_user").attr("class", "btn btn-lg btn-indigo");
-                                    $("#banned_user").attr("id", "join_user");
                                     $("#banned_user").text("활동정지 취소");
+                                    $("#banned_user").attr("id", "join_user");
                                 }
                             },
                             error: function(err) {
@@ -197,8 +197,8 @@
                                 if(data > 0) {
                                     alert("[[${userRating.username}]]님의 활동 정지가 해제됩니다.");
                                     $("#join_user").attr("class", "btn btn-lg btn-danger");
-                                    $("#join_user").attr("id", "join_user");
                                     $("#join_user").text("활동정지");
+                                    $("#join_user").attr("id", "banned_user");
                                 }
                             },
                             error: function(err) {
