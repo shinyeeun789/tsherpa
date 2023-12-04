@@ -29,7 +29,9 @@
     </select>
 
     <select id="getByName" resultType="com.chunjae.pro05.entity.User">
-        select * from user where name = #{name}
+        select *
+        from user
+        where name = #{name}
     </select>
 
     <select id="getUserById" resultType="com.chunjae.pro05.entity.User">

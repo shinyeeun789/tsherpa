@@ -51,7 +51,7 @@
                     </fieldset>
                 </div>
                 <div th:if="${param.error}" class="col-lg-12 text-center">
-                    <p class="text-danger"> 아이디 또는 비밀번호가 올바르지 않거나 가입되지 않은 아이디입니다. </p>
+                    <p class="text-danger"> [[${exception}]] </p>
                 </div>
                 <div th:if="${param.authError}" class="col-lg-12 text-center">
                     <p style="color: blue"> 토큰 정보가 만료되었습니다. 토큰을 갱신하시기 바랍니다. </p>

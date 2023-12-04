@@ -1,15 +1,19 @@
 package com.chunjae.pro05.config;
 
 import com.chunjae.pro05.biz.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -17,9 +21,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 
 // 스프링 시큐리티 설정 관리자
+@RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    private final AuthenticationFailureHandler customFailureHandler;
 
     @Bean
     public UserService userService() { return new UserServiceImpl();  }
@@ -59,6 +66,7 @@ public class SecurityConfig {
                 .loginProcessingUrl("/auth.do")    // POST 요청 (login 창에 입력한 데이터를 처리)
                 .usernameParameter("name")      // login에 필요한 id 값을 email로 설정 (default는 username)
                 .passwordParameter("password")  // login에 필요한 password 값을 password(default)로 설정
+                .failureHandler(customFailureHandler)   // 로그인 실패 핸들러
                 .defaultSuccessUrl("/");        // login에 성공하면 /로 redirect
         // logout 설정
         http

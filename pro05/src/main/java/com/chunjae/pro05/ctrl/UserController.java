@@ -49,10 +49,13 @@ public class UserController {
     }
 
     @GetMapping("/login.do")
-    public String loginForm(Model model) throws Exception {
+    public String loginForm(@RequestParam(value="error", required=false) String error, @RequestParam(value="exception", required=false) String exception, Model model) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication instanceof AnonymousAuthenticationToken)
+        if (authentication instanceof AnonymousAuthenticationToken) {
+            model.addAttribute("error", error);
+            model.addAttribute("exception", exception);
             return "user/login";
+        }
         return "redirect:/";
     }
 

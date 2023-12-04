@@ -2,8 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chunjae.pro05.persis.TradeMapper">
     <select id="tradeList" resultType="com.chunjae.pro05.entity.TradeVO">
-        SELECT tno, tradeCate, name, title, resdate, location, tradeType, price, deliveryFee, demage, itemImg
-        FROM trade t JOIN tradeCategory c ON (t.cno=c.cno)
+        SELECT tno
+             , tradeCate
+             , CONCAT(username, '(', u.name, ')') AS name
+             , title
+             , resdate
+             , location
+             , tradeType
+             , price
+             , deliveryFee
+             , demage
+             , itemImg
+        FROM trade t
+        INNER JOIN tradeCategory c ON t.cno=c.cno
+        INNER JOIN user u ON t.name = u.name
         WHERE (tradeType = '택배거래' AND state = '판매중') OR state = '판매중'
         <if test="type != null">
             <choose>
@@ -27,6 +39,7 @@
         <if test="location != null">
             AND location LIKE concat('%', #{location}, '%')
         </if>
+        AND u.act = 'JOIN'
         order by tno desc limit #{postStart}, #{postCount}
     </select>
 
